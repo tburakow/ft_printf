@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:41:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/09 17:10:19 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/10 11:50:31 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define TESTHEAD_H
 # include <stdarg.h>
 # include "libft/libft.h"
+
+typedef struct s_flags
+{
+	char	test;
+}	t_flags;
 
 int add(int first, int second);
 int sub(int first, int second);

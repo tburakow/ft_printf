@@ -6,24 +6,38 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:40:40 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/09 17:14:38 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/10 11:59:12 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "testhead.h"
 
+static int apply_format_and_flags(int i, va_arg(arg, int), int x)
+{
+	math_function	*math_array[4];
+
+	math_array[0] = add;
+	math_array[1] = sub;
+	math_array[2] = mult;
+	math_array[3] = divide;
+
+	ret = math[a]
+
+	
+}
+
 static int	determine_format(char c, va_list arg)
 {
-	char	*str;
-	size_t	i;
-	int		ret;
+	char			*str;
+	size_t			i;
+	int				ret;
 
 	i = 0;
 	str = "abcd";
 	while (str[i] != '\0')
 	{
 		if (str[i] == c)
-			ret = va_arg(arg, int);
+			ret = apply_format_and_flags(i,va_arg(arg, int), 5);
 		i++;
 	}
 	return(ret);
