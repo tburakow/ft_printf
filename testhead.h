@@ -25,7 +25,7 @@ int 	sub(int first, int second);
 int		mult(int first, int second);
 int		divide(int first, int second);
 int		ft_printf(const char *restrict format, ...);
-t_flags create_flags();
+t_flags *create_flags();
 
 typedef int math_function(int first, int second);
 

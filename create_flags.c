@@ -12,12 +12,12 @@
 
 #include "testhead.h"
 
-t_flags create_flags()
+t_flags *create_flags()
 {
-	t_flags	flags;
+	t_flags	*flags;
 	
 	flags = (t_flags *)ft_memalloc(sizeof(t_flags));
-	if (!flags)
+	if (flags == NULL)
 		return (NULL);
 	flags->test = 'A';
 	return (flags);

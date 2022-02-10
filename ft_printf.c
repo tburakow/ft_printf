@@ -12,14 +12,14 @@
 
 #include "testhead.h"
 
-static int apply_flags(int x, t_flags **flags)
+static int apply_flags(int x, t_flags flags)
 {
-	if (flags.test = 'A')
+	if (flags.test == 'A')
 		return (x * 10);
 	return (x);
 }
 
-static int apply_format_and_flags(int i, int y, int x, t_flags *flags)
+static int apply_format_and_flags(int i, int y, int x, t_flags flags)
 {
 	int				ret;
 	math_function	*math_array[4];
@@ -29,7 +29,7 @@ static int apply_format_and_flags(int i, int y, int x, t_flags *flags)
 	math_array[2] = mult;
 	math_array[3] = divide;
 	ret = 0;
-	ret = apply_flags(math_array[i](y, x), &flags);
+	ret = apply_flags(math_array[i](y, x), flags);
 	return (ret);
 }
 
@@ -42,13 +42,11 @@ static int	determine_format(char c, va_list arg)
 
 	i = 0;
 	str = "abcd";
-	flags = create_flags();
-	if (!flags)
-		return (0);
+	flags = *create_flags();
 	while (str[i] != '\0')
 	{
 		if (str[i] == c)
-			ret = apply_format_and_flags(i,va_arg(arg, int), 5, &flags);
+			ret = apply_format_and_flags(i,va_arg(arg, int), 5, flags);
 		i++;
 	}
 	return(ret);

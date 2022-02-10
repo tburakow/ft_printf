@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = a.out
-FUNCTIONS = main ft_printf math
+FUNCTIONS = main ft_printf math create_flags
 FILES = $(patsubst %, %.c, $(FUNCTIONS))
 OBJECTS = $(patsubst %, %.o, $(FUNCTIONS))
 
