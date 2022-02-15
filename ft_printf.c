@@ -56,7 +56,7 @@ static char *determine_format(char c, va_list arg, t_flags flags)
 	char	*ret;
 
 	i = 0;
-	str = "duoxefg%sc";
+	str = "";
 	while (str[i] != '\0')
 	{
 		if (str[i] == c)

@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   formats_one.c                                      :+:      :+:    :+:   */
+/*   octal_conversion.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/15 14:59:53 by tburakow         ###   ########.fr       */
+/*   Created: 2022/02/15 17:59:47 by tburakow          #+#    #+#             */
+/*   Updated: 2022/02/15 18:37:09 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-char *signed_int_d(char *x)
+//#include "ft_printf.h"
+/*
+** This function converts the long "d" from decimal to octal and returns it.
+*/
+int octal_conversion(long d)
 {
-	return (x);
-}
+    long octal;
+    long i;
+    long j;
 
-char *unsigned_int(char *x)
-{
-	return (x);
-}
-
-char *unsigned_octal(char *x)
-{
-	return (x);
-}
-
-char *unsigned_hex(char *x)
-{
-	return (x);
-}
-
-char *float_point(char *x)
-{
-	return (x);
+    octal = 0;
+    i = 1;
+    while (d > 0)
+    {
+        octal = octal + (d % 8) * i;
+        i = i * 10;
+        d = d / 8;
+    }
+    return (octal);
 }
