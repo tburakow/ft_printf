@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   testhead.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/15 12:23:41 by tburakow         ###   ########.fr       */
+/*   Created: 2022/02/09 14:41:25 by tburakow          #+#    #+#             */
+/*   Updated: 2022/02/15 12:12:09 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef TESTHEAD_H
+# define TESTHEAD_H
+# include <stdarg.h>
+# include "libft/libft.h"
 
-int	main(void)
+typedef struct s_flags
 {
-	int	z;
-	int	x;
-	int	y;
-	int	ret;
+	char	test;
+}	t_flags;
 
-	z = 5;
-	x = 6;
-	y = 9;
-	ret = 0;
-	ret = ft_printf("elvis%a%b%c", z, x, y);
-	if (ret > 0)
-		return (1);
-	return (0);
-}
+int		add(int first, int second);
+int		sub(int first, int second);
+int		mult(int first, int second);
+int		divide(int first, int second);
+int		ft_printf(const char *format, ...);
+t_flags	*create_flags(void);
+
+typedef int	t_math_function(int first, int second);
+
+#endif

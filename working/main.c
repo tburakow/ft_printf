@@ -6,11 +6,11 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/15 12:23:41 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/15 12:19:59 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "testhead.h"
 
 int	main(void)
 {

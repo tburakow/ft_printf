@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   formats_one.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/15 12:23:41 by tburakow         ###   ########.fr       */
+/*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
+/*   Updated: 2022/02/15 14:59:53 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	main(void)
+char *signed_int(char *x)
 {
-	int	z;
-	int	x;
-	int	y;
-	int	ret;
+	return (x);
+}
 
-	z = 5;
-	x = 6;
-	y = 9;
-	ret = 0;
-	ret = ft_printf("elvis%a%b%c", z, x, y);
-	if (ret > 0)
-		return (1);
-	return (0);
+char *unsigned_int(char *x)
+{
+	return (x);
+}
+
+char *unsigned_octal(char *x)
+{
+	return (x);
+}
+
+char *unsigned_hex(char *x)
+{
+	return (x);
+}
+
+char *float_point(char *x)
+{
+	return (x);
 }

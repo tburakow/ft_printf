@@ -6,12 +6,12 @@
 #    By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 12:15:46 by tburakow          #+#    #+#              #
-#    Updated: 2022/02/15 14:21:15 by tburakow         ###   ########.fr        #
+#    Updated: 2022/02/10 11:44:57 by tburakow         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = a.out
-FUNCTIONS = main ft_printf apply_format create_flags
+FUNCTIONS = main ft_printf math create_flags
 FILES = $(patsubst %, %.c, $(FUNCTIONS))
 OBJECTS = $(patsubst %, %.o, $(FUNCTIONS))
 

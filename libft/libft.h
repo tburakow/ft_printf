@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:09:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/15 11:50:16 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/01/04 10:10:14 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LIBFT_H
 # include <string.h>
 # include <libc.h>
-
 typedef struct s_list
 {
 	void			*content;
