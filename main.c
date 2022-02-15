@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_flags.c                                     :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 12:46:16 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/15 11:48:50 by tburakow         ###   ########.fr       */
+/*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
+/*   Updated: 2022/02/15 12:06:28 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "testhead.h"
-
-t_flags	*create_flags(void)
+int	main(void)
 {
-	t_flags	*flags;
+	int	z;
+	int	x;
+	int	y;
+	int	ret;
 
-	flags = (t_flags *)ft_memalloc(sizeof(t_flags));
-	if (flags == NULL)
-		return (NULL);
-	flags->test = 'A';
-	return (flags);
+	z = 5;
+	x = 6;
+	y = 9;
+	ret = 0;
+	ret = ft_printf("dude%a%c%b", z, x, y);
+	if (ret > 0)
+		return (1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:41:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/10 12:55:15 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/15 11:53:43 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ typedef struct s_flags
 	char	test;
 }	t_flags;
 
-int 	add(int first, int second);
-int 	sub(int first, int second);
+int		add(int first, int second);
+int		sub(int first, int second);
 int		mult(int first, int second);
 int		divide(int first, int second);
 int		ft_printf(const char *restrict format, ...);
-t_flags *create_flags();
+t_flags	*create_flags(void);
 
-typedef int math_function(int first, int second);
+typedef int	t_math_function(int first, int second);
 
 #endif
