@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:46:16 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/15 15:19:16 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/16 17:51:12 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,17 @@ t_flags	*create_flags(void)
 	flags = (t_flags *)ft_memalloc(sizeof(t_flags));
 	if (flags == NULL)
 		return (NULL);
-	flags->left_adjust;
-	flags->min_field_w;
-	flags->separ_w_prec;
+	flags->l;
+	flags->ll;
+	flags->h;
+	flags->hh;
+	flags->L;
+	flags->zero;
+	flags->hash;
+	flags->minus;
+	flags->plus;
+	flags->width;
 	flags->precision;
-	flags->min_value;
-	flags->short_long;
+	
 	return (flags);
 }

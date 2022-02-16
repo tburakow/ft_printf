@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 15:44:55 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/16 19:13:08 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/16 20:06:16 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 ** This function sets the precision (precision flag) parameter, and
 ** returns the correctly incremented index (j).
 */
-int	set_width(char *str, int j, t_flags *flags)
+int	set_precision(char *str, int j, t_flags *flags)
 {	
 	flags->precision = ft_atoi(&str[j]);
-	while (ft_isdigit(str[j]) == 1);
+	while (ft_isdigit(str[j]) == 1)
 		j++;
 	return (j);
 }
@@ -31,7 +31,7 @@ int	set_width(char *str, int j, t_flags *flags)
 int	set_width(char *str, int j, t_flags *flags)
 {	
 	flags->width = ft_atoi(&str[j]);
-	while (ft_isdigit(str[j]) == 1);
+	while (ft_isdigit(str[j]) == 1)
 		j++;
 	return (j);
 }
@@ -64,22 +64,25 @@ int	ft_raise_flags(char *str, int j, t_flags *flags)
 	char	zero_width_prec;
 	
 	zero_width_prec = 'z';
-	while (ft_strchr("diouxXfcsp%", str[j]) == NULL)
+	while (zero_width_prec != 'r')
 	{
-		if (str[j] == 0 && zero_width_prec == 'z')
+		if (str[j] == '0' && zero_width_prec == 'z')
 		{
 			flags->zero = 1;
-			zero_width_prec == 'w';
+			zero_width_prec = 'w';
 			j++;
 		}
 		if (ft_isdigit(str[j]) == 0)
-			j = set_flags(str[j], j, &flags);
+			j = set_flags(str[j], j, flags);
 		if (ft_isdigit(str[j]) == 1 && zero_width_prec == 'w')
-			j = set_width(str, j, &flags);
+			j = set_width(str, j, flags);
 		if (str[j] == '.')
 			zero_width_prec = 'p';
 		if (ft_isdigit(str[j]) == 1 && zero_width_prec == 'p')
-			j = set_width(str, j, &flags);
+			j = set_width(str, j, flags);
+		if (check_for_char(str[j]) == 1)
+			zero_width_prec = 'r';
+		j++;
 	}
 	return (j);
 }

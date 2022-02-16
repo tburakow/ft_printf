@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/15 14:59:53 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/16 15:05:52 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ char *signed_int_d(char *x)
 	return (x);
 }
 
-char *unsigned_int(char *x)
+char *signed_octal(char *x)
 {
 	return (x);
 }
 
-char *unsigned_octal(char *x)
+char *unsigned_dec(char *x)
 {
 	return (x);
 }
@@ -32,7 +32,7 @@ char *unsigned_hex(char *x)
 	return (x);
 }
 
-char *float_point(char *x)
+char *unsigned_hex_cap(char *x)
 {
 	return (x);
 }

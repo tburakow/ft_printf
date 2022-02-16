@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:40:40 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/15 15:07:10 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/16 17:31:36 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,16 @@ static char *apply_format(int i, char *y)
 	t_apply_format	*apply_format[10];
 
 	apply_format[0] = signed_int;
-	apply_format[1] = unsigned_int;
-	apply_format[2] = unsigned_octal;
-	apply_format[3] = unsigned_hex;
-	apply_format[4] = float_point;
-	apply_format[5] = float_decim;
-	apply_format[6] = float_e_or_f;
-	apply_format[7] = percent;
-	apply_format[8] = character;
-	apply_format[9] = string;
+	apply_format[1] = signed_int;
+	apply_format[2] = signed_octal;
+	apply_format[3] = unsigned_dec;
+	apply_format[4] = unsigned_hex;
+	apply_format[5] = unsigned_hex_cap;
+	apply_format[6] = float_dec_point;
+	apply_format[7] = character;
+	apply_format[8] = string;
+	apply_format[9] = pointer;
+	apply_format[10] = percent;
 	ret = 0;
 	ret = (apply_format[i](y));
 	return (ret);
@@ -56,7 +57,7 @@ static char *determine_format(char c, va_list arg, t_flags flags)
 	char	*ret;
 
 	i = 0;
-	str = "";
+	str = "diouxXfcsp%";
 	while (str[i] != '\0')
 	{
 		if (str[i] == c)
@@ -67,7 +68,7 @@ static char *determine_format(char c, va_list arg, t_flags flags)
 
 int	ft_printf(const char *format, ...)
 {
-	size_t	j;
+	int	j;
 	va_list	arg;
 	t_flags	flags;
 	char	*out;
@@ -81,7 +82,7 @@ int	ft_printf(const char *format, ...)
 		reset_flags(flags);
 		while (format[j] != '%')
 			ft_putchar(format[j++]);
-		j = ft_raise_flags(format, j, flags);
+		j = ft_raise_flags(format, j, &flags);
 		out = determine_format(format[j], arg);
 		out = apply_flags(out, flags);
 		print_out(out);
