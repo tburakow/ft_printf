@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 19:16:03 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/16 23:29:47 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/17 12:35:51 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,10 @@ static void print_flags(t_flags flags)
 	printf("space: %u\n", flags.space);
 }
 
-int	check_for_char(char c)
+int	check_for_char(char c, char *str)
 {
 	int	i;
-	char *str;
 
-	str = "diouxXfcsp%";
 	i = 0;
 	while (str[i] != '\0')
 	{
@@ -62,6 +60,8 @@ int	main (void)
 		j = ft_raise_flags(format, j, &flags);
 		j++;
 	}
-	ft_putnbr(j);
+	//ft_putnbr(j);
+	ft_putchar('\n');
+	ft_putchar('\n');
 	print_flags(flags);
 }
