@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 19:16:03 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/17 12:35:51 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:59:35 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@ int	main (void)
 	t_flags	flags;
 
 	j = 0;
-	format = ft_strnew(ft_strlen("hips% -+#0100.100d"));
-	format = "hips% -+#0100.100d";
+	format = "hips% -+#0400.30d";
 	flags = *create_flags();
 	while (format[j] != '\0')
 	{

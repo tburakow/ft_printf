@@ -32,6 +32,7 @@ int main(void)
 	printf("%f\n", 134.395);
 	printf("%d\n", 4567123);
 	printf("%d\n", 400);
+	printf("%400.d\n", 400);
     printf("testing my octal conversion from 134 to 206:\n\n");
     printf("%d\n\n", octal_conversion(134));
 	printf("%d", ft_atoi(&str[5]));

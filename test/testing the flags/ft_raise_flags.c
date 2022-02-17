@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 15:44:55 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/17 16:46:18 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:58:24 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ int	ft_raise_flags(char *str, int j, t_flags *flags)
 			status = set_precision(str, j, flags);
 		j++;
 	}
-	//printf("\n%d\n", flagcount);
+	printf("\n%d\n", flagcount);
+	printf("\n%d\n", j);
 	return (j);
 }

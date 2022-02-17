@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:41:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/16 19:09:57 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/17 12:17:44 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ char 	*string(char *x);
 char 	*pointer(char *x);
 char 	*percent(char *x);
 int		ft_printf(const char *format, ...);
+int		ft_raise_flags(char *str, int j, t_flags *flags);
+int		set_width(char *str, int j, t_flags *flags);
+int		set_precision(char *str, int j, t_flags *flags);
+int		check_for_char(char c, char *str);
 t_flags	*create_flags(void);
 
 typedef int	t_apply_format(char *str);
