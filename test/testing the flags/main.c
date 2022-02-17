@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 19:16:03 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/17 16:59:35 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/17 19:26:23 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void print_flags(t_flags flags)
 	printf("width: %u\n", flags.width);
 	printf("precision: %u\n", flags.precision);
 	printf("space: %u\n", flags.space);
+	printf("type: %c\n", flags.type);
 }
 
 int	check_for_char(char c, char *str)
@@ -62,5 +63,6 @@ int	main (void)
 	//ft_putnbr(j);
 	ft_putchar('\n');
 	ft_putchar('\n');
+	printf("\n%d\n", j);
 	print_flags(flags);
 }

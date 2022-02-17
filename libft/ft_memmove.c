@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 14:37:09 by tburakow          #+#    #+#             */
-/*   Updated: 2022/01/11 15:34:28 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/17 20:01:48 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,3 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		ft_memcpy(d, s, len);
 	return (dst);
 }
-
-ft_putendl.c (line 17) : ft_putchar() should be declared as static
-ft_putendl_fd.c (line 17) : ft_putchar_fd() should be declared as static
-ft_putnbr.c (line 17) : ft_putchar() should be declared as static
-ft_putnbr_fd.c (line 17) : ft_putchar_fd() should be declared as static

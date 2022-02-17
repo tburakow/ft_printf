@@ -6,29 +6,57 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:40:40 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/16 17:31:36 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/17 19:58:42 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char	*apply_flags_print(char *x, t_flags flags)
+/*
+** prints out the current argument in it's final form.
+*/
+static void print_out(char *out)
 {
-	if (flags.left_adjust != 0)
-		return (x * 10);
-	if (flags.min_field_w != 0)
-		return (x * 10);
-	if (flags.separ_w_prec != 0)
-		return (x * 10);
-	if (flags.precision != 0)
-		return (x * 10);
-	if (flags.min_value != 0)
-		return (x * 10);
-	if (flags.short_long != 0)
-		return (x * 10);
-	return (x);
+	int		i;
+
+	i = 0;
+	while (out)
+	{
+		ft_putchar(out[i++]);
+	}
+}
+/*
+** checks which flags to apply and applies them (PARANTELE!)
+*/
+static void apply_flags_print(char *x, t_flags *flags)
+{
+	if (flags->l != 0)
+		x = "flags l";
+	if (flags->ll != 0)
+		x = "flags ll";
+	if (flags->h != 0)
+		x = "flags h";
+	if (flags->hh != 0)
+		x = "flags hh";
+	if (flags->L != 0)
+		x = "flags L";
+	if (flags->space != 0)
+		x = "flags space";
+	if (flags->plus != 0)
+		x = "flags plus";
+	if (flags->minus != 0)
+		x = "flags minus";
+	if (flags->hash != 0)
+		x = "flags hash";
+	if (flags->zero != 0)
+		x = "flags zero";
+	print_out(x);
 }
 
+/*
+** Takes the index and calls the corresponding function
+** with the current argument.
+*/
 static char *apply_format(int i, char *y)
 {
 	char 			*ret;
@@ -50,7 +78,13 @@ static char *apply_format(int i, char *y)
 	return (ret);
 }
 
-static char *determine_format(char c, va_list arg, t_flags flags)
+/*
+** This function determines the format for the current argument
+** by comparing it's format specifier to a list of specifiers,
+** after which it calls the apply_format function with the 
+** index of the correct type and returns the result of formatting.
+*/
+static void	determine_format(char c, va_list arg, t_flags *flags)
 {
 	char	*str;
 	size_t	i;
@@ -61,10 +95,15 @@ static char *determine_format(char c, va_list arg, t_flags flags)
 	while (str[i] != '\0')
 	{
 		if (str[i] == c)
+		{
 			ret = apply_format(i, va_arg(arg, char *));
+			apply_flags(ret, &flags);
+		}
 	}
-	return (ret);
 }
+/*
+** Replace this with a cool explanation of printf
+*/
 
 int	ft_printf(const char *format, ...)
 {
@@ -76,16 +115,13 @@ int	ft_printf(const char *format, ...)
 	flags = *create_flags();
 	va_start(arg, format);
 	j = 0;
-	out = NULL;
 	while (format[j] != '\0')
 	{
 		reset_flags(flags);
 		while (format[j] != '%')
 			ft_putchar(format[j++]);
 		j = ft_raise_flags(format, j, &flags);
-		out = determine_format(format[j], arg);
-		out = apply_flags(out, flags);
-		print_out(out);
+		determine_format(format[j], arg, &flags);
 		j++;
 	}
 	va_end(arg);

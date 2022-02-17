@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:41:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/17 12:17:44 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/17 19:23:52 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_flags
 	unsigned int	width;
 	unsigned int	precision;
 	unsigned int	space;
+	char			type;
 }	t_flags;
 
 char 	*signed_int(char *x);
