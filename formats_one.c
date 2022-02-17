@@ -6,13 +6,13 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/16 15:05:52 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/17 20:17:07 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char *signed_int_d(char *x)
+char *signed_int(char *x)
 {
 	return (x);
 }

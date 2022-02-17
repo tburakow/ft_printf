@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:40:40 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/17 19:58:42 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/17 22:09:41 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void print_out(char *out)
 	int		i;
 
 	i = 0;
-	while (out)
+	while (out[i] != '\0')
 	{
 		ft_putchar(out[i++]);
 	}
@@ -28,7 +28,7 @@ static void print_out(char *out)
 /*
 ** checks which flags to apply and applies them (PARANTELE!)
 */
-static void apply_flags_print(char *x, t_flags *flags)
+static void apply_flags(char *x, t_flags *flags)
 {
 	if (flags->l != 0)
 		x = "flags l";
@@ -60,7 +60,7 @@ static void apply_flags_print(char *x, t_flags *flags)
 static char *apply_format(int i, char *y)
 {
 	char 			*ret;
-	t_apply_format	*apply_format[10];
+	t_apply_format	*apply_format[11];
 
 	apply_format[0] = signed_int;
 	apply_format[1] = signed_int;
@@ -96,9 +96,11 @@ static void	determine_format(char c, va_list arg, t_flags *flags)
 	{
 		if (str[i] == c)
 		{
+			printf("\nformat determined\n");
 			ret = apply_format(i, va_arg(arg, char *));
-			apply_flags(ret, &flags);
+			apply_flags(ret, flags);
 		}
+		i++;
 	}
 }
 /*
@@ -110,17 +112,16 @@ int	ft_printf(const char *format, ...)
 	int	j;
 	va_list	arg;
 	t_flags	flags;
-	char	*out;
 
 	flags = *create_flags();
 	va_start(arg, format);
 	j = 0;
 	while (format[j] != '\0')
 	{
-		reset_flags(flags);
+		reset_flags(&flags);
 		while (format[j] != '%')
 			ft_putchar(format[j++]);
-		j = ft_raise_flags(format, j, &flags);
+		j = ft_raise_flags((char *)format, j, &flags);
 		determine_format(format[j], arg, &flags);
 		j++;
 	}

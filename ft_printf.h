@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:41:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/17 19:21:07 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/17 22:07:15 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 # include <stdarg.h>
 # include "libft/libft.h"
+# include <stdio.h> //Muista POISTAA TÄÄ!
 
 typedef struct s_flags
 {
@@ -47,8 +48,9 @@ int		ft_raise_flags(char *str, int j, t_flags *flags);
 int		set_width(char *str, int j, t_flags *flags);
 int		set_precision(char *str, int j, t_flags *flags);
 int		check_for_char(char c, char *str);
+void	reset_flags(t_flags *flags);
 t_flags	*create_flags(void);
 
-typedef int	t_apply_format(char *str);
+typedef char	*t_apply_format(char *str);
 
 #endif
