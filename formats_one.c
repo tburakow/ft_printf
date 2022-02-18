@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/18 15:38:51 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/18 16:48:10 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	signed_int(va_list arg, t_flags **flags)
 	print_out_numeric(integer);
 }
 
-void	signed_octal(va_list arg, t_flags **flags)
+void	unsigned_octal(va_list arg, t_flags **flags)
 {
-	int	integer;
+	unsigned	integer;
 	
-	integer = va_arg(arg, int);
+	integer = va_arg(arg, unsigned);
 	integer = octal_conversion(integer);
 	integer = apply_flags_numeric(integer, flags);
 	print_out_numeric(integer);

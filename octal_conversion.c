@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:59:47 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/18 15:40:51 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/18 16:49:29 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 /*
 ** This function converts the long "d" from decimal to octal and returns it.
 */
-int octal_conversion(int d)
+int octal_conversion(unsigned d)
 {
-    int octal;
-    int i;
+    unsigned octal;
+    unsigned i;
 
     octal = 0;
     i = 1;

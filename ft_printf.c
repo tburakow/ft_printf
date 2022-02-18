@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:40:40 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/18 15:18:46 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/18 16:51:57 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void apply_format(int i, va_list arg, t_flags **flags)
 
 	apply_format[0] = signed_int;
 	apply_format[1] = signed_int;
-	apply_format[2] = signed_octal;
+	apply_format[2] = unsigned_octal;
 	apply_format[3] = unsigned_dec;
 	apply_format[4] = unsigned_hex;
 	apply_format[5] = unsigned_hex_cap;

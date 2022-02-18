@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:41:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/18 15:39:22 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/18 16:50:41 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_flags
 }	t_flags;
 
 void	signed_int(va_list arg, t_flags **flags);
-void 	signed_octal(va_list arg, t_flags **flags);
+void 	unsigned_octal(va_list arg, t_flags **flags);
 void 	unsigned_dec(va_list arg, t_flags **flags);
 void 	unsigned_hex(va_list arg, t_flags **flags);
 void 	unsigned_hex_cap(va_list arg, t_flags **flags);
@@ -54,7 +54,7 @@ char 	*apply_flags(char *post_format, t_flags **flags);
 void	print_out_numeric(int output);
 void 	print_out(char *output);
 int		create_flags(t_flags **flags);
-int		octal_conversion(int d);
+int		octal_conversion(unsigned d);
 typedef void t_apply_format(va_list arg, t_flags **flags);
 
 #endif
