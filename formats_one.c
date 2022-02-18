@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/18 16:48:10 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/18 22:55:10 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,31 @@ void	unsigned_octal(va_list arg, t_flags **flags)
 
 void	unsigned_dec(va_list arg, t_flags **flags)
 {
-	int	integer;
+	unsigned	integer;
 	
-	integer = va_arg(arg, int);
+	integer = va_arg(arg, unsigned);
 	integer = apply_flags_numeric(integer, flags);
 	print_out_numeric(integer);
 }
 
 void	unsigned_hex(va_list arg, t_flags **flags)
 {
-	int	integer;
+	unsigned	integer;
+	char		*hexadec;
 	
-	integer = va_arg(arg, int);
-	integer = apply_flags_numeric(integer, flags);
-	print_out_numeric(integer);
+	integer = va_arg(arg, unsigned);
+	hexadec = hex_conversion(integer);
+	hexadec = apply_flags(hexadec, flags);
+	print_out(hexadec);
 }
 
 void	unsigned_hex_cap(va_list arg, t_flags **flags)
 {
-	int	integer;
+	unsigned	integer;
+	char		*hexadec;
 	
-	integer = va_arg(arg, int);
-	integer = apply_flags_numeric(integer, flags);
-	print_out_numeric(integer);
+	integer = va_arg(arg, unsigned);
+	hexadec = hex_cap_conversion(integer);
+	hexadec = apply_flags(hexadec, flags);
+	print_out(hexadec);
 }
