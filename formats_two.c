@@ -6,33 +6,58 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/17 20:16:54 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/18 13:50:29 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char *float_dec_point(char *x)
+void	float_dec_point(char *x, t_flags **flags)
 {
-	return (x);
+	int		integer;
+
+	integer = ft_atoi(x);
+	integer = apply_flags_numeric(integer, flags);
+	print_out_numeric(integer);
 }
 
-char *character(char *x)
+void	character(char *x, t_flags **flags)
 {
-	return (x);
+	char	*character;
+
+	character = ft_strnew(1);
+	character = ft_strncpy(character, x, 1);
+	character = apply_flags(character, flags);
+	print_out(character);
+	free(character);
 }
 
-char *string(char *x)
+void	string(char *x, t_flags **flags)
 {
-	return (x);
+	char	*string;
+
+	string = ft_strnew(ft_strlen(x));
+	string = apply_flags(string, flags);
+	print_out(string);
+	free(string);
 }
 
-char *pointer(char *x)
+void	pointer(char *x, t_flags **flags)
 {
-	return (x);
+	char	*string;
+
+	string = ft_strnew(ft_strlen(x));
+	string = apply_flags(string, flags);
+	print_out(string);
+	free(string);
 }
 
-char *percent(char *x)
+void	percent(char *x, t_flags **flags)
 {
-	return (x);
+	char	*string;
+
+	string = ft_strnew(ft_strlen(x));
+	string = apply_flags(string, flags);
+	print_out(string);
+	free(string);
 }

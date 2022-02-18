@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:41:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/17 22:07:15 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/18 13:49:18 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,28 @@ typedef struct s_flags
 	char			type;
 }	t_flags;
 
-char 	*signed_int(char *x);
-char 	*signed_octal(char *x);
-char 	*unsigned_dec(char *x);
-char 	*unsigned_hex(char *x);
-char 	*unsigned_hex_cap(char *x);
-char 	*float_dec_point(char *x);
-char 	*character(char *x);
-char 	*string(char *x);
-char 	*pointer(char *x);
-char 	*percent(char *x);
+void	signed_int(char *x, t_flags **flags);
+void 	signed_octal(char *x, t_flags **flags);
+void 	unsigned_dec(char *x, t_flags **flags);
+void 	unsigned_hex(char *x, t_flags **flags);
+void 	unsigned_hex_cap(char *x, t_flags **flags);
+void 	float_dec_point(char *x, t_flags **flags);
+void	character(char *x, t_flags **flags);
+void 	string(char *x, t_flags **flags);
+void	pointer(char *x, t_flags **flags);
+void 	percent(char *x, t_flags **flags);
 int		ft_printf(const char *format, ...);
-int		ft_raise_flags(char *str, int j, t_flags *flags);
-int		set_width(char *str, int j, t_flags *flags);
-int		set_precision(char *str, int j, t_flags *flags);
+int		ft_raise_flags(char *str, int j, t_flags **flags);
+int		set_width(char *str, int j, t_flags **flags);
+int		set_precision(char *str, int j, t_flags **flags);
 int		check_for_char(char c, char *str);
-void	reset_flags(t_flags *flags);
-t_flags	*create_flags(void);
+void	reset_flags(t_flags **flags);
+int		apply_flags_numeric(int post_format, t_flags **flags);
+char 	*apply_flags(char *post_format, t_flags **flags);
+void	print_out_numeric(int output);
+void 	print_out(char *output);
+int		create_flags(t_flags **flags);
 
-typedef char	*t_apply_format(char *str);
+typedef void t_apply_format(char *str, t_flags **flags);
 
 #endif

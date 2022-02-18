@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_flags.c                                     :+:      :+:    :+:   */
+/*   print_out.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 12:46:16 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/18 13:45:17 by tburakow         ###   ########.fr       */
+/*   Created: 2022/02/18 12:45:55 by tburakow          #+#    #+#             */
+/*   Updated: 2022/02/18 13:05:41 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	create_flags(t_flags **flags)
+void print_out_numeric(int output)
 {
-	*flags = (t_flags *)ft_memalloc(sizeof(t_flags));
-	if (*flags == NULL)
-		return (0);
-	(*flags)->l = 0;
-	(*flags)->ll = 0;
-	(*flags)->h = 0;
-	(*flags)->hh = 0;
-	(*flags)->L = 0;
-	(*flags)->zero = 0;
-	(*flags)->hash = 0;
-	(*flags)->minus = 0;
-	(*flags)->plus = 0;
-	(*flags)->width = 0;
-	(*flags)->precision = 0;
-	(*flags)->type = 0;
-	return (1);
+	ft_putnbr(output);
+}
+
+void print_out(char *output)
+{
+	int	i;
+	
+	i = 0;
+	while (output[i] != '\0')
+	{
+		ft_putchar(output[i]);
+		i++;
+	}
 }

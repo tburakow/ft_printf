@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 15:44:55 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/17 22:17:36 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/18 13:40:08 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 ** This function sets the precision (precision flag) parameter, and
 ** returns the correctly incremented index (j).
 */
-int	set_precision(char *str, int j, t_flags *flags)
+int	set_precision(char *str, int j, t_flags **flags)
 {	
-	flags->precision = ft_atoi(&str[j]);
+	(*flags)->precision = ft_atoi(&str[j]);
 	return (5);
 }
 
@@ -27,9 +27,9 @@ int	set_precision(char *str, int j, t_flags *flags)
 ** This function sets the minimum field width (width flag) parameter, and
 ** returns the correctly incremented index (j).
 */
-int	set_width(char *str, int j, t_flags *flags)
+int	set_width(char *str, int j, t_flags **flags)
 {	
-	flags->width = ft_atoi(&str[j]);
+	(*flags)->width = ft_atoi(&str[j]);
 	return (4);
 }
 
@@ -38,22 +38,22 @@ int	set_width(char *str, int j, t_flags *flags)
 ** this function checks if the current character matches
 ** the '0', '-' , '#', ' ' and '+' - flags.
 */
-static int set_flags(char c, int flagcount, t_flags *flags)
+static int set_flags(char c, int flagcount, t_flags **flags)
 {
 	if (c == ' ')
-		flags->space = 1;
+		(*flags)->space = 1;
 	if (c == '+')
-		flags->plus = 1;
+		(*flags)->plus = 1;
 	if (c == '-')
-		flags->minus = 1;
+		(*flags)->minus = 1;
 	if (c == '#')
-		flags->hash = 1;
+		(*flags)->hash = 1;
 	if (c == 'l')
-		flags->l = 1;
+		(*flags)->l = 1;
 	if (c == 'h')
-		flags->h = 1;
+		(*flags)->h = 1;
 	if (c == 'L')
-		flags->L = 1;
+		(*flags)->L = 1;
 	return (flagcount + 1);
 }
 
@@ -63,7 +63,7 @@ static int set_flags(char c, int flagcount, t_flags *flags)
 ** then checks for width and precision.
 */
 
-int	ft_raise_flags(char *str, int j, t_flags *flags)
+int	ft_raise_flags(char *str, int j, t_flags **flags)
 {
 /*{
 	char	zero_width_prec;
@@ -101,7 +101,7 @@ int	ft_raise_flags(char *str, int j, t_flags *flags)
 			status = 4;
 		if (str[j] == '0' && status < 1)
 		{
-			flags->zero = 1;
+			(*flags)->zero = 1;
 			status = 1;
 		}
 		flagcount = set_flags(str[j], flagcount, flags);
@@ -111,7 +111,7 @@ int	ft_raise_flags(char *str, int j, t_flags *flags)
 			status = set_precision(str, j, flags);
 		j++;
 	}
-	flags->type = str[j];
+	(*flags)->type = str[j];
 	//printf("\n%d\n", flagcount);
 	return (j);
 }

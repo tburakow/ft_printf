@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/17 22:03:39 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/18 13:51:17 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(void)
 	x = 6;
 	y = 9;
 	ret = 0;
-	ret = ft_printf("elvis% s   \n%ls", "burger", "merger");
+	ret = ft_printf("elvis%s", "burger");
 	if (ret > 0)
 		return (1);
 	return (0);
