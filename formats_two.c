@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/18 23:54:30 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/19 00:33:52 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,15 @@ void	string(va_list arg, t_flags **flags)
 
 void	pointer(va_list arg, t_flags **flags)
 {
-	void		*orig_pointer;
 	unsigned long	pointer;
-	char		*hex_ptr;
+	char			*hex_ptr;
 	
-	orig_pointer = va_arg(arg, void*);
-	pointer = (unsigned long)orig_pointer;
+	pointer  = va_arg(arg, unsigned long);
 	printf("\n%lu\n", pointer);
 	hex_ptr = ptr_conversion(pointer);
+	printf("\n%s\n", hex_ptr);
 	hex_ptr = apply_flags(hex_ptr, flags);
-	print_out(hex_ptr);
+	//print_out(hex_ptr);
 }
 
 void	percent(va_list arg, t_flags **flags)
