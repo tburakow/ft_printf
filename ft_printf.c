@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:40:40 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/18 13:48:53 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/18 13:54:39 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	ft_printf(const char *format, ...)
 	t_flags	*flags;
 
 	if (create_flags(&flags) == 0)
-		return (error_output("flags allocation failed."));
+		return (error_output("error: flags allocation failed"));
 	va_start(arg, format);
 	j = 0;
 	while (format[j] != '\0')
