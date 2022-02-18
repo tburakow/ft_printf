@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:40:40 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/18 13:54:39 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/18 15:18:46 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	error_output(char *mess)
 ** Takes the index and calls the corresponding function
 ** with the current argument.
 */
-static void apply_format(int i, char *y, t_flags **flags)
+static void apply_format(int i, va_list arg, t_flags **flags)
 {
 	t_apply_format	*apply_format[11];
 
@@ -37,7 +37,7 @@ static void apply_format(int i, char *y, t_flags **flags)
 	apply_format[8] = string;
 	apply_format[9] = pointer;
 	apply_format[10] = percent;
-	apply_format[i](y, flags);
+	apply_format[i](arg, flags);
 }
 
 /*
@@ -58,15 +58,15 @@ static void	determine_format(char c, va_list arg, t_flags **flags)
 		if (str[i] == c)
 		{
 			//printf("\nformat determined\n");
-			apply_format(i, va_arg(arg, char *), flags);
+			apply_format(i, arg, flags);
 		}
 		i++;
 	}
 }
+
 /*
 ** Replace this with a cool explanation of printf
 */
-
 int	ft_printf(const char *format, ...)
 {
 	int	j;

@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:41:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/18 13:49:18 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/18 15:39:22 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,19 @@ typedef struct s_flags
 	unsigned int	width;
 	unsigned int	precision;
 	unsigned int	space;
-	char			type;
+	char			type;		
 }	t_flags;
 
-void	signed_int(char *x, t_flags **flags);
-void 	signed_octal(char *x, t_flags **flags);
-void 	unsigned_dec(char *x, t_flags **flags);
-void 	unsigned_hex(char *x, t_flags **flags);
-void 	unsigned_hex_cap(char *x, t_flags **flags);
-void 	float_dec_point(char *x, t_flags **flags);
-void	character(char *x, t_flags **flags);
-void 	string(char *x, t_flags **flags);
-void	pointer(char *x, t_flags **flags);
-void 	percent(char *x, t_flags **flags);
+void	signed_int(va_list arg, t_flags **flags);
+void 	signed_octal(va_list arg, t_flags **flags);
+void 	unsigned_dec(va_list arg, t_flags **flags);
+void 	unsigned_hex(va_list arg, t_flags **flags);
+void 	unsigned_hex_cap(va_list arg, t_flags **flags);
+void 	float_dec_point(va_list arg, t_flags **flags);
+void	character(va_list arg, t_flags **flags);
+void 	string(va_list arg, t_flags **flags);
+void	pointer(va_list arg, t_flags **flags);
+void 	percent(va_list arg, t_flags **flags);
 int		ft_printf(const char *format, ...);
 int		ft_raise_flags(char *str, int j, t_flags **flags);
 int		set_width(char *str, int j, t_flags **flags);
@@ -54,7 +54,7 @@ char 	*apply_flags(char *post_format, t_flags **flags);
 void	print_out_numeric(int output);
 void 	print_out(char *output);
 int		create_flags(t_flags **flags);
-
-typedef void t_apply_format(char *str, t_flags **flags);
+int		octal_conversion(int d);
+typedef void t_apply_format(va_list arg, t_flags **flags);
 
 #endif

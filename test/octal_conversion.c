@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:59:47 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/17 16:51:45 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/18 15:40:51 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int octal_conversion(int d)
 {
     int octal;
     int i;
-    int j;
 
     octal = 0;
     i = 1;
