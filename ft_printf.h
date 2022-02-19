@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:41:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/18 23:53:26 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/19 11:04:55 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ typedef struct s_flags
 	char			type;		
 }	t_flags;
 
-void	signed_int(va_list arg, t_flags **flags);
-void 	unsigned_octal(va_list arg, t_flags **flags);
-void 	unsigned_dec(va_list arg, t_flags **flags);
-void 	unsigned_hex(va_list arg, t_flags **flags);
-void 	unsigned_hex_cap(va_list arg, t_flags **flags);
-void 	float_dec_point(va_list arg, t_flags **flags);
-void	character(va_list arg, t_flags **flags);
-void 	string(va_list arg, t_flags **flags);
-void	pointer(va_list arg, t_flags **flags);
-void 	percent(va_list arg, t_flags **flags);
+void	signed_int(va_list *arg, t_flags **flags);
+void 	unsigned_octal(va_list *arg, t_flags **flags);
+void 	unsigned_dec(va_list *arg, t_flags **flags);
+void 	unsigned_hex(va_list *arg, t_flags **flags);
+void 	unsigned_hex_cap(va_list *arg, t_flags **flags);
+void 	float_dec_point(va_list *arg, t_flags **flags);
+void	character(va_list *arg, t_flags **flags);
+void 	string(va_list *arg, t_flags **flags);
+void	pointer(va_list *arg, t_flags **flags);
+void 	percent(va_list *arg, t_flags **flags);
 int		ft_printf(const char *format, ...);
 int		ft_raise_flags(char *str, int j, t_flags **flags);
 int		set_width(char *str, int j, t_flags **flags);
@@ -59,6 +59,6 @@ char	*hex_conversion(unsigned d);
 unsigned	convert_length(unsigned d);
 char    *hex_cap_conversion(unsigned d);
 char	*ptr_conversion(unsigned long d);
-typedef void t_apply_format(va_list arg, t_flags **flags);
+typedef void t_apply_format(va_list *arg, t_flags **flags);
 
 #endif
