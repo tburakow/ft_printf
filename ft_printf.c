@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:40:40 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/19 11:07:32 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/22 22:15:03 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	error_output(char *mess)
 static void apply_format(int i, va_list *arg, t_flags **flags)
 {
 	t_apply_format	*apply_format[11];
-
+	
 	apply_format[0] = signed_int;
 	apply_format[1] = signed_int;
 	apply_format[2] = unsigned_octal;
@@ -36,8 +36,10 @@ static void apply_format(int i, va_list *arg, t_flags **flags)
 	apply_format[7] = character;
 	apply_format[8] = string;
 	apply_format[9] = pointer;
-	apply_format[10] = percent;
-	apply_format[i](arg, flags);
+	if (i < 10)
+		apply_format[i](arg, flags);
+	else
+		percent(flags);
 }
 
 /*
@@ -72,7 +74,7 @@ int	ft_printf(const char *format, ...)
 	int	j;
 	va_list	arg;
 	t_flags	*flags;
-
+	
 	if (create_flags(&flags) == 0)
 		return (error_output("error: flags allocation failed"));
 	va_start(arg, format);

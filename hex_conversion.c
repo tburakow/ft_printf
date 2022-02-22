@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:59:47 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/19 11:10:53 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/22 22:20:19 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ char    *hex_cap_conversion(unsigned d)
 char    *ptr_conversion(unsigned long d)
 {
     char        *hexadec;
-    unsigned long   i;
-    unsigned long   rem;
-    unsigned long   len;
+    unsigned long  i;
+    unsigned long  rem;
+    unsigned long  len;
 
     len = ft_strlen(ft_itoa(convert_length(d)));
     hexadec = ft_strnew(len);

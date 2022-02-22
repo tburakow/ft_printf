@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:41:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/19 11:04:55 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/02/22 22:20:02 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void 	float_dec_point(va_list *arg, t_flags **flags);
 void	character(va_list *arg, t_flags **flags);
 void 	string(va_list *arg, t_flags **flags);
 void	pointer(va_list *arg, t_flags **flags);
-void 	percent(va_list *arg, t_flags **flags);
+void 	percent(t_flags **flags);
 int		ft_printf(const char *format, ...);
 int		ft_raise_flags(char *str, int j, t_flags **flags);
 int		set_width(char *str, int j, t_flags **flags);
