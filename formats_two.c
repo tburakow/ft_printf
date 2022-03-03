@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/22 22:20:32 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/02 16:41:37 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,18 @@ void	pointer(va_list *arg, t_flags **flags)
 	char			*hex_ptr;
 	
 	pointer  = va_arg(*arg, unsigned long);
-	hex_ptr = ptr_conversion(pointer);
-	hex_ptr = apply_flags(hex_ptr, flags);
-	print_out(hex_ptr);
+	if (pointer == 0)
+		print_out("0x0");
+	else
+	{
+		hex_ptr = ptr_conversion(pointer);
+		if (hex_ptr[0] == '0')
+			hex_ptr = ft_strjoin("0x1", hex_ptr);
+		else
+			hex_ptr = ft_strjoin("0x10", hex_ptr);
+		hex_ptr = apply_flags(hex_ptr, flags);
+		print_out(hex_ptr);
+	}
 }
 
 void	percent(t_flags **flags)
