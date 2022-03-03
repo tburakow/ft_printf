@@ -13,12 +13,36 @@
 #include "ft_printf.h"
 
 /*
+** Applies the zero -flag
+*/
+char	*apply_zero(char *input, t_flags **flags)
+{
+	size_t	leftover;
+	char	*extra;
+
+	extra = NULL;
+	leftover = (*flags)->width - ft_strlen(input);
+	if ((*flags)->precision == 0)
+	{
+		if ((*flags)->width == 0)
+			input = 0;
+		else
+		{
+			extra = ft_strnew(leftover);
+			extra = (char *)ft_memset(extra, '0', leftover);
+			input = ft_strjoin(extra, input);
+			free(extra);
+		}
+	}
+	return (input);
+}
+/*
 ** checks which *flags to apply and applies them (PARANTELE!)
 */
-int apply_flags_numeric(int post_format, t_flags **flags)
+char	*apply_flags(char *post_format, t_flags **flags)
 {
-	if ((*flags)->l != 0)
-		post_format = post_format * 1;
+/* 	if ((*flags)->l != 0)
+		post_format = ft_strjoin(post_format, "helou");
 	if ((*flags)->ll != 0)
 		post_format = post_format * 2;
 	if ((*flags)->h != 0)
@@ -34,33 +58,8 @@ int apply_flags_numeric(int post_format, t_flags **flags)
 	if ((*flags)->minus != 0)
 		post_format = post_format * 8;
 	if ((*flags)->hash != 0)
-		post_format = post_format * 9;
+		post_format = post_format * 9; */
 	if ((*flags)->zero != 0)
-		post_format = post_format * 10;
-	return (post_format);
-}
-
-char *apply_flags(char *post_format, t_flags **flags)
-{
-	if ((*flags)->l != 0)
-		post_format = "(*flags) l";
-	if ((*flags)->ll != 0)
-		post_format = "(*flags) ll";
-	if ((*flags)->h != 0)
-		post_format = "(*flags) h";
-	if ((*flags)->hh != 0)
-		post_format = "(*flags) hh";
-	if ((*flags)->L != 0)
-		post_format = "(*flags) L";
-	if ((*flags)->space != 0)
-		post_format = "(*flags) space";
-	if ((*flags)->plus != 0)
-		post_format = "(*flags) plus";
-	if ((*flags)->minus != 0)
-		post_format = "(*flags) minus";
-	if ((*flags)->hash != 0)
-		post_format = "(*flags) hash";
-	if ((*flags)->zero != 0)
-		post_format = "(*flags) zero";
+		post_format = apply_zero(post_format, flags);
 	return (post_format);
 }

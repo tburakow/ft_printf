@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:41:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/22 22:20:02 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/03 13:44:50 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@ char	*hex_conversion(unsigned d);
 unsigned	convert_length(unsigned d);
 char    *hex_cap_conversion(unsigned d);
 char	*ptr_conversion(unsigned long d);
-typedef void t_apply_format(va_list *arg, t_flags **flags);
+typedef void t_format(va_list *arg, t_flags **flags);
 
 #endif

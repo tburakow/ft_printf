@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/02 16:41:37 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/03 14:09:00 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 void	float_dec_point(va_list *arg, t_flags **flags)
 {
-	int	integer;
+	int		integer;
+	char	*string_form;
 	
 	integer = va_arg(*arg, int);
-	integer = apply_flags_numeric(integer, flags);
-	print_out_numeric(integer);	
+	string_form = apply_flags(ft_itoa(integer), flags);
+	print_out(string_form);
 }
 
 void	character(va_list *arg, t_flags **flags)

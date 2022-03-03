@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 15:44:55 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/18 13:40:08 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/03 14:48:27 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	set_precision(char *str, int j, t_flags **flags)
 int	set_width(char *str, int j, t_flags **flags)
 {	
 	(*flags)->width = ft_atoi(&str[j]);
-	return (4);
+	return (3);
 }
 
 
@@ -95,17 +95,17 @@ int	ft_raise_flags(char *str, int j, t_flags **flags)
 	status = 0;
 	flagcount = 0;
 	j++;
-	while (str[j] != '\0' && check_for_char(str[j], "diouxXfcsp%") == 0)
+	while (str && check_for_char(str[j], "diouxXfcsp%") == 0)
 	{
 		if (str[j] == '.')
 			status = 4;
-		if (str[j] == '0' && status < 1)
+		if (str[j] == '0' && status < 1 && (*flags)->width == 0)
 		{
 			(*flags)->zero = 1;
 			status = 1;
 		}
 		flagcount = set_flags(str[j], flagcount, flags);
-		if (status < 4 && ft_isdigit(str[j]) == 1)
+		if (status < 3 && ft_isdigit(str[j]) == 1)
 			status = set_width(str, j, flags);
 		if (status == 4 && ft_isdigit(str[j]) == 1)
 			status = set_precision(str, j, flags);
