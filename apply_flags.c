@@ -176,6 +176,8 @@ char	*apply_minus(char *input, t_flags **flags)
 	char		*extra;
 
 	leftover = (*flags)->width - ft_strlen(input);
+	if ((*flags)->plus == 1 || (*flags)->neg == 1)
+		leftover--;
 	if (leftover > 0)
 	{
 		extra = ft_strnew(leftover);
