@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 15:44:55 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/04 10:49:22 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/04 12:13:42 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 int	set_precision(char *str, int j, t_flags **flags)
 {	
 	(*flags)->precision = ft_atoi(&str[j]);
+	(*flags)->empty_prec = 0;
 	return (5);
 }
 
@@ -50,9 +51,17 @@ static int set_flags(char c, int flagcount, t_flags **flags)
 	if (c == '#')
 		(*flags)->hash = 1;
 	if (c == 'l')
+	{
+		if ((*flags)->l == 1)
+			(*flags)->ll = 1;
 		(*flags)->l = 1;
+	}
 	if (c == 'h')
+	{
+		if ((*flags)->h == 1)
+			(*flags)->hh = 1;
 		(*flags)->h = 1;
+	}
 	if (c == 'L')
 		(*flags)->L = 1;
 	return (flagcount + 1);
@@ -99,7 +108,10 @@ int	ft_raise_flags(char *str, int j, t_flags **flags)
 	while (str && check_for_char(str[j], "diouxXfcsp%") == 0)
 	{
 		if (str[j] == '.')
+		{
 			status = 4;
+			(*flags)->empty_prec = 1;
+		}
 		if (str[j] == '0' && status < 1 && (*flags)->width == 0)
 		{
 			(*flags)->zero = 1;
