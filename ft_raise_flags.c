@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 15:44:55 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/03 14:48:27 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/04 10:49:22 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int	set_precision(char *str, int j, t_flags **flags)
 */
 int	set_width(char *str, int j, t_flags **flags)
 {	
-	(*flags)->width = ft_atoi(&str[j]);
+	if ((*flags)->width == 0)
+		(*flags)->width = ft_atoi(&str[j]);
 	return (3);
 }
 
@@ -105,7 +106,7 @@ int	ft_raise_flags(char *str, int j, t_flags **flags)
 			status = 1;
 		}
 		flagcount = set_flags(str[j], flagcount, flags);
-		if (status < 3 && ft_isdigit(str[j]) == 1)
+		if (status < 4 && ft_isdigit(str[j]) == 1 && str[j] != '0')
 			status = set_width(str, j, flags);
 		if (status == 4 && ft_isdigit(str[j]) == 1)
 			status = set_precision(str, j, flags);

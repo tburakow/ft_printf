@@ -13,6 +13,30 @@
 #include "ft_printf.h"
 
 /*
+** Applies the space -flag
+*/
+char	*apply_space(char *input, t_flags **flags)
+{
+	char	*extra;
+
+	extra = ft_strnew(1);
+	extra = (char *)ft_memset(extra, ' ', 1);
+	if ((*flags)->neg == 0)
+	{
+		if (input[0] == '0' || input[0] == ' ')
+		{
+			input[0] = ' ';
+		}
+		else
+		{
+			input = ft_strjoin(extra, input);
+			free(extra);
+		}
+	}
+	return (input);
+}
+
+/*
 ** Applies the width -flag in case it has not been applied within other flag-
 ** handling functions.
 */
@@ -77,17 +101,12 @@ char	*apply_zero(char *input, t_flags **flags)
 	leftover = (*flags)->width - ft_strlen(input);
 	if ((*flags)->minus == 0)
 	{
-		if ((*flags)->precision == 0)
+		if ((*flags)->width != 0)
 		{
-			if ((*flags)->width == 0)
-				input = 0;
-			else
-			{
-				extra = ft_strnew(leftover);
-				extra = (char *)ft_memset(extra, '0', leftover);
-				input = ft_strjoin(extra, input);
-				free(extra);
-			}
+			extra = ft_strnew(leftover);
+			extra = (char *)ft_memset(extra, '0', leftover);
+			input = ft_strjoin(extra, input);
+			free(extra);
 		}
 	}
 	return (input);
@@ -117,7 +136,7 @@ char	*apply_flags(char *post_format, t_flags **flags)
 		post_format = apply_zero(post_format, flags);
 	if ((*flags)->zero == 0 && (*flags)->width != 0 && (*flags)->minus == 0)
 		post_format = apply_width(post_format, flags);
-	//if ((*flags)->space != 0)
-	//	post_format = apply_space()
+	if ((*flags)->space != 0)
+		post_format = apply_space(post_format, flags);
 	return (post_format);
 }
