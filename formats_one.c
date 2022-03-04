@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/03 14:09:48 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/04 11:18:17 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ void	signed_int(va_list *arg, t_flags **flags)
 	char	*string_form;
 	
 	integer = va_arg(*arg, int);
+	if (integer < 0)
+	{
+		(*flags)->neg = 1;
+		integer = integer * -1;
+	}
 	string_form = apply_flags(ft_itoa(integer), flags);
 	print_out(string_form);
 }

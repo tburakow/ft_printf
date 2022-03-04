@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:41:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/04 09:45:00 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/04 11:38:04 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ char	*apply_zero(char *input, t_flags **flags);
 char	*apply_minus(char *input, t_flags **flags);
 char	*apply_hash(char *input, t_flags **flags);
 char	*apply_width(char *input, t_flags **flags);
+char	*apply_space(char *input, t_flags **flags);
+char	*apply_neg(char *input);
 typedef void t_format(va_list *arg, t_flags **flags);
 
 #endif
