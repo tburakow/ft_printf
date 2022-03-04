@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/04 11:38:53 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/04 12:01:16 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,14 @@ int	main(void)
 	//ret = ft_printf("elvis\n%i\n%x\n%X\n%%\n%p\n\n", 67, 120456, 120456, NULL);
 	//printf("\n");
 	//printf("elvis\n%i\n%x\n%X\n%%\n%p\n", 67, 120456, 120456, NULL);
-	ret = ft_printf("\nMe: X% iX\n\n", -25);
-	printf("It: X% iX\n", -25);
-	printf("It: X% iX\n", -25);
+	ret = ft_printf("\nMe: X%+20iX\n\n", -25);
+	ret = ft_printf("\nMe: X%+20iX\n\n", 25);
+	ret = ft_printf("\nMe: X%0+20iX\n\n", -25);
+	ret = ft_printf("\nMe: X%0+20iX\n\n", 25);
+	printf("It: X%20iX\n", -25);
+	printf("It: X%+020iX\n", 25);
+	printf("It: X%+020iX\n", -25);
+	printf("It: X%+20iX\n", 25);
 	if (ret > 0)
 		return (1);
 	return (0);

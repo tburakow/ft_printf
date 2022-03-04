@@ -13,17 +13,54 @@
 #include "ft_printf.h"
 
 /*
+** Applis the "plus" -flag.
+*/
+char	*apply_plus(char *input)
+{
+	char	*extra;
+	int		i;
+
+	i = 0;
+	extra = ft_strnew(1);
+	extra = (char *)ft_memset(extra, '+', 1);
+	if (input[0] == '0')
+	{
+		input[0] = '+';
+	}
+	else if (input[0] == ' ')
+	{
+		while(input[i] == ' ')
+			i++;
+		input[i - 1] = '+';
+	}
+	else
+	{
+		input = ft_strjoin(extra, input);
+		free(extra);
+	}
+	return (input);
+
+}
+/*
 ** Applies the "neg" -flag. 
 */
 char	*apply_neg(char *input)
 {
 	char	*extra;
+	int		i;
 
+	i = 0;
 	extra = ft_strnew(1);
 	extra = (char *)ft_memset(extra, '-', 1);
-	if (input[0] == '0' || input[0] == ' ')
+	if (input[0] == '0')
 	{
 		input[0] = '-';
+	}
+	else if (input[0] == ' ')
+	{
+		while(input[i] == ' ')
+			i++;
+		input[i - 1] = '-';
 	}
 	else
 	{
@@ -42,16 +79,19 @@ char	*apply_space(char *input, t_flags **flags)
 
 	extra = ft_strnew(1);
 	extra = (char *)ft_memset(extra, ' ', 1);
-	if ((*flags)->neg == 0)
+	if ((*flags)->plus == 0)
 	{
-		if (input[0] == '0' || input[0] == ' ')
+		if ((*flags)->neg == 0)
 		{
-			input[0] = ' ';
-		}
-		else
-		{
-			input = ft_strjoin(extra, input);
-			free(extra);
+			if (input[0] == '0' || input[0] == ' ')
+			{
+				input[0] = ' ';
+			}
+			else
+			{
+				input = ft_strjoin(extra, input);
+				free(extra);
+			}
 		}
 	}
 	return (input);
@@ -161,5 +201,7 @@ char	*apply_flags(char *post_format, t_flags **flags)
 		post_format = apply_space(post_format, flags);
 	if ((*flags)->neg != 0)
 		post_format = apply_neg(post_format);
+	if ((*flags)->plus != 0 && (*flags)->neg == 0)
+		post_format = apply_plus(post_format);
 	return (post_format);
 }
