@@ -13,9 +13,36 @@
 #include "ft_printf.h"
 
 /*
+** Applis the "precision" -flag.
+*/
+char	*apply_precision(char *input, t_flags **flags)
+{
+	char		*extra;
+	long long	len;
+
+	len = (*flags)->precision - ft_strlen(input);
+	if (len > 0)
+	{
+		extra = ft_strnew(len);
+		extra = (char *)ft_memset(extra, '0', len);
+	}
+	else
+		extra = NULL;
+	if (check_for_char((*flags)->type, "diouxX") == 1)
+	{
+		if (extra != NULL)
+		{
+			input = ft_strjoin(extra, input);
+			free(extra);
+		}
+	}
+	return (input);
+}
+
+/*
 ** Applis the "plus" -flag.
 */
-char	*apply_plus(char *input)
+char	*apply_plus(char *input, t_flags **flags)
 {
 	char	*extra;
 	int		i;
@@ -23,7 +50,7 @@ char	*apply_plus(char *input)
 	i = 0;
 	extra = ft_strnew(1);
 	extra = (char *)ft_memset(extra, '+', 1);
-	if (input[0] == '0')
+	if (input[0] == '0' && (*flags)->precision == 0)
 	{
 		input[0] = '+';
 	}
@@ -44,7 +71,7 @@ char	*apply_plus(char *input)
 /*
 ** Applies the "neg" -flag. 
 */
-char	*apply_neg(char *input)
+char	*apply_neg(char *input, t_flags **flags)
 {
 	char	*extra;
 	int		i;
@@ -52,7 +79,7 @@ char	*apply_neg(char *input)
 	i = 0;
 	extra = ft_strnew(1);
 	extra = (char *)ft_memset(extra, '-', 1);
-	if (input[0] == '0')
+	if (input[0] == '0' && (*flags)->precision == 0)
 	{
 		input[0] = '-';
 	}
@@ -103,13 +130,19 @@ char	*apply_space(char *input, t_flags **flags)
 */
 char	*apply_width(char *input, t_flags **flags)
 {
-	size_t	leftover;
-	char	*extra;
+	long long	leftover;
+	char		*extra;
 
 	leftover = (*flags)->width - ft_strlen(input);
-	extra = ft_strnew(leftover);
-	extra = (char *)ft_memset(extra, ' ', leftover);
-	input = ft_strjoin(extra, input);
+	if (leftover > 0)
+	{
+		extra = ft_strnew(leftover);
+		extra = (char *)ft_memset(extra, ' ', leftover);
+	}
+	else
+		extra = NULL;
+	if (extra != NULL)
+		input = ft_strjoin(extra, input);
 	free(extra);
 	return (input);
 }
@@ -139,13 +172,19 @@ char	*apply_hash(char *input, t_flags **flags)
 */
 char	*apply_minus(char *input, t_flags **flags)
 {
-	size_t	leftover;
-	char	*extra;
+	long long	leftover;
+	char		*extra;
 
 	leftover = (*flags)->width - ft_strlen(input);
-	extra = ft_strnew(leftover);
-	extra = (char *)ft_memset(extra, ' ', leftover);
-	input = ft_strjoin(input, extra);
+	if (leftover > 0)
+	{
+		extra = ft_strnew(leftover);
+		extra = (char *)ft_memset(extra, ' ', leftover);
+	}
+	else
+		extra = NULL;
+	if (extra != NULL)
+		input = ft_strjoin(input, extra);
 	free(extra);
 	return (input);
 }
@@ -155,8 +194,8 @@ char	*apply_minus(char *input, t_flags **flags)
 */
 char	*apply_zero(char *input, t_flags **flags)
 {
-	size_t	leftover;
-	char	*extra;
+	long long	leftover;
+	char		*extra;
 
 	extra = NULL;
 	leftover = (*flags)->width - ft_strlen(input);
@@ -186,11 +225,11 @@ char	*apply_flags(char *post_format, t_flags **flags)
 	if ((*flags)->hh != 0)
 		post_format = post_format * 4;
 	if ((*flags)->L != 0)
-		post_format = post_format * 5; 
-	if ((*flags)->plus != 0)
-		post_format = post_format * 7;*/
+		post_format = post_format * 5;*/ 
 	if ((*flags)->hash != 0)
 		post_format = apply_hash(post_format, flags);
+	if ((*flags)->precision != 0)
+		post_format = apply_precision(post_format, flags);
 	if ((*flags)->minus != 0)
 		post_format = apply_minus(post_format, flags);
 	if ((*flags)->zero != 0)
@@ -200,8 +239,8 @@ char	*apply_flags(char *post_format, t_flags **flags)
 	if ((*flags)->space != 0 && check_for_char((*flags)->type, "dif") == 1)
 		post_format = apply_space(post_format, flags);
 	if ((*flags)->neg != 0)
-		post_format = apply_neg(post_format);
+		post_format = apply_neg(post_format, flags);
 	if ((*flags)->plus != 0 && (*flags)->neg == 0)
-		post_format = apply_plus(post_format);
+		post_format = apply_plus(post_format, flags);
 	return (post_format);
 }

@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/04 12:47:41 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/04 15:03:10 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,20 @@ int	main(void)
 	//ret = ft_printf("elvis\n%i\n%x\n%X\n%%\n%p\n\n", 67, 120456, 120456, NULL);
 	//printf("\n");
 	//printf("elvis\n%i\n%x\n%X\n%%\n%p\n", 67, 120456, 120456, NULL);
-	ret = ft_printf("\nMe: X%+20lliX\n\n", -25);
-	ret = ft_printf("\nMe: X%+20iX\n\n", 25);
-	ret = ft_printf("\nMe: X%0+20iX\n\n", -25);
-	ret = ft_printf("\nMe: X%0+20iX\n\n", 25);
-	printf("It: X%20iX\n", -25);
-	printf("It: X%+020iX\n", 25);
-	printf("It: X%+020iX\n", -25);
-	printf("It: X%+20.iX\n", 25);
-	printf("It: X%+20.lliX\n", buzz);
+	//ret = ft_printf("\nMe: X%+20lliX\n\n", -25);
+	//ret = ft_printf("\nMe: X%+20iX\n\n", 25);
+	ret = ft_printf("\nMe: X%20.8iX\n\n", 25);
+	ret = ft_printf("\nMe: X%-+20.8iX\n\n", 25);
+	ret = ft_printf("\nMe: X%+20.8iX\n\n", -25);
+	//ret = ft_printf("\nMe: X%-20.5iX\n\n", 2567890);
+	//printf("It: X%20iX\n", -25);
+	//printf("It: X%+020iX\n", 25);
+	//printf("It: X%+020iX\n", -25);
+	printf("It: X%20.8iX\n", 25);
+	printf("It: X%-+20.8iX\n", 25);
+	printf("It: X%+20.8iX\n", -25);
+	//printf("It: X%-20.5iX\n", 2567890);
+	//printf("It: X%+20.32lliX\n", buzz);
 	if (ret > 0)
 		return (1);
 	return (0);
