@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:46:16 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/18 13:45:17 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/04 09:45:36 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int	create_flags(t_flags **flags)
 	(*flags)->width = 0;
 	(*flags)->precision = 0;
 	(*flags)->type = 0;
+	(*flags)->neg = 0;
 	return (1);
 }

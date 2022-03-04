@@ -6,34 +6,13 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/03 14:09:00 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/04 10:02:34 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	float_dec_point(va_list *arg, t_flags **flags)
-{
-	int		integer;
-	char	*string_form;
-	
-	integer = va_arg(*arg, int);
-	string_form = apply_flags(ft_itoa(integer), flags);
-	print_out(string_form);
-}
-
-void	character(va_list *arg, t_flags **flags)
-{
-	char	*character;
-
-	character = ft_strnew(1);
-	character = ft_strncpy(character, va_arg(*arg, char*), 1);
-	character = apply_flags(character, flags);
-	print_out(character);
-	free(character);
-}
-
-void	string(va_list *arg, t_flags **flags)
+void	float_dec_point(va_list *arg, t_flags **flags) //now the same as string, change.
 {
 	char	*string;
 
@@ -41,6 +20,33 @@ void	string(va_list *arg, t_flags **flags)
 	string = apply_flags(string, flags);
 	print_out(string);
 	free(string);
+/* 	int	integer;
+	
+	integer = va_arg(*arg, int);
+	integer = apply_flags(integer, flags);
+	print_out(integer);	 */
+}
+
+void	character(va_list *arg, t_flags **flags)
+{
+	int		character;
+	char	*result;
+
+	result = ft_strnew(1);
+	character = va_arg(*arg, int);
+	result[0] = character;
+	result = apply_flags(result, flags);
+	print_out(result);
+	free(result);
+}
+
+void	string(va_list *arg, t_flags **flags)
+{
+	char	*string;
+
+	string = va_arg(*arg, char*);
+	string = apply_flags(string, flags);
+	print_out(string);
 }
 
 void	pointer(va_list *arg, t_flags **flags)

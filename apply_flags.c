@@ -13,6 +13,59 @@
 #include "ft_printf.h"
 
 /*
+** Applies the width -flag in case it has not been applied within other flag-
+** handling functions.
+*/
+char	*apply_width(char *input, t_flags **flags)
+{
+	size_t	leftover;
+	char	*extra;
+
+	leftover = (*flags)->width - ft_strlen(input);
+	extra = ft_strnew(leftover);
+	extra = (char *)ft_memset(extra, ' ', leftover);
+	input = ft_strjoin(extra, input);
+	free(extra);
+	return (input);
+}
+
+/*
+** Applies the hash -flag
+*/
+char	*apply_hash(char *input, t_flags **flags)
+{
+	if ((*flags)->type == 'o')
+	{
+		input = ft_strjoin("0", input);
+	}
+	if ((*flags)->type == 'x')
+	{
+		input = ft_strjoin("0x", input);
+	}
+	if ((*flags)->type == 'X')
+	{
+		input = ft_strjoin("0X", input);
+	}
+	return (input);
+}
+
+/*
+** Applies the minus flag
+*/
+char	*apply_minus(char *input, t_flags **flags)
+{
+	size_t	leftover;
+	char	*extra;
+
+	leftover = (*flags)->width - ft_strlen(input);
+	extra = ft_strnew(leftover);
+	extra = (char *)ft_memset(extra, ' ', leftover);
+	input = ft_strjoin(input, extra);
+	free(extra);
+	return (input);
+}
+
+/*
 ** Applies the zero -flag
 */
 char	*apply_zero(char *input, t_flags **flags)
@@ -22,16 +75,19 @@ char	*apply_zero(char *input, t_flags **flags)
 
 	extra = NULL;
 	leftover = (*flags)->width - ft_strlen(input);
-	if ((*flags)->precision == 0)
+	if ((*flags)->minus == 0)
 	{
-		if ((*flags)->width == 0)
-			input = 0;
-		else
+		if ((*flags)->precision == 0)
 		{
-			extra = ft_strnew(leftover);
-			extra = (char *)ft_memset(extra, '0', leftover);
-			input = ft_strjoin(extra, input);
-			free(extra);
+			if ((*flags)->width == 0)
+				input = 0;
+			else
+			{
+				extra = ft_strnew(leftover);
+				extra = (char *)ft_memset(extra, '0', leftover);
+				input = ft_strjoin(extra, input);
+				free(extra);
+			}
 		}
 	}
 	return (input);
@@ -41,8 +97,8 @@ char	*apply_zero(char *input, t_flags **flags)
 */
 char	*apply_flags(char *post_format, t_flags **flags)
 {
-/* 	if ((*flags)->l != 0)
-		post_format = ft_strjoin(post_format, "helou");
+/*	if ((*flags)->l != 0)
+ 		post_format = ft_strjoin(post_format, "helou");
 	if ((*flags)->ll != 0)
 		post_format = post_format * 2;
 	if ((*flags)->h != 0)
@@ -50,16 +106,18 @@ char	*apply_flags(char *post_format, t_flags **flags)
 	if ((*flags)->hh != 0)
 		post_format = post_format * 4;
 	if ((*flags)->L != 0)
-		post_format = post_format * 5;
-	if ((*flags)->space != 0)
-		post_format = post_format * 6;
+		post_format = post_format * 5; 
 	if ((*flags)->plus != 0)
-		post_format = post_format * 7;
-	if ((*flags)->minus != 0)
-		post_format = post_format * 8;
+		post_format = post_format * 7;*/
 	if ((*flags)->hash != 0)
-		post_format = post_format * 9; */
+		post_format = apply_hash(post_format, flags);
+	if ((*flags)->minus != 0)
+		post_format = apply_minus(post_format, flags);
 	if ((*flags)->zero != 0)
 		post_format = apply_zero(post_format, flags);
+	if ((*flags)->zero == 0 && (*flags)->width != 0 && (*flags)->minus == 0)
+		post_format = apply_width(post_format, flags);
+	//if ((*flags)->space != 0)
+	//	post_format = apply_space()
 	return (post_format);
 }
