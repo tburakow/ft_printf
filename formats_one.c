@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/04 20:42:41 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/05 10:04:06 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	unsigned_dec(va_list *arg, t_flags **flags)
 		nbr = (unsigned short int)va_arg(*arg, int);
 	else
 		nbr = va_arg(*arg, unsigned int);
-	string_form = apply_flags(ft_itoa(integer), flags);
+	string_form = apply_flags(ft_itoa(nbr), flags);
 	print_out(string_form);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/04 15:32:29 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/05 10:02:05 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	main(void)
 	//printf("It: X%+020iX\n", -25);
 	printf("It: X%20.8iX\n", 25);
 	printf("It: X%-+20.8iX\n", 25);
-	printf("It: X%+20.8hiX\n", 10234);
+	//printf("It: X%+20.8hiX\n", 10234);
+	printf("It: X%fX\n", 2.90890989);
 	//printf("It: X%-20.5iX\n", 2567890);
 	//printf("It: X%+20.32lliX\n", buzz);
 	if (ret > 0)
