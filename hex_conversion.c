@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:59:47 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/02 15:55:02 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/05 10:14:53 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char    *hex_conversion(unsigned d)
     while (d > 0)
     {
         rem = d % 16;
-        if (rem < 9)
+        if (rem <= 9)
             rem += 48;
         else
             rem += 87;

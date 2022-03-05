@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/05 10:02:05 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/05 10:16:00 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(void)
 	//ret = ft_printf("\nMe: X%+20lliX\n\n", -25);
 	//ret = ft_printf("\nMe: X%+20iX\n\n", 25);
 	ret = ft_printf("\nMe: X%20.8iX\n\n", 25);
+	ret = ft_printf("\nMe: X%xX\n\n", 25);
 	ret = ft_printf("\nMe: X%-+20.8iX\n\n", 25);
 	ret = ft_printf("\nMe: X%+20.8hiX\n\n", 25);
 	//ret = ft_printf("\nMe: X%-20.5iX\n\n", 2567890);
