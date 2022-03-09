@@ -38,4 +38,10 @@ int main(void)
 	printf("%x\n\n", 120456);
 	printf("%p\n\n", &str);
 	printf("%d", ft_atoi(&str[5]));
+	printf("It: X%fX\n", 2.9089098938);
+	printf("It: X%fX\n", 2.1);
+	printf("It: X%#fX\n", 2.9089098938);
+	printf("It: X%#fX\n", 2.0);
+	printf("It: X%.3fX\n", 2.9089098938);
+	printf("It: X%.3fX\n", 2.1);
 }

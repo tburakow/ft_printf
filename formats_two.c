@@ -6,25 +6,24 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/04 11:33:51 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/09 12:44:40 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	float_dec_point(va_list *arg, t_flags **flags) //now the same as string, change.
+void	float_dec_point(va_list *arg, t_flags **flags)
 {
-	char	*string;
+	char		*string;
+	long double	number;
 
-	string = ft_strnew(ft_strlen(va_arg(*arg, char*)));
-	string = apply_flags(string, flags);
+	number = va_arg(*arg, double);
+	//printf("\n%Lf\n", number);
+	number = bankers_round(number, flags);
+	string = to_ascii(number, flags);
+	//string = apply_flags(string, flags);
 	print_out(string);
-	free(string);
-/* 	int	integer;
-	
-	integer = va_arg(*arg, int);
-	integer = apply_flags(integer, flags);
-	print_out(integer);	 */
+	ft_strdel(&string);
 }
 
 void	character(va_list *arg, t_flags **flags)
