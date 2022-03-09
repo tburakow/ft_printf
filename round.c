@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:48:47 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/09 11:59:34 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/09 13:56:54 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 long double bankers_round(long double number, t_flags **flags)
 {
-    int         i;
-    long double rounder;
+    unsigned int    i;
+    long double     rounder;
 
+    i = 0;
+    rounder = 0.5;
     while (i < (*flags)->precision)
     {
         rounder = rounder / 10;
