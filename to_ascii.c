@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 10:45:38 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/09 14:42:26 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:19:23 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,6 @@ char    *to_ascii(long double number, t_flags **flags)
     intmax_t    exp;
     long double mant;
     
-    if (number < 0)
-    {
-        number = number * -1;
-        (*flags)->neg = 1;
-    }
     exp = (intmax_t)number;
     temp = ft_itoa(exp);
     mant = number - (long double)exp;

@@ -79,10 +79,10 @@ char	*apply_neg(char *input, t_flags **flags)
 	i = 0;
 	extra = ft_strnew(1);
 	extra = (char *)ft_memset(extra, '-', 1);
-	if (input[0] == '0' && (*flags)->precision == 0)
-	{
+	if (input[0] == '0' && ft_strlen(input) >= (*flags)->width)
 		input[0] = '-';
-	}
+/* 	else if (input[0] == '0' && (*flags)->precision == 0)
+		input[0] = '-'; */
 	else if (input[0] == ' ')
 	{
 		while(input[i] == ' ')
@@ -203,7 +203,7 @@ char	*apply_zero(char *input, t_flags **flags)
 	leftover = (*flags)->width - ft_strlen(input);
 	if ((*flags)->minus == 0)
 	{
-		if ((*flags)->width != 0)
+		if ((*flags)->width != 0 && leftover > 0)
 		{
 			extra = ft_strnew(leftover);
 			extra = (char *)ft_memset(extra, '0', leftover);
@@ -217,7 +217,7 @@ char	*apply_zero(char *input, t_flags **flags)
 ** checks which *flags to apply and applies them (PARANTELE!)
 */
 char	*apply_flags(char *post_format, t_flags **flags)
-{
+{		
 	if ((*flags)->hash != 0)
 		post_format = apply_hash(post_format, flags);
 	if ((*flags)->precision != 0)
