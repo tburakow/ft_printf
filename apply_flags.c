@@ -13,7 +13,7 @@
 #include "ft_printf.h"
 
 /*
-** Applis the "precision" -flag.
+** Applies the "precision" -flag.
 */
 char	*apply_precision(char *input, t_flags **flags)
 {
@@ -33,7 +33,7 @@ char	*apply_precision(char *input, t_flags **flags)
 		if (extra != NULL)
 		{
 			input = ft_strjoin(extra, input);
-			free(extra);
+			ft_strdel(&extra);
 		}
 	}
 	return (input);
@@ -63,7 +63,7 @@ char	*apply_plus(char *input, t_flags **flags)
 	else
 	{
 		input = ft_strjoin(extra, input);
-		free(extra);
+		ft_strdel(&extra);
 	}
 	return (input);
 
@@ -92,7 +92,7 @@ char	*apply_neg(char *input, t_flags **flags)
 	else
 	{
 		input = ft_strjoin(extra, input);
-		free(extra);
+		ft_strdel(&extra);
 	}
 	return (input);
 }
@@ -117,7 +117,7 @@ char	*apply_space(char *input, t_flags **flags)
 			else
 			{
 				input = ft_strjoin(extra, input);
-				free(extra);
+				ft_strdel(&extra);
 			}
 		}
 	}
@@ -143,7 +143,7 @@ char	*apply_width(char *input, t_flags **flags)
 		extra = NULL;
 	if (extra != NULL)
 		input = ft_strjoin(extra, input);
-	free(extra);
+	ft_strdel(&extra);
 	return (input);
 }
 
@@ -187,7 +187,7 @@ char	*apply_minus(char *input, t_flags **flags)
 		extra = NULL;
 	if (extra != NULL)
 		input = ft_strjoin(input, extra);
-	free(extra);
+	ft_strdel(&extra);
 	return (input);
 }
 
@@ -208,7 +208,7 @@ char	*apply_zero(char *input, t_flags **flags)
 			extra = ft_strnew(leftover);
 			extra = (char *)ft_memset(extra, '0', leftover);
 			input = ft_strjoin(extra, input);
-			free(extra);
+			ft_strdel(&extra);
 		}
 	}
 	return (input);
@@ -218,16 +218,6 @@ char	*apply_zero(char *input, t_flags **flags)
 */
 char	*apply_flags(char *post_format, t_flags **flags)
 {
-/*	if ((*flags)->l != 0)
- 		post_format = ft_strjoin(post_format, "helou");
-	if ((*flags)->ll != 0)
-		post_format = post_format * 2;
-	if ((*flags)->h != 0)
-		post_format = post_format * 3;
-	if ((*flags)->hh != 0)
-		post_format = post_format * 4;
-	if ((*flags)->L != 0)
-		post_format = post_format * 5;*/ 
 	if ((*flags)->hash != 0)
 		post_format = apply_hash(post_format, flags);
 	if ((*flags)->precision != 0)
