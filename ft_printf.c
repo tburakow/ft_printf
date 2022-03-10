@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:40:40 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/04 13:24:30 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/09 16:37:21 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,10 @@ int	ft_printf(const char *format, ...)
 	{
 		reset_flags(&flags);
 		while (format[j] != '%' && j <= jmax)
+		{
 			ft_putchar(format[j++]);
+			flags->total_return++;
+		}
 		if (j <= jmax)
 		{
 			j = ft_raise_flags((char *)format, j, &flags);
@@ -96,5 +99,5 @@ int	ft_printf(const char *format, ...)
 		j++;
 	}
 	va_end(arg);
-	return (0);
+	return (flags->total_return);
 }

@@ -6,29 +6,27 @@
 #    By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 12:15:46 by tburakow          #+#    #+#              #
-#    Updated: 2022/03/09 13:02:51 by tburakow         ###   ########.fr        #
+#    Updated: 2022/03/09 16:44:13 by tburakow         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = a.out
-FUNCTIONS = main ft_printf create_flags ft_raise_flags formats_one \
-formats_two check_for_char reset_flags print_out apply_flags \
-octal_conversion hex_conversion to_ascii round
-FILES = $(patsubst %, %.c, $(FUNCTIONS))
-OBJECTS = $(patsubst %, %.o, $(FUNCTIONS))
-
+SRC = ft_printf.c create_flags.c ft_raise_flags.c formats_one.c
+SRC += formats_two.c check_for_char.c reset_flags.c print_out.c apply_flags.c \
+octal_conversion.c hex_conversion.c to_ascii.c round.c
+OBJ = $(SRC:.c=.o)
+CFLAGS = -c -Wall -Werror -Wextra
+NAME = libftprintf.a
+LIBFTPATH = libft/
 all: $(NAME)
 
 $(NAME):
-	make -C libft/
-	gcc -Wall -Wextra -Werror -c -g $(FILES)
-	gcc -Wall -Werror -Wextra $(OBJECTS) libft/libft.a -o $(NAME)
-	make fclean -C libft/
-
+	@make -C $(LIBFTPATH)
+	@cc $(CFLAGS) $(SRC) -I $(LIBFTPATH)
+	@ar rc $(NAME) $(OBJ) $(LIBFTPATH)*.o
 clean:
-	rm -f $(OBJECTS)
-
+	@rm -f $(OBJ)
+	@make -C libft/ clean
 fclean: clean
-	rm -rf $(NAME)
-
+	@rm -f $(NAME)
+	@make -C libft/ fclean
 re: fclean all

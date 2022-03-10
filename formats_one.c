@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/05 10:04:06 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/09 16:30:36 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	signed_int(va_list *arg, t_flags **flags)
 		nbr = nbr * -1;
 	}
 	string_form = apply_flags(ft_itoa(nbr), flags);
-	print_out(string_form);
+	print_out(string_form, flags);
 }
 
 void	unsigned_octal(va_list *arg, t_flags **flags)
@@ -53,7 +53,7 @@ void	unsigned_octal(va_list *arg, t_flags **flags)
 		nbr = va_arg(*arg, unsigned int);
 	string_form = ft_itoa(octal_conversion(nbr));
 	string_form = apply_flags(string_form, flags);
-	print_out(string_form);
+	print_out(string_form, flags);
 }
 
 void	unsigned_dec(va_list *arg, t_flags **flags)
@@ -72,7 +72,7 @@ void	unsigned_dec(va_list *arg, t_flags **flags)
 	else
 		nbr = va_arg(*arg, unsigned int);
 	string_form = apply_flags(ft_itoa(nbr), flags);
-	print_out(string_form);
+	print_out(string_form, flags);
 }
 
 void	unsigned_hex(va_list *arg, t_flags **flags)
@@ -92,7 +92,7 @@ void	unsigned_hex(va_list *arg, t_flags **flags)
 		nbr = va_arg(*arg, unsigned int);
 	hexadec = hex_conversion(nbr);
 	hexadec = apply_flags(hexadec, flags);
-	print_out(hexadec);
+	print_out(hexadec, flags);
 }
 
 void	unsigned_hex_cap(va_list *arg, t_flags **flags)
@@ -112,5 +112,5 @@ void	unsigned_hex_cap(va_list *arg, t_flags **flags)
 		nbr = va_arg(*arg, unsigned int);
 	hexadec = hex_cap_conversion(nbr);
 	hexadec = apply_flags(hexadec, flags);
-	print_out(hexadec);
+	print_out(hexadec, flags);
 }
