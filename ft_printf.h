@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:41:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/09 16:29:35 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/10 14:50:45 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_flags
 	char			type;
 	unsigned int	neg;
 	unsigned int	empty_prec;
-	int				total_return;
 }	t_flags;
 
 void	signed_int(va_list *arg, t_flags **flags);
@@ -53,13 +52,13 @@ void	reset_flags(t_flags **flags);
 int		apply_flags_numeric(int post_format, t_flags **flags);
 char 	*apply_flags(char *post_format, t_flags **flags);
 void	print_out_numeric(int output);
-void 	print_out(char *output, t_flags **flags);
+void 	print_out(char *output);
 int		create_flags(t_flags **flags);
 int		octal_conversion(unsigned d);
-char	*hex_conversion(unsigned d);
-unsigned	convert_length(unsigned d);
-char    *hex_cap_conversion(unsigned d);
-char	*ptr_conversion(unsigned long d);
+char	*hex_conversion(long long d);
+unsigned	convert_length(long long d);
+char    *hex_cap_conversion(long long d, int base_size);
+char	*ptr_conversion(long long d);
 char	*apply_zero(char *input, t_flags **flags);
 char	*apply_minus(char *input, t_flags **flags);
 char	*apply_hash(char *input, t_flags **flags);

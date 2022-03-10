@@ -6,16 +6,16 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:59:47 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/05 10:14:53 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/10 14:58:11 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned convert_length(unsigned d)
+unsigned convert_length(long long d)
 {
-    unsigned hex_base;
-    unsigned i;
+    long long hex_base;
+    long long i;
 
     hex_base = 0;
     i = 1;
@@ -30,7 +30,7 @@ unsigned convert_length(unsigned d)
 /*
 ** This function converts the long "d" from decimal to octal and returns it.
 */
-char    *hex_conversion(unsigned d)
+char    *hex_conversion(long long d)
 {
     char        *hexadec;
     unsigned    i;
@@ -39,7 +39,8 @@ char    *hex_conversion(unsigned d)
 
     len = ft_strlen(ft_itoa(convert_length(d)));
     hexadec = ft_strnew(len);
-    // if (hexadec = NULL) Luo tähän exit strategy
+    if (!hexadec)
+        return (NULL);
     i = len;
     while (d > 0)
     {
@@ -56,33 +57,52 @@ char    *hex_conversion(unsigned d)
     return (hexadec);
 }
 
-char    *hex_cap_conversion(unsigned d)
+char    *hex_cap_conversion(long long d, int base_size)
 {
     char        *hexadec;
-    unsigned    i;
-    unsigned    rem;
-    unsigned    len;
+    long long   i;
+    long long   rem;
+    unsigned long long neg;
 
-    len = ft_strlen(ft_itoa(convert_length(d)));
-    hexadec = ft_strnew(len);
-    // if (hexadec = NULL) Luo tähän exit strategy
-    i = len;
-    while (d > 0)
+    neg = 0;
+    hexadec = ft_strnew(base_size);
+    if (!hexadec)
+        return (NULL);
+    i = base_size;
+    if (d > 0)
+        while (d > 0)
+        {
+            rem = d % 16;
+            if (rem <= 9)
+                rem += 48;
+            else
+                rem += 55;
+            hexadec[i - 1] = rem;
+            i--;
+            d = d / 16;
+        }
+    else
     {
-        rem = d % 16;
-        if (rem < 9)
-            rem += 48;
-        else
-            rem += 55;
-        hexadec[i - 1] = rem;
-        i--;
-        d = d / 16;
+        neg = d;
+        while (neg > 0)
+        {
+                rem = neg % 16;
+            if (rem <= 9)
+                rem += 48;
+            else
+                rem += 55;
+            hexadec[i - 1] = rem;
+            i--;
+            neg = neg / 16;
+        }
     }
-    hexadec[len] = '\0';
+    hexadec[base_size] = '\0';
+    if (i > 0)
+        hexadec = ft_strsub(hexadec, i, (base_size - 1));
     return (hexadec);
 }
 
-char    *ptr_conversion(unsigned long d)
+char    *ptr_conversion(long long d)
 {
     char        *hexadec;
     unsigned long  i;
