@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/10 16:11:56 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/10 16:37:09 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,18 @@ int	main(void)
 	//printf("It: X%+20.32lliX\n", buzz); */
 	ft_printf("MEiz: %hhX\n", torspo);
 	ft_printf("MEiz: %hX\n", shit);
-	ft_printf("MEiz: %llX\n", buzz);
+	ret =ft_printf("MEiz: %llX\n", buzz);
 	ft_printf("MEiz: %lX\n", (long)buzz);
 	ft_printf("MEiz: %Lf\n", tantor);
-	ft_printf("MEiz: %o\n\n", -56);
+	ft_printf("MEiz: %o\n", -56);
+	ft_printf("\n%d\n\n", ret);
 	printf("Seee: %hhX\n", torspo);
 	printf("Seee: %hX\n", shit);
-	printf("Seee: %llX\n", buzz);
+	ret = printf("Seee: %llX\n", buzz);
 	printf("Seee: %lX\n", (long)buzz);
 	printf("Seee: %Lf\n", tantor);
 	printf("Seee: %o\n", -56);
+	ft_printf("\n%d\n", ret);
 	if (ret > 0)
 		return (1);
 	return (0);

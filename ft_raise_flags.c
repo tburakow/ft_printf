@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 15:44:55 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/10 15:25:03 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/10 16:23:51 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int set_flags(char c, int flagcount, t_flags **flags)
 	if ((*flags)->l == 2)
 		(*flags)->base_size = 32;
 	if ((*flags)->h == 1)
-		(*flags)->base_size = 10;
+		(*flags)->base_size = 16;
 	if ((*flags)->h == 2)
 		(*flags)->base_size = 16;
 	return (flagcount + 1);

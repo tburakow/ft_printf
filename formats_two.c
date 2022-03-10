@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/10 16:14:54 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/10 16:33:56 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	float_dec_point(va_list *arg, t_flags **flags)
 	number = bankers_round(number, flags);
 	string = to_ascii(number, flags);
 	string = apply_flags(string, flags);
-	print_out(string);
+	print_out(string, flags);
 	ft_strdel(&string);
 }
 
@@ -45,7 +45,7 @@ void	character(va_list *arg, t_flags **flags)
 	character = va_arg(*arg, int);
 	result[0] = character;
 	result = apply_flags(result, flags);
-	print_out(result);
+	print_out(result, flags);
 	ft_strdel(&result);
 }
 
@@ -55,7 +55,7 @@ void	string(va_list *arg, t_flags **flags)
 
 	string = va_arg(*arg, char*);
 	string = apply_flags(string, flags);
-	print_out(string);
+	print_out(string, flags);
 }
 
 void	pointer(va_list *arg, t_flags **flags)
@@ -65,7 +65,7 @@ void	pointer(va_list *arg, t_flags **flags)
 	
 	pointer  = va_arg(*arg, unsigned long);
 	if (pointer == 0)
-		print_out("0x0");
+		print_out("0x0", flags);
 	else
 	{
 		hex_ptr = ptr_conversion(pointer, flags);
@@ -74,7 +74,7 @@ void	pointer(va_list *arg, t_flags **flags)
 		else
 			hex_ptr = ft_strjoin("0x10", hex_ptr);
 		hex_ptr = apply_flags(hex_ptr, flags);
-		print_out(hex_ptr);
+		print_out(hex_ptr, flags);
 	}
 }
 
@@ -85,6 +85,6 @@ void	percent(t_flags **flags)
 	character = ft_strnew(1);
 	character = "%";
 	character = apply_flags(character, flags);
-	print_out(character);
+	print_out(character, flags);
 	ft_strdel(&character);
 }
