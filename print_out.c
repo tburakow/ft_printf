@@ -6,16 +6,11 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 12:45:55 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/10 16:32:02 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:12:47 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void print_out_numeric(int output)
-{
-	ft_putnbr(output);
-}
 
 void print_out(char *output, t_flags **flags)
 {

@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/10 16:33:04 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/11 18:00:06 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	unsigned_dec(va_list *arg, t_flags **flags)
 void	unsigned_hex(va_list *arg, t_flags **flags)
 {
 	long long	nbr;
-	char				*hexadec;
+	char		*hexadec;
 	
 	if ((*flags)->l == 2)
 		nbr = (unsigned long long int)va_arg(*arg, long long);
@@ -103,7 +103,7 @@ void	unsigned_hex(va_list *arg, t_flags **flags)
 void	unsigned_hex_cap(va_list *arg, t_flags **flags)
 {
 	long long	nbr;
-	char				*hexadec;
+	char		*hexadec;
 	
 	if ((*flags)->l == 2)
 		nbr = (unsigned long long int)va_arg(*arg, long long);

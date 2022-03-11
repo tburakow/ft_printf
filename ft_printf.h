@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:41:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/10 16:32:18 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/11 17:55:18 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ typedef struct s_flags
 {
 	unsigned int	l;
 	unsigned int	h;
-	unsigned int	L;
+	unsigned int	bigl;
 	unsigned int	zero;
 	unsigned int	hash;
 	unsigned int	minus;
@@ -32,7 +32,7 @@ typedef struct s_flags
 	unsigned int	neg;
 	unsigned int	empty_prec;
 	unsigned int	base_size;
-	unsigned int	output;
+	long long		output;
 }	t_flags;
 
 void	signed_int(va_list *arg, t_flags **flags);

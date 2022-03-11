@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/10 16:37:09 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/11 17:58:22 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	main(void)
 	ft_printf("Me: X%06.3fX\n\n", -2.90890989);
 	printf("It: X%06.3fX\n\n", -2.90890989);
 	//printf("It: X%-20.5iX\n", 2567890);
-	//printf("It: X%+20.32lliX\n", buzz); */
+	//printf("It: X%+20.32lliX\n", buzz);
 	ft_printf("MEiz: %hhX\n", torspo);
 	ft_printf("MEiz: %hX\n", shit);
 	ret =ft_printf("MEiz: %llX\n", buzz);
@@ -71,6 +71,21 @@ int	main(void)
 	printf("Seee: %Lf\n", tantor);
 	printf("Seee: %o\n", -56);
 	ft_printf("\n%d\n", ret);
+
+
+  	ft_printf("\\n");
+	printf("\\n"); */
+
+	ret = ft_printf("%x", -49);
+	printf("\n\n%u", ret);
+	printf("\n\n");
+	printf("%x\n", -42);
+	
+	ret = ft_printf("%d\n", 100);
+	printf("\n\n%u", ret);
+	printf("\n\n");
+	printf("%d\n\n", 100);
+	
 	if (ret > 0)
 		return (1);
 	return (0);

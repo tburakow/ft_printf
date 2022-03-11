@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 14:26:40 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/10 16:36:07 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:06:58 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	special_putchar(char c, t_flags **flags)
 {
 	if (c != '\0')
+	{
 		(*flags)->output++;
-	write(1, &c, 1);
+		write(1, &c, 1);
+	}
 }

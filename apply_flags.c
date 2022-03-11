@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   apply_(*flags).c                                      :+:      :+:    :+:   */
+/*   apply_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/18 12:06:30 by tburakow          #+#    #+#             */
-/*   Updated: 2022/02/18 13:32:12 by tburakow         ###   ########.fr       */
+/*   Created: 2022/03/11 15:45:03 by tburakow          #+#    #+#             */
+/*   Updated: 2022/03/11 15:45:45 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*apply_plus(char *input, t_flags **flags)
 	}
 	else if (input[0] == ' ')
 	{
-		while(input[i] == ' ')
+		while (input[i] == ' ')
 			i++;
 		input[i - 1] = '+';
 	}
@@ -66,11 +66,11 @@ char	*apply_plus(char *input, t_flags **flags)
 		ft_strdel(&extra);
 	}
 	return (input);
-
 }
 /*
 ** Applies the "neg" -flag. 
 */
+
 char	*apply_neg(char *input, t_flags **flags)
 {
 	char	*extra;
@@ -85,7 +85,7 @@ char	*apply_neg(char *input, t_flags **flags)
 		input[0] = '-'; */
 	else if (input[0] == ' ')
 	{
-		while(input[i] == ' ')
+		while (input[i] == ' ')
 			i++;
 		input[i - 1] = '-';
 	}

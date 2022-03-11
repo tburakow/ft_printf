@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 22:04:27 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/10 16:23:35 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/11 17:24:55 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void reset_flags(t_flags *(*flags))
 {
     (*flags)->l = 0;
 	(*flags)->h = 0;
-	(*flags)->L = 0;
+	(*flags)->bigl = 0;
 	(*flags)->zero = 0;
 	(*flags)->hash = 0;
 	(*flags)->minus = 0;
