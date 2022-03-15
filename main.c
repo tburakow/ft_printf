@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/11 17:58:22 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/15 11:58:54 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,15 @@ int	main(void)
 	printf("\\n"); */
 
 	ret = ft_printf("%x", -49);
-	printf("\n\n%u", ret);
+	printf("\n\n%d", ret);
 	printf("\n\n");
-	printf("%x\n", -42);
+	ret = printf("%x", -49);
+	printf("\n\n%d", ret);
 	
-	ret = ft_printf("%d\n", 100);
+/* 	ret = ft_printf("%d\n", 100);
 	printf("\n\n%u", ret);
 	printf("\n\n");
-	printf("%d\n\n", 100);
+	printf("%d\n\n", 100); */
 	
 	if (ret > 0)
 		return (1);
