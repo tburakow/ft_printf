@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/16 14:53:05 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/16 15:08:24 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	main(void)
 	printf("\n\n");
 	printf("%x", 176);
 	printf("\n\n");
-	ft_printf("%ld", 2147483648);
+	printf("%lx", 9223372036854775806);
 	
 /* 	ret = ft_printf("%d\n", 100);
 	printf("\n\n%u", ret);

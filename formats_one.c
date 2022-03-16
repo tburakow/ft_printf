@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/16 14:52:45 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/16 15:46:27 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	signed_int(va_list *arg, t_flags **flags)
 		nbr = (short int)va_arg(*arg, int);
 	else
 		nbr = va_arg(*arg, int);
-	if (nbr < 0)
+	if (nbr < 0 && nbr >= -9223372036854775807)
 	{
 		(*flags)->neg = 1;
 		nbr = nbr * -1;

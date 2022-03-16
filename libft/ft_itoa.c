@@ -6,13 +6,13 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 12:57:46 by tburakow          #+#    #+#             */
-/*   Updated: 2021/11/30 12:54:56 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/16 15:43:21 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	nbr_lgt(int n)
+static int	nbr_lgt(long long n)
 {
 	int	i;
 
@@ -31,7 +31,7 @@ static int	nbr_lgt(int n)
 	return (i);
 }
 
-static char	*popul_str(char *str, int *im, int n)
+static char	*popul_str(char *str, long long *im, long long n)
 {	
 	str[im[0]--] = '\0';
 	while (im[0] >= 0)
@@ -44,15 +44,15 @@ static char	*popul_str(char *str, int *im, int n)
 	return (str);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long long n)
 {
-	int		im[2];
-	char	*str;
+	long long	im[2];
+	char		*str;
 
 	im[0] = 0;
 	im[1] = 0;
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
+	if (n < -9223372036854775807)
+		return (ft_strdup("-9223372036854775808"));
 	if (n < 0)
 	{
 		im[1] = 1;

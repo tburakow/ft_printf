@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:45:03 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/16 14:47:05 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/16 15:36:56 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ char	*apply_neg(char *input, t_flags **flags)
 	int		i;
 
 	i = 0;
-	if (check_for_char((*flags)->type, "di") == 1 && ft_strcmp(input, "-2147483648") == 0)
-		return (input);
 	extra = ft_strnew(1);
 	extra = (char *)ft_memset(extra, '-', 1);
 	if (input[0] == '0' && ft_strlen(input) >= (*flags)->width)
