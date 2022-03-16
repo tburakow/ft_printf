@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/16 13:06:08 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/16 14:21:13 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,21 @@ void	character(va_list *arg, t_flags **flags)
 	int		character;
 	char	*result;
 
-	result = ft_strnew(1);
 	character = va_arg(*arg, int);
-	result[0] = character;
+	if (character == 0)
+	{
+		result = "";
+		(*flags)->char_null = 1;
+	}
+	else
+	{
+		result = ft_strnew(1);
+		result[0] = character;
+	}
 	result = apply_flags(result, flags);
 	print_out(result, flags);
-	ft_strdel(&result);
+/* 	if (result)
+		ft_strdel(&result); */
 }
 
 void	string(va_list *arg, t_flags **flags)

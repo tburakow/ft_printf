@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/16 13:06:26 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/16 14:05:38 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,14 @@ int	main(void)
 	ft_printf("@moulitest: %s", NULL);
 	printf("\n\n");
 	printf("@moulitest: %s", NULL);
+	printf("\n\n");
+	ft_printf("@moulitest: %c", 0);
+	printf("\n\n");
+	printf("@moulitest: %c", 0);
+	printf("\n\n");
+	ft_printf("%x", 176);
+	printf("\n\n");
+	printf("%x", 176);
 	
 /* 	ret = ft_printf("%d\n", 100);
 	printf("\n\n%u", ret);

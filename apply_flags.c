@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:45:03 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/16 13:09:40 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/16 14:26:02 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ char	*apply_width(char *input, t_flags **flags)
 
 	if ((*flags)->hash != 0)
 		input = apply_hash(input, flags);
-	leftover = (*flags)->width - ft_strlen(input);
+	leftover = (*flags)->width - ft_strlen(input) - (*flags)->char_null;
 	if (leftover > 0)
 	{
 		extra = ft_strnew(leftover);
