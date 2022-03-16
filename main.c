@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/15 11:58:54 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/16 13:06:26 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,27 @@ int	main(void)
 
   	ft_printf("\\n");
 	printf("\\n"); */
+/* 	ret = ft_printf("%x\n", -49);
+	ret = printf("%x\n", -49); */
 
-	ret = ft_printf("%x", -49);
-	printf("\n\n%d", ret);
+	ft_printf("\n%#08x\n", 42);
+	printf("\n%#08x\n", 42);
 	printf("\n\n");
-	ret = printf("%x", -49);
-	printf("\n\n%d", ret);
+	ft_printf("|% 10%|");
+	printf("\n\n");
+	printf("|% 10%|");
+	printf("\n\n");
+	ft_printf("@moulitest: %#.x %#.0x", 0, 0);
+	printf("\n\n");
+	printf("@moulitest: %#.x %#.0x", 0, 0);
+	printf("\n\n");
+	ft_printf("%.2s is a string", "this");
+	printf("\n\n");
+	printf("%.2s is a string", "this");
+	printf("\n\n");
+	ft_printf("@moulitest: %s", NULL);
+	printf("\n\n");
+	printf("@moulitest: %s", NULL);
 	
 /* 	ret = ft_printf("%d\n", 100);
 	printf("\n\n%u", ret);

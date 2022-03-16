@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/11 18:00:06 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/16 12:40:10 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,11 @@ void	unsigned_hex(va_list *arg, t_flags **flags)
 		nbr = (unsigned char)va_arg(*arg, int);
 	else if ((*flags)->h == 1)
 		nbr = (unsigned short int)va_arg(*arg, int);
-	else	
+	else
 		nbr = va_arg(*arg, int);
+	if (nbr == 0)
+		(*flags)->hash = 0;
+	(*flags)->hash *= 2;
 	hexadec = hex_conversion(nbr, flags);
 	hexadec = apply_flags(hexadec, flags);
 	print_out(hexadec, flags);
@@ -115,6 +118,9 @@ void	unsigned_hex_cap(va_list *arg, t_flags **flags)
 		nbr = (unsigned short int)va_arg(*arg, int);
 	else	
 		nbr = va_arg(*arg, int);
+	if (nbr == 0)
+		(*flags)->hash = 0;
+	(*flags)->hash *= 2;
 	hexadec = hex_cap_conversion(nbr, flags);
 	hexadec = apply_flags(hexadec, flags);
 	print_out(hexadec, flags);

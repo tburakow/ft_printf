@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:45:03 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/11 15:45:45 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/16 13:09:40 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@ char	*apply_precision(char *input, t_flags **flags)
 		extra = ft_strnew(len);
 		extra = (char *)ft_memset(extra, '0', len);
 	}
-	else
-		extra = NULL;
+	else if (len < 0 && (*flags)->type == 's')
+	{
+		input = ft_strsub(input, 0, len * -1);
+		return (input);
+	}
 	if (check_for_char((*flags)->type, "diouxX") == 1)
 	{
 		if (extra != NULL)
@@ -133,6 +136,8 @@ char	*apply_width(char *input, t_flags **flags)
 	long long	leftover;
 	char		*extra;
 
+	if ((*flags)->hash != 0)
+		input = apply_hash(input, flags);
 	leftover = (*flags)->width - ft_strlen(input);
 	if (leftover > 0)
 	{
@@ -164,6 +169,7 @@ char	*apply_hash(char *input, t_flags **flags)
 	{
 		input = ft_strjoin("0X", input);
 	}
+	(*flags)->hash = 0;
 	return (input);
 }
 
@@ -175,6 +181,8 @@ char	*apply_minus(char *input, t_flags **flags)
 	long long	leftover;
 	char		*extra;
 
+	if ((*flags)->hash != 0)
+		input = apply_hash(input, flags);
 	leftover = (*flags)->width - ft_strlen(input);
 	if ((*flags)->plus == 1 || (*flags)->neg == 1)
 		leftover--;
@@ -200,13 +208,15 @@ char	*apply_zero(char *input, t_flags **flags)
 	char		*extra;
 
 	extra = NULL;
-	leftover = (*flags)->width - ft_strlen(input);
+	leftover = (*flags)->width - ft_strlen(input) - (*flags)->hash;
 	if ((*flags)->minus == 0)
 	{
 		if ((*flags)->width != 0 && leftover > 0)
-		{
+		{	
 			extra = ft_strnew(leftover);
 			extra = (char *)ft_memset(extra, '0', leftover);
+			if ((*flags)->hash != 0)
+				extra = apply_hash(extra, flags);
 			input = ft_strjoin(extra, input);
 			ft_strdel(&extra);
 		}
@@ -217,8 +227,10 @@ char	*apply_zero(char *input, t_flags **flags)
 ** checks which *flags to apply and applies them (PARANTELE!)
 */
 char	*apply_flags(char *post_format, t_flags **flags)
-{		
-	if ((*flags)->hash != 0)
+{
+	if ((*flags)->empty_prec != 0 && check_for_char((*flags)->type, "c%") == 0)
+		post_format = "";
+	if ((*flags)->hash != 0 && (*flags)->zero == 0)
 		post_format = apply_hash(post_format, flags);
 	if ((*flags)->precision != 0)
 		post_format = apply_precision(post_format, flags);
@@ -234,5 +246,7 @@ char	*apply_flags(char *post_format, t_flags **flags)
 		post_format = apply_neg(post_format, flags);
 	if ((*flags)->plus != 0 && (*flags)->neg == 0)
 		post_format = apply_plus(post_format, flags);
+	if ((*flags)->hash != 0 && (*flags)->zero == 1)
+		post_format = apply_hash(post_format, flags);
 	return (post_format);
 }
