@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/16 15:46:27 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/16 17:18:42 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	signed_int(va_list *arg, t_flags **flags)
 		(*flags)->neg = 1;
 		nbr = nbr * -1;
 	}
+	if (nbr != 0)
+		(*flags)->empty_prec = 0;
 	string_form = apply_flags(ft_itoa(nbr), flags);
 	print_out(string_form, flags);
 }
@@ -58,25 +60,26 @@ void	unsigned_octal(va_list *arg, t_flags **flags)
 
 void	unsigned_dec(va_list *arg, t_flags **flags)
 {
-	long long	nbr;
+	unsigned long long	nbr;
 	char		*string_form;
 	
+	nbr = 0;
 	if ((*flags)->l == 2)
-		nbr = (unsigned long long int)va_arg(*arg, long long);
+		nbr = va_arg(*arg, unsigned long long);
 	else if ((*flags)->l == 1)
-		nbr = (unsigned long int)va_arg(*arg, long);
+		nbr = (unsigned long long)va_arg(*arg, unsigned long);
 	else if ((*flags)->h == 2)
-		nbr = (unsigned char)va_arg(*arg, int);
+		nbr = (unsigned char)va_arg(*arg, unsigned int);
 	else if ((*flags)->h == 1)
-		nbr = (unsigned short int)va_arg(*arg, int);
+		nbr = (unsigned short)va_arg(*arg, unsigned int);
 	else
-		nbr = va_arg(*arg, unsigned int);
+		nbr = (unsigned long long)va_arg(*arg, unsigned int);
 	if (nbr < 0)
 	{
 		(*flags)->neg = 1;
 		nbr = nbr * -1;
 	}
-	string_form = apply_flags(ft_itoa(nbr), flags);
+	string_form = apply_flags(ft_itoa_unsigned(nbr), flags);
 	print_out(string_form, flags);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:09:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/16 15:34:02 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/16 17:01:49 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,5 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int		ft_word_count(char *s, char c);
 char	*ft_strncpy(char *dst, const char *src, size_t len);
 void	*ft_free_array(char **array, size_t wc);
+char	*ft_itoa_unsigned(unsigned long long n);
 #endif

@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/16 15:08:24 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/16 17:19:55 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(void)
 	unsigned short shit;
 	unsigned char torspo;
 	long double tantor;
+	char *bob;
 	
 	tantor = 234567.1023;
 	shit = 167;
@@ -78,7 +79,7 @@ int	main(void)
 /* 	ret = ft_printf("%x\n", -49);
 	ret = printf("%x\n", -49); */
 
-	ft_printf("\n%#08x\n", 42);
+	/* ft_printf("\n%#08x\n", 42);
 	printf("\n%#08x\n", 42);
 	printf("\n\n");
 	ft_printf("|% 10%|");
@@ -105,7 +106,23 @@ int	main(void)
 	printf("\n\n");
 	printf("%x", 176);
 	printf("\n\n");
-	printf("%lx", 9223372036854775806);
+	printf("%lx", 9223372036854775806); */
+/* 	ft_printf("%06.2d", 0);
+	ft_printf("\n\n");
+	printf("%06.2d", 0);
+	ft_printf("\n\n"); */
+	ft_printf("@moulitest: %.10d", -42);
+	printf("\n\n");
+	printf("@moulitest: %.10d", -42);
+	printf("\n\n");
+	ft_printf("@moulitest: %.d %.0d", -42, 43);
+	printf("\n\n");
+	printf("@moulitest: %.d %.0d", -42, 43);
+	printf("\n\n");
+	ft_printf("%u", -42);
+	printf("\n\n");
+	bob = "%u";
+	printf(bob, -42);
 	
 /* 	ret = ft_printf("%d\n", 100);
 	printf("\n\n%u", ret);

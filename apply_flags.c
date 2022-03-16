@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:45:03 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/16 15:36:56 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/16 16:38:12 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ char	*apply_precision(char *input, t_flags **flags)
 	char		*extra;
 	long long	len;
 
+	extra = NULL;
 	len = (*flags)->precision - ft_strlen(input);
 	if (len > 0)
 	{
@@ -31,13 +32,10 @@ char	*apply_precision(char *input, t_flags **flags)
 		input = ft_strsub(input, 0, len * -1);
 		return (input);
 	}
-	if (check_for_char((*flags)->type, "diouxX") == 1)
+	if (check_for_char((*flags)->type, "diouxX") == 1 && extra != NULL)
 	{
-		if (extra != NULL)
-		{
 			input = ft_strjoin(extra, input);
 			ft_strdel(&extra);
-		}
 	}
 	return (input);
 }
@@ -82,10 +80,8 @@ char	*apply_neg(char *input, t_flags **flags)
 	i = 0;
 	extra = ft_strnew(1);
 	extra = (char *)ft_memset(extra, '-', 1);
-	if (input[0] == '0' && ft_strlen(input) >= (*flags)->width)
+	if (input[0] == '0' && ft_strlen(input) >= (*flags)->width && (*flags)->precision == 0)
 		input[0] = '-';
-/* 	else if (input[0] == '0' && (*flags)->precision == 0)
-		input[0] = '-'; */
 	else if (input[0] == ' ')
 	{
 		while (input[i] == ' ')
@@ -209,6 +205,8 @@ char	*apply_zero(char *input, t_flags **flags)
 
 	extra = NULL;
 	leftover = (*flags)->width - ft_strlen(input) - (*flags)->hash;
+	if ((*flags)->precision != 0)
+		return (apply_width(input, flags));
 	if ((*flags)->minus == 0)
 	{
 		if ((*flags)->width != 0 && leftover > 0)
@@ -244,7 +242,7 @@ char	*apply_flags(char *post_format, t_flags **flags)
 		post_format = apply_space(post_format, flags);
 	if ((*flags)->neg != 0)
 		post_format = apply_neg(post_format, flags);
-	if ((*flags)->plus != 0 && (*flags)->neg == 0)
+	if ((*flags)->plus != 0 && (*flags)->neg == 0 && (*flags)->type != 'u')
 		post_format = apply_plus(post_format, flags);
 	if ((*flags)->hash != 0 && (*flags)->zero == 1)
 		post_format = apply_hash(post_format, flags);
