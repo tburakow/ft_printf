@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/16 17:19:55 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/17 14:05:18 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ int	main(void)
 	unsigned char torspo;
 	long double tantor;
 	char *bob;
+	int		i;
+	unsigned long	l;
+	char	*str;
 	
 	tantor = 234567.1023;
 	shit = 167;
@@ -123,6 +126,33 @@ int	main(void)
 	printf("\n\n");
 	bob = "%u";
 	printf(bob, -42);
+
+	printf("\ninteger:\n");
+	ft_printf("%p", &i);
+	printf("\n\n");
+	printf("%p", &i);
+	printf("\nlong:\n");
+	printf("\n\n");
+	ft_printf("%p", &l);
+	printf("\n\n");
+	printf("%p", &l);
+	printf("\nstr:\n");
+	printf("\n\n");
+	ft_printf("%p", &str);
+	printf("\n\n");
+	printf("%p", &str);
+	printf("\nfunc:\n");
+	printf("\n\n");
+	ft_printf("%p", &ft_strlen);
+	printf("\n\n");
+	printf("%p", &ft_strlen);
+	printf("\nzero:\n");
+	printf("\n\n");
+	bob = "%p";
+	ft_printf(bob, 0);
+	printf("\n\n");
+	printf(bob, 0);
+	printf("\n\n");
 	
 /* 	ret = ft_printf("%d\n", 100);
 	printf("\n\n%u", ret);

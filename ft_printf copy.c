@@ -6,15 +6,11 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:40:40 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/17 13:45:47 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:39:26 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-t_formats	*formats[10] = {signed_int, signed_int, unsigned_octal, \
-unsigned_dec, unsigned_hex, unsigned_hex_cap, float_dec_point, \
-character, string, pointer};
 
 int	error_output(char *mess)
 {
@@ -26,7 +22,7 @@ int	error_output(char *mess)
 ** Takes the index and calls the corresponding function
 ** with the current argument.
 */
-/* static void format(int i, va_list *arg, t_flags **flags)
+static void format(int i, va_list *arg, t_flags **flags)
 {
 	t_format	*format[11];
 	
@@ -44,7 +40,7 @@ int	error_output(char *mess)
 		format[i](arg, flags);
 	else
 		percent(flags);
-} */
+}
 
 /*
 ** This function determines the format for the current argument
@@ -63,11 +59,8 @@ static void	determine_format(char c, va_list *arg, t_flags **flags)
 	{
 		if (str[i] == c)
 		{
-			if (c == '%')
-				percent(flags);
-			else
 			//printf("\nformat determined\n");
-				formats[i](arg, flags);
+			format(i, arg, flags);
 		}
 		i++;
 	}

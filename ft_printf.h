@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:41:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/16 14:20:50 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/17 13:42:39 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	*apply_space(char *input, t_flags **flags);
 char	*apply_neg(char *input, t_flags **flags);
 char	*apply_plus(char *input, t_flags **flags);
 char	*apply_precision(char *input, t_flags **flags);
-typedef void t_format(va_list *arg, t_flags **flags);
+typedef void t_formats(va_list *arg, t_flags **flags);
 char    *to_ascii(long double number, t_flags **flags);
 char    *add_fractions(char *temp, long double mant, t_flags **flags);
 long double bankers_round(long double number, t_flags **flags);
