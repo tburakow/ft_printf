@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/17 14:09:57 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/17 14:37:38 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	pointer(va_list *arg, t_flags **flags)
 	char			*hex_ptr;
 
 	pointer = va_arg(*arg, unsigned long);
+	(*flags)->base_size = 16;
 	if (pointer == 0)
 	{
 		print_out("0x0", flags);
@@ -85,7 +86,7 @@ void	pointer(va_list *arg, t_flags **flags)
 		if (hex_ptr[0] == '0')
 			hex_ptr = ft_strjoin("0x1", hex_ptr);
 		else
-			hex_ptr = ft_strjoin("0x10", hex_ptr);
+			hex_ptr = ft_strjoin("0x", hex_ptr);
 		hex_ptr = apply_flags(hex_ptr, flags);
 		print_out(hex_ptr, flags);
 	}
