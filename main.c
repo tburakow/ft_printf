@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/18 14:50:34 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/18 15:02:38 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,14 @@ int	main(void)
 	ft_printf("%#.o, %#.0o", 0, 0);
 	printf("\n\n");
 	printf("%#.o, %#.0o", 0, 0);
+	printf("\n\n");
+	ft_printf("{%#.5x}", 1);
+	printf("\n\n");
+	printf("{%#.5x}", 1);
+	printf("\n\n");
+	ft_printf("%#.3o", 1);
+	printf("\n\n");
+	printf("%#.3o", 1);
 	printf("\n\n");
 /* 	ft_printf("%.o, %.0o", 0, 0);
 	printf("\n\n");

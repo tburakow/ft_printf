@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:45:03 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/18 14:37:19 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/18 15:06:45 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ char	*apply_width(char *input, t_flags **flags)
 */
 char	*apply_hash(char *input, t_flags **flags)
 {
-	if ((*flags)->type == 'o')
+	if ((*flags)->type == 'o' && input[0] != '0')
 	{
 		input = ft_strjoin("0", input);
 	}
@@ -235,10 +235,12 @@ char	*apply_flags(char *post_format, t_flags **flags)
 		else if ((*flags)->type == 'o')
 			post_format = "";
 	}
-	if ((*flags)->hash != 0 && (*flags)->zero == 0)
-		post_format = apply_hash(post_format, flags);
 	if ((*flags)->precision != 0)
 		post_format = apply_precision(post_format, flags);
+	if ((*flags)->hash != 0 && (*flags)->zero == 0)
+		post_format = apply_hash(post_format, flags);
+/* 	if ((*flags)->precision != 0)
+		post_format = apply_precision(post_format, flags); */
 	if ((*flags)->minus != 0)
 		post_format = apply_minus(post_format, flags);
 	if ((*flags)->zero != 0)
