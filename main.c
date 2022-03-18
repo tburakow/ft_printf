@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/18 13:00:53 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/18 14:44:13 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,11 +157,49 @@ int	main(void)
 	printf("\n\n");
 	printf("%8.4o", 424242424);
 	printf("\n\n");
-	ft_printf("%.0p, %.p", 0, 0);
+	ft_printf("%.5p", 0);
 	printf("\n\n");
-	bob = "%.0p, %.p";
-	printf(bob, 0, 0);
-	
+	bob = "%.5p";
+	printf(bob, 0);
+	printf("\n\n");
+	ft_printf("%o, %ho, %hho", -42, -42, -42);
+	printf("\n\n");
+	bob = "%o, %ho, %hho";
+	printf(bob, -42, -42, -42);
+	printf("\n\n");
+	ft_printf("%#.o", 42);
+	printf("\n\n");
+	printf("%#.o", 42);
+	printf("\n\n");
+/* 	ft_printf("%.o, %.0o", 0, 0);
+	printf("\n\n");
+	printf("%.o, %.0o", 0, 0);
+	printf("\n\n");
+	ft_printf("%.4s", "42 is the answer");
+	printf("\n\n");
+	printf("%.4s", "42 is the answer");
+	printf("\n\n");
+	ft_printf("%lo, %lo", 0ul, ULONG_MAX);
+	printf("\n\n");
+	printf("%lo, %lo", 0ul, ULONG_MAX);
+	printf("\n\n");
+	bob = "{%5p}";
+	ft_printf("{%5p}", 0);
+	printf("\n\n");
+	ft_printf("%#.o, %#.0o", 0, 0);
+	printf("\n\n");
+	printf("%#.o, %#.0o", 0, 0);
+	printf("\n\n");
+	ft_printf("%#o", 0);
+	printf("\n\n");
+	printf("%#o", 0);
+	printf("\n\n"); */
+
+/* 	ft_printf("%lo, %lo", 0ul, 18446744073709551615);
+	printf("\n\n");
+	bob = "%lo, %lo";
+	printf(bob, 0ul, 18446744073709551615); */
+	printf("\n\n");
 /* 	ret = ft_printf("%d\n", 100);
 	printf("\n\n%u", ret);
 	printf("\n\n");

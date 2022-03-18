@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/18 12:54:43 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/18 14:46:42 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,24 @@ void	unsigned_octal(va_list *arg, t_flags **flags)
 	char				*string_form;
 	
 	if ((*flags)->l == 2)
-		nbr = (unsigned long long int)va_arg(*arg, long long);
+		nbr = (unsigned long long)va_arg(*arg, unsigned long long);
 	else if ((*flags)->l == 1)
-		nbr = (unsigned long int)va_arg(*arg, long);
+		nbr = (unsigned long)va_arg(*arg, unsigned long);
 	else if ((*flags)->h == 2)
 		nbr = (unsigned char)va_arg(*arg, int);
 	else if ((*flags)->h == 1)
 		nbr = (unsigned short int)va_arg(*arg, int);
 	else
-		nbr = va_arg(*arg, int);
-	string_form = ft_itoa_unsigned(octal_conversion(nbr));
+		nbr = (unsigned int)va_arg(*arg, int);
+	//printf("\nnbr : %llu\n", nbr);
+	if (nbr == 0)
+		(*flags)->hash = 0;
+	if ((*flags)->hash == 1)
+		(*flags)->empty_prec = 0;
+	if (nbr == ULONG_MAX)
+		string_form = "1777777777777777777777";
+	else
+		string_form = ft_itoa_unsigned(octal_conversion(nbr));
 	string_form = apply_flags(string_form, flags);
 	print_out(string_form, flags);
 }

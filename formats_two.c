@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/17 14:37:38 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/18 14:26:52 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,13 @@ void	pointer(va_list *arg, t_flags **flags)
 	(*flags)->base_size = 16;
 	if (pointer == 0)
 	{
-		print_out("0x0", flags);
+		if ((*flags)->empty_prec == 1)
+			print_out("0x", flags);
+		else
+		{
+			hex_ptr = apply_flags("0x0", flags);
+			print_out(hex_ptr, flags);
+		}
 	}
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:45:03 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/16 16:38:12 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/18 14:37:19 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*apply_precision(char *input, t_flags **flags)
 	}
 	else if (len < 0 && (*flags)->type == 's')
 	{
-		input = ft_strsub(input, 0, len * -1);
+		input = ft_strsub(input, 0, (*flags)->precision);
 		return (input);
 	}
 	if (check_for_char((*flags)->type, "diouxX") == 1 && extra != NULL)
@@ -135,6 +135,7 @@ char	*apply_width(char *input, t_flags **flags)
 	if ((*flags)->hash != 0)
 		input = apply_hash(input, flags);
 	leftover = (*flags)->width - ft_strlen(input) - (*flags)->char_null;
+	//printf("\nbefore width: %s\n", input);
 	if (leftover > 0)
 	{
 		extra = ft_strnew(leftover);
@@ -145,6 +146,7 @@ char	*apply_width(char *input, t_flags **flags)
 	if (extra != NULL)
 		input = ft_strjoin(extra, input);
 	ft_strdel(&extra);
+	//printf("\nafter width: %s\n", input);
 	return (input);
 }
 
@@ -227,7 +229,12 @@ char	*apply_zero(char *input, t_flags **flags)
 char	*apply_flags(char *post_format, t_flags **flags)
 {
 	if ((*flags)->empty_prec != 0 && check_for_char((*flags)->type, "c%") == 0)
-		post_format = "";
+	{
+		if ((*flags)->hash == 0)
+			post_format = "";
+		else if ((*flags)->type == 'o')
+			post_format = "";
+	}
 	if ((*flags)->hash != 0 && (*flags)->zero == 0)
 		post_format = apply_hash(post_format, flags);
 	if ((*flags)->precision != 0)
