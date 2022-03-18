@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 12:57:46 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/16 17:12:16 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/18 12:57:00 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,6 @@ static char	*popul_str_uns(char *str, int len, unsigned long long n)
 	{
 		str[len--] = (n % 10 + '0');
 		n = n / 10;
-		if (len == 0 && len != 0)
-			str[len--] = '-';
 	}
 	return (str);
 }

@@ -6,17 +6,17 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:59:47 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/10 16:02:03 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/18 12:57:47 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "ft_printf.h"
+#include "ft_printf.h"
 /*
-** This function converts the long "d" from decimal to octal and returns it.
+** This function converts the long long "d" from decimal to octal and returns it.
 */
-int octal_conversion(long long d)
+unsigned long long octal_conversion(unsigned long long d)
 {
-    long long octal;
+    unsigned long long octal;
     long long i;
     
     octal = 0;

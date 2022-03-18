@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/16 17:18:42 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/18 12:54:43 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	signed_int(va_list *arg, t_flags **flags)
 
 void	unsigned_octal(va_list *arg, t_flags **flags)
 {
-	long long	nbr;
-	char		*string_form;
+	unsigned long long	nbr;
+	char				*string_form;
 	
 	if ((*flags)->l == 2)
 		nbr = (unsigned long long int)va_arg(*arg, long long);
@@ -53,7 +53,7 @@ void	unsigned_octal(va_list *arg, t_flags **flags)
 		nbr = (unsigned short int)va_arg(*arg, int);
 	else
 		nbr = va_arg(*arg, int);
-	string_form = ft_itoa(octal_conversion(nbr));
+	string_form = ft_itoa_unsigned(octal_conversion(nbr));
 	string_form = apply_flags(string_form, flags);
 	print_out(string_form, flags);
 }

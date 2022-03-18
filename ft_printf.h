@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:41:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/17 13:42:39 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/18 12:58:04 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char 	*apply_flags(char *post_format, t_flags **flags);
 void	print_out_numeric(int output);
 void 	print_out(char *output, t_flags **flags);
 int		create_flags(t_flags **flags);
-int		octal_conversion(unsigned long long d);
+unsigned long long octal_conversion(unsigned long long d);
 char	*hex_conversion(long long d, t_flags **flags);
 unsigned	convert_length(long long d);
 char    *hex_cap_conversion(long long d, t_flags **flags);

@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/17 14:32:17 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/18 13:00:53 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,14 @@ int	main(void)
 	printf("\n\n");
 	printf(bob, 0);
 	printf("\n\n");
+	ft_printf("%8.4o", 424242424);
+	printf("\n\n");
+	printf("%8.4o", 424242424);
+	printf("\n\n");
+	ft_printf("%.0p, %.p", 0, 0);
+	printf("\n\n");
+	bob = "%.0p, %.p";
+	printf(bob, 0, 0);
 	
 /* 	ret = ft_printf("%d\n", 100);
 	printf("\n\n%u", ret);
