@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/18 14:46:42 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/18 14:53:11 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ void	unsigned_octal(va_list *arg, t_flags **flags)
 	else
 		nbr = (unsigned int)va_arg(*arg, int);
 	//printf("\nnbr : %llu\n", nbr);
-	if (nbr == 0)
-		(*flags)->hash = 0;
 	if ((*flags)->hash == 1)
 		(*flags)->empty_prec = 0;
+	if (nbr == 0)
+		(*flags)->hash = 0;
 	if (nbr == ULONG_MAX)
 		string_form = "1777777777777777777777";
 	else
