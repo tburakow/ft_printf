@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 15:44:55 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/17 14:28:40 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/19 19:23:15 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,11 @@ int	set_width(char *str, int j, t_flags **flags)
 	return (3);
 }
 
-
 /*
 ** this function checks if the current character matches
 ** the '0', '-' , '#', ' ' and '+' - flags.
 */
-static int set_flags(char c, int flagcount, t_flags **flags)
+static int	set_flags(char c, int flagcount, t_flags **flags)
 {
 	if (c == ' ')
 		(*flags)->space = 1;
@@ -76,30 +75,6 @@ static int set_flags(char c, int flagcount, t_flags **flags)
 
 int	ft_raise_flags(char *str, int j, t_flags **flags)
 {
-/*{
-	char	zero_width_prec;
-	
-	zero_width_prec = 'z';
-	while (zero_width_prec != 'r')
-	{
-		if (str[j] == '0' && zero_width_prec == 'z')
-		{
-			flags->zero = 1;
-			zero_width_prec = 'w';
-			j++;
-		}
-		if (ft_isdigit(str[j]) == 0)
-			j = set_flags(str[j], j, flags);
-		if (ft_isdigit(str[j]) == 1 && zero_width_prec == 'w')
-			j = set_width(str, j, flags);
-		if (str[j++] == '.')
-			zero_width_prec = 'p';
-		if (ft_isdigit(str[j]) == 1 && zero_width_prec == 'p')
-			j = set_width(str, j, flags);
-		if (check_for_char(str[j]) == 1)
-			zero_width_prec = 'r';
-	}
-	*/
 	int		status;
 	int		flagcount;
 
@@ -126,6 +101,5 @@ int	ft_raise_flags(char *str, int j, t_flags **flags)
 		j++;
 	}
 	(*flags)->type = str[j];
-	//printf("\n%d\n", flagcount);
 	return (j);
 }

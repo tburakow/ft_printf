@@ -6,7 +6,7 @@
 #    By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 12:15:46 by tburakow          #+#    #+#              #
-#    Updated: 2022/03/16 11:47:14 by tburakow         ###   ########.fr        #
+#    Updated: 2022/03/19 19:11:37 by tburakow         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = libftprintf.a
 
 FUNCTIONS = ft_printf create_flags ft_raise_flags formats_one \
 formats_two check_for_char reset_flags print_out apply_flags \
-octal_conversion hex_conversion to_ascii round special_putchar
+octal_conversion hex_conversion to_ascii round special_putchar \
+apply_flags_two
 
 LIBFUNCS = libft/ft_atoi libft/ft_bzero libft/ft_free_array \
 libft/ft_isalnum libft/ft_isalpha libft/ft_isascii libft/ft_isdigit \
@@ -57,7 +58,8 @@ re: fclean all
 NAMETEST = a.out
 FUNCTIONSTEST = ft_printf create_flags ft_raise_flags formats_one \
 formats_two check_for_char reset_flags print_out apply_flags \
-octal_conversion hex_conversion to_ascii round main special_putchar
+octal_conversion hex_conversion to_ascii round main special_putchar \
+apply_flags_two
 FILESTEST = $(patsubst %, %.c, $(FUNCTIONSTEST))
 OBJECTSTEST = $(patsubst %, %.o, $(FUNCTIONSTEST))
 

@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/18 14:26:52 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/19 19:21:27 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,13 @@ void	float_dec_point(va_list *arg, t_flags **flags)
 		number = va_arg(*arg, long double);
 	else
 		number = va_arg(*arg, double);
-	//printf("\n%Lf\n", number);
 	if ((*flags)->empty_prec == 0 && (*flags)->precision == 0)
 		(*flags)->precision = 6;
 	if (number < 0)
-    {
-        number = number * -1;
-        (*flags)->neg = 1;
-    }
+	{
+		number = number * -1;
+		(*flags)->neg = 1;
+	}
 	number = bankers_round(number, flags);
 	string = to_ascii(number, flags);
 	string = apply_flags(string, flags);
@@ -54,8 +53,6 @@ void	character(va_list *arg, t_flags **flags)
 	}
 	result = apply_flags(result, flags);
 	print_out(result, flags);
-/* 	if (result)
-		ft_strdel(&result); */
 }
 
 void	string(va_list *arg, t_flags **flags)

@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/18 15:02:38 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/19 19:15:49 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ int	main(void)
 	unsigned short shit;
 	unsigned char torspo;
 	long double tantor;
-	char *bob;
-	int		i;
+/* 	char *bob;
+	char *bab; */
+/* 	int		i;
 	unsigned long	l;
-	char	*str;
+	char	*str; */
 	
 	tantor = 234567.1023;
 	shit = 167;
@@ -114,7 +115,7 @@ int	main(void)
 	ft_printf("\n\n");
 	printf("%06.2d", 0);
 	ft_printf("\n\n"); */
-	ft_printf("@moulitest: %.10d", -42);
+/* 	ft_printf("@moulitest: %.10d", -42);
 	printf("\n\n");
 	printf("@moulitest: %.10d", -42);
 	printf("\n\n");
@@ -182,7 +183,7 @@ int	main(void)
 	ft_printf("%#.3o", 1);
 	printf("\n\n");
 	printf("%#.3o", 1);
-	printf("\n\n");
+	printf("\n\n"); */
 /* 	ft_printf("%.o, %.0o", 0, 0);
 	printf("\n\n");
 	printf("%.o, %.0o", 0, 0);
@@ -206,6 +207,9 @@ int	main(void)
 	printf("\n\n");
 	printf("%#o", 0);
 	printf("\n\n"); */
+	
+	
+	 
 
 /* 	ft_printf("%lo, %lo", 0ul, 18446744073709551615);
 	printf("\n\n");

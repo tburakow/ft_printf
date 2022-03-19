@@ -6,13 +6,13 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:40:40 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/17 13:45:47 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/19 19:22:26 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_formats	*formats[10] = {signed_int, signed_int, unsigned_octal, \
+t_formats	*g_formats[10] = {signed_int, signed_int, unsigned_octal, \
 unsigned_dec, unsigned_hex, unsigned_hex_cap, float_dec_point, \
 character, string, pointer};
 
@@ -21,30 +21,6 @@ int	error_output(char *mess)
 	ft_putstr(mess);
 	return (1);
 }
-
-/*
-** Takes the index and calls the corresponding function
-** with the current argument.
-*/
-/* static void format(int i, va_list *arg, t_flags **flags)
-{
-	t_format	*format[11];
-	
-	format[0] = signed_int;
-	format[1] = signed_int;
-	format[2] = unsigned_octal;
-	format[3] = unsigned_dec;
-	format[4] = unsigned_hex;
-	format[5] = unsigned_hex_cap;
-	format[6] = float_dec_point;
-	format[7] = character;
-	format[8] = string;
-	format[9] = pointer;
-	if (i < 10)
-		format[i](arg, flags);
-	else
-		percent(flags);
-} */
 
 /*
 ** This function determines the format for the current argument
@@ -66,8 +42,7 @@ static void	determine_format(char c, va_list *arg, t_flags **flags)
 			if (c == '%')
 				percent(flags);
 			else
-			//printf("\nformat determined\n");
-				formats[i](arg, flags);
+				g_formats[i](arg, flags);
 		}
 		i++;
 	}
@@ -78,11 +53,11 @@ static void	determine_format(char c, va_list *arg, t_flags **flags)
 */
 int	ft_printf(const char *format, ...)
 {
-	int	j;
-	int jmax;
+	int		j;
+	int		jmax;
 	va_list	arg;
 	t_flags	*flags;
-	
+
 	jmax = ft_strlen(format);
 	if (create_flags(&flags) == 0)
 		return (error_output("error: flags allocation failed"));

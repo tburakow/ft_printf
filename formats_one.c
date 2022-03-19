@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/18 14:53:11 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/19 19:20:30 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	unsigned_octal(va_list *arg, t_flags **flags)
 {
 	unsigned long long	nbr;
 	char				*string_form;
-	
+
 	if ((*flags)->l == 2)
 		nbr = (unsigned long long)va_arg(*arg, unsigned long long);
 	else if ((*flags)->l == 1)
@@ -53,7 +53,6 @@ void	unsigned_octal(va_list *arg, t_flags **flags)
 		nbr = (unsigned short int)va_arg(*arg, int);
 	else
 		nbr = (unsigned int)va_arg(*arg, int);
-	//printf("\nnbr : %llu\n", nbr);
 	if ((*flags)->hash == 1)
 		(*flags)->empty_prec = 0;
 	if (nbr == 0)
@@ -69,8 +68,8 @@ void	unsigned_octal(va_list *arg, t_flags **flags)
 void	unsigned_dec(va_list *arg, t_flags **flags)
 {
 	unsigned long long	nbr;
-	char		*string_form;
-	
+	char				*string_form;
+
 	nbr = 0;
 	if ((*flags)->l == 2)
 		nbr = va_arg(*arg, unsigned long long);
@@ -95,7 +94,7 @@ void	unsigned_hex(va_list *arg, t_flags **flags)
 {
 	long long	nbr;
 	char		*hexadec;
-	
+
 	if ((*flags)->l == 2)
 		nbr = (unsigned long long int)va_arg(*arg, long long);
 	else if ((*flags)->l == 1)
@@ -118,7 +117,7 @@ void	unsigned_hex_cap(va_list *arg, t_flags **flags)
 {
 	long long	nbr;
 	char		*hexadec;
-	
+
 	if ((*flags)->l == 2)
 		nbr = (unsigned long long int)va_arg(*arg, long long);
 	else if ((*flags)->l == 1)
@@ -127,7 +126,7 @@ void	unsigned_hex_cap(va_list *arg, t_flags **flags)
 		nbr = (unsigned char)va_arg(*arg, int);
 	else if ((*flags)->h == 1)
 		nbr = (unsigned short int)va_arg(*arg, int);
-	else	
+	else
 		nbr = va_arg(*arg, int);
 	if (nbr == 0)
 		(*flags)->hash = 0;
