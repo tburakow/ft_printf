@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 15:44:55 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/19 19:23:15 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/19 19:26:02 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,7 @@ int	ft_raise_flags(char *str, int j, t_flags **flags)
 
 	status = 0;
 	flagcount = 0;
-	j++;
-	while (str && check_for_char(str[j], "diouxXfcsp%") == 0)
+	while (str && check_for_char(str[++j], "diouxXfcsp%") == 0)
 	{
 		if (str[j] == '.')
 		{
@@ -98,7 +97,6 @@ int	ft_raise_flags(char *str, int j, t_flags **flags)
 			status = set_width(str, j, flags);
 		if (status == 4 && ft_isdigit(str[j]) == 1)
 			status = set_precision(str, j, flags);
-		j++;
 	}
 	(*flags)->type = str[j];
 	return (j);
