@@ -77,7 +77,9 @@ int	ft_printf(const char *format, ...)
 {
 	va_list		arg;
 	t_flags		*flags;
+	int			ret;
 
+	ret = 0;
 	if (create_flags(&flags) == 0)
 		return (error_output("error: flags allocation failed."));
 	va_start(arg, format);
@@ -85,5 +87,7 @@ int	ft_printf(const char *format, ...)
 		return (0);
 	parse_format((char *)format, &arg, &flags);
 	va_end(arg);
-	return (flags->output);
+	ret = flags->output;
+	free(flags);
+	return (ret);
 }

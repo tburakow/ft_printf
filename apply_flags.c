@@ -17,17 +17,18 @@
 */
 char	*apply_hash(char *input, t_flags **flags)
 {
+	(*flags)->hash = 0;
 	if ((*flags)->type == 'o' && input[0] != '0')
 	{
-		input = ft_strjoin("0", input);
+		return(ft_strjoin("0", input));
 	}
 	if ((*flags)->type == 'x')
 	{
-		input = ft_strjoin("0x", input);
+		return(ft_strjoin("0x", input));
 	}
 	if ((*flags)->type == 'X')
 	{
-		input = ft_strjoin("0X", input);
+		return(ft_strjoin("0X", input));
 	}
 	(*flags)->hash = 0;
 	return (input);

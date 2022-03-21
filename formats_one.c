@@ -36,7 +36,6 @@ void	signed_int(va_list *arg, t_flags **flags)
 		(*flags)->empty_prec = 0;
 	string_form = apply_flags(ft_itoa(nbr), flags);
 	print_out(string_form, flags);
-	//ft_strdel(&string_form);
 }
 
 void	unsigned_octal(va_list *arg, t_flags **flags)

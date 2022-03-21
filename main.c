@@ -220,6 +220,7 @@ int	main(void)
 	printf("\n\n%u", ret);
 	printf("\n\n");
 	printf("%d\n\n", 100);
+	ft_printf("@moulitest: %.d %.0d", 0, 0);
 	
 	if (ret > 0)
 		return (1);
