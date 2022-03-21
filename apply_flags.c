@@ -71,7 +71,7 @@ char	*apply_zero(char *input, t_flags **flags)
 	leftover = (*flags)->width - ft_strlen(input) - (*flags)->hash;
 	if ((*flags)->precision != 0)
 		return (apply_width(input, flags));
-	if ((*flags)->minus == 0)
+	else if ((*flags)->minus == 0)
 	{
 		if ((*flags)->width != 0 && leftover > 0)
 		{	

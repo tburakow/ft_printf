@@ -32,7 +32,7 @@ void	float_dec_point(va_list *arg, t_flags **flags)
 	string = to_ascii(number, flags);
 	string = apply_flags(string, flags);
 	print_out(string, flags);
-	ft_strdel(&string);
+	//ft_strdel(&string);
 }
 
 void	character(va_list *arg, t_flags **flags)
@@ -53,6 +53,7 @@ void	character(va_list *arg, t_flags **flags)
 	}
 	result = apply_flags(result, flags);
 	print_out(result, flags);
+	//ft_strdel(&result);
 }
 
 void	string(va_list *arg, t_flags **flags)
@@ -64,6 +65,7 @@ void	string(va_list *arg, t_flags **flags)
 		string = "(null)";
 	string = apply_flags(string, flags);
 	print_out(string, flags);
+	//ft_strdel(&string);
 }
 
 void	pointer(va_list *arg, t_flags **flags)
@@ -81,6 +83,7 @@ void	pointer(va_list *arg, t_flags **flags)
 		{
 			hex_ptr = apply_flags("0x0", flags);
 			print_out(hex_ptr, flags);
+			//ft_strdel(&hex_ptr);
 		}
 	}
 	else
@@ -92,6 +95,7 @@ void	pointer(va_list *arg, t_flags **flags)
 			hex_ptr = ft_strjoin("0x", hex_ptr);
 		hex_ptr = apply_flags(hex_ptr, flags);
 		print_out(hex_ptr, flags);
+		//ft_strdel(&hex_ptr);
 	}
 }
 
@@ -101,4 +105,5 @@ void	percent(t_flags **flags)
 
 	character = apply_flags("%", flags);
 	print_out(character, flags);
+	//ft_strdel(&character);
 }

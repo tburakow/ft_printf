@@ -6,6 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:40:40 by tburakow          #+#    #+#             */
+/*   Updated: 2022/03/21 12:38:23 by tburakow         ###   ########.fr       */
 /*   Updated: 2022/03/19 19:22:26 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -48,35 +49,41 @@ static void	determine_format(char c, va_list *arg, t_flags **flags)
 	}
 }
 
+static void	parse_format(char *format, va_list *arg, t_flags **flags)
+{
+	int jmax;
+	int j;
+
+	j = 0;
+	jmax = ft_strlen(format);
+	while (j < jmax)
+	{
+		reset_flags(flags);
+		while (format[j] != '%' && j <= jmax)
+			special_putchar(format[j++], flags);
+		if (j <= jmax)
+		{
+			j = ft_raise_flags((char *)format, j, flags);
+			determine_format(format[j], arg, flags);
+		}
+		j++;
+	}
+}
+
 /*
 ** Replace this with a cool explanation of printf
 */
 int	ft_printf(const char *format, ...)
 {
-	int		j;
-	int		jmax;
-	va_list	arg;
-	t_flags	*flags;
+	va_list		arg;
+	t_flags		*flags;
 
-	jmax = ft_strlen(format);
 	if (create_flags(&flags) == 0)
-		return (error_output("error: flags allocation failed"));
+		return (error_output("error: flags allocation failed."));
 	va_start(arg, format);
-	j = 0;
 	if (format[0] == '%' && format[1] == '\0')
 		return (0);
-	while (j < jmax)
-	{
-		reset_flags(&flags);
-		while (format[j] != '%' && j <= jmax)
-			special_putchar(format[j++], &flags);
-		if (j <= jmax)
-		{
-			j = ft_raise_flags((char *)format, j, &flags);
-			determine_format(format[j], &arg, &flags);
-		}
-		j++;
-	}
+	parse_format((char *)format, &arg, &flags);
 	va_end(arg);
 	return (flags->output);
 }

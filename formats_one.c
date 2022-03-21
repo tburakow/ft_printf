@@ -36,6 +36,7 @@ void	signed_int(va_list *arg, t_flags **flags)
 		(*flags)->empty_prec = 0;
 	string_form = apply_flags(ft_itoa(nbr), flags);
 	print_out(string_form, flags);
+	//ft_strdel(&string_form);
 }
 
 void	unsigned_octal(va_list *arg, t_flags **flags)
@@ -63,6 +64,7 @@ void	unsigned_octal(va_list *arg, t_flags **flags)
 		string_form = ft_itoa_unsigned(octal_conversion(nbr));
 	string_form = apply_flags(string_form, flags);
 	print_out(string_form, flags);
+	//ft_strdel(&string_form);
 }
 
 void	unsigned_dec(va_list *arg, t_flags **flags)
@@ -88,6 +90,7 @@ void	unsigned_dec(va_list *arg, t_flags **flags)
 	}
 	string_form = apply_flags(ft_itoa_unsigned(nbr), flags);
 	print_out(string_form, flags);
+	//ft_strdel(&string_form);
 }
 
 void	unsigned_hex(va_list *arg, t_flags **flags)
@@ -111,6 +114,7 @@ void	unsigned_hex(va_list *arg, t_flags **flags)
 	hexadec = hex_conversion(nbr, flags);
 	hexadec = apply_flags(hexadec, flags);
 	print_out(hexadec, flags);
+	//ft_strdel(&hexadec);
 }
 
 void	unsigned_hex_cap(va_list *arg, t_flags **flags)
@@ -134,4 +138,5 @@ void	unsigned_hex_cap(va_list *arg, t_flags **flags)
 	hexadec = hex_cap_conversion(nbr, flags);
 	hexadec = apply_flags(hexadec, flags);
 	print_out(hexadec, flags);
+	//ft_strdel(&hexadec);
 }

@@ -12,6 +12,49 @@
 
 #include "ft_printf.h"
 
+static char *hex_base(char *hexadec, long long d, long long i, \
+t_flags **flags)
+{
+    long long rem;
+
+    while (d > 0)
+    {
+        rem = d % 16;
+        if (rem <= 9)
+            rem += 48;
+        else
+            rem += 87;
+        hexadec[i - 1] = rem;
+        i--;
+        d = d / 16;
+    }
+    hexadec[(*flags)->base_size] = '\0';
+    if (i > 0)
+        hexadec = ft_strsub(hexadec, i, (*flags)->base_size - 1);
+    return (hexadec);
+}
+
+static char *neg_hex_base(char *hexadec, unsigned long long neg, long long i,\
+ t_flags **flags)
+{
+    long long rem;
+    
+    while (neg > 0 && i >= 0)
+    {
+            rem = neg % 16;
+        if (rem <= 9)
+            rem += 48;
+        else
+            rem += 87;
+        hexadec[i - 1] = rem;
+        i--;
+        neg = neg / 16;
+    }
+    hexadec[(*flags)->base_size] = '\0';
+    if (i > 0)
+        hexadec = ft_strsub(hexadec, i, (*flags)->base_size - 1);
+    return (hexadec);
+}
 /*
 ** This function converts the long "d" from decimal to octal and returns it.
 */
@@ -19,7 +62,6 @@ char	*hex_conversion(long long d, t_flags **flags)
 {
 	char				*hexadec;
 	long long			i;
-	long long			rem;
 	unsigned long long	neg;
 
 	neg = 0;
@@ -30,130 +72,11 @@ char	*hex_conversion(long long d, t_flags **flags)
 		return (NULL);
 	i = (*flags)->base_size;
 	if (d > 0)
-	{
-		while (d > 0)
-		{
-			rem = d % 16;
-			if (rem <= 9)
-				rem += 48;
-			else
-				rem += 87;
-			hexadec[i - 1] = rem;
-			i--;
-			d = d / 16;
-		}
-	}
+        hexadec = hex_base(hexadec, d, i, flags);
 	else
 	{
 		neg = d;
-		while (neg > 0 && i >= 0)
-		{
-			rem = neg % 16;
-			if (rem <= 9)
-				rem += 48;
-			else
-				rem += 87;
-			hexadec[i - 1] = rem;
-			i--;
-			neg = neg / 16;
-		}
+        hexadec = neg_hex_base(hexadec, neg, i, flags);
 	}
-	hexadec[(*flags)->base_size] = '\0';
-	if (i > 0)
-		hexadec = ft_strsub(hexadec, i, (*flags)->base_size - 1);
 	return (hexadec);
-}
-
-char    *hex_cap_conversion(long long d, t_flags **flags)
-{
-    char        *hexadec;
-    long long   i;
-    long long   rem;
-    unsigned long long neg;
-
-    neg = 0;
-	if (d == 0)
-		return ("0");
-    hexadec = ft_strnew((*flags)->base_size);
-    if (!hexadec)
-        return (NULL);
-    i = (*flags)->base_size;
-    if (d > 0)
-        while (d > 0)
-        {
-            rem = d % 16;
-            if (rem <= 9)
-                rem += 48;
-            else
-                rem += 55;
-            hexadec[i - 1] = rem;
-            i--;
-            d = d / 16;
-        }
-    else
-    {
-        neg = d;
-        while (neg > 0 && i >= 0)
-        {
-                rem = neg % 16;
-            if (rem <= 9)
-                rem += 48;
-            else
-                rem += 55;
-            hexadec[i - 1] = rem;
-            i--;
-            neg = neg / 16;
-        }
-    }
-    hexadec[(*flags)->base_size] = '\0';
-    if (i > 0)
-        hexadec = ft_strsub(hexadec, i, (*flags)->base_size - 1);
-    return (hexadec);
-}
-
-char    *ptr_conversion(long long d, t_flags **flags)
-{
-    char        *hexadec;
-    long long   i;
-    long long   rem;
-    unsigned long long neg;
-
-    neg = 0;
-	if (d == 0)
-		return ("0");
-    hexadec = ft_strnew((*flags)->base_size);
-    if (!hexadec)
-        return (NULL);
-    i = (*flags)->base_size;
-    if (d > 0)
-        while (d > 0)
-        {
-            rem = d % 16;
-            if (rem <= 9)
-                rem += 48;
-            else
-                rem += 87;
-            hexadec[i - 1] = rem;
-            i--;
-            d = d / 16;
-        }
-    else
-    {
-        neg = d;
-        while (neg > 0 && i >= 0)
-        {
-                rem = neg % 16;
-            if (rem <= 9)
-                rem += 48;
-            else
-                rem += 87;
-            hexadec[i - 1] = rem;
-            i--;
-            neg = neg / 16;
-        }
-    }
-    hexadec[(*flags)->base_size] = '\0';
-    if (i > 0)
-        hexadec = ft_strsub(hexadec, i, (*flags)->base_size - 1);
-    return (hexadec);
 }

@@ -216,10 +216,10 @@ int	main(void)
 	bob = "%lo, %lo";
 	printf(bob, 0ul, 18446744073709551615); */
 	printf("\n\n");
-/* 	ret = ft_printf("%d\n", 100);
+	ret = ft_printf("%d\n", 100);
 	printf("\n\n%u", ret);
 	printf("\n\n");
-	printf("%d\n\n", 100); */
+	printf("%d\n\n", 100);
 	
 	if (ret > 0)
 		return (1);
