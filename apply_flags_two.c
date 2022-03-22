@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 19:10:20 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/22 11:56:30 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/22 12:02:22 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ char	*apply_precision(char *input, t_flags **flags)
 	}
 	if (check_for_char((*flags)->type, "diouxX") == 1 && extra != NULL)
 	{
-		input = ft_strjoin(extra, input);
-		ft_strdel(&extra);
+		input = strjoin_with_free(extra, input);
 	}
 	return (input);
 }
@@ -63,8 +62,7 @@ char	*apply_plus(char *input, t_flags **flags)
 	}
 	else
 	{
-		input = ft_strjoin(extra, input);
-		ft_strdel(&extra);
+		input = strjoin_with_free(extra, input);
 	}
 	return (input);
 }
@@ -91,8 +89,7 @@ char	*apply_neg(char *input, t_flags **flags)
 	}
 	else
 	{
-		input = ft_strjoin(extra, input);
-		ft_strdel(&extra);
+		input = strjoin_with_free(extra, input);
 	}
 	return (input);
 }
@@ -116,10 +113,7 @@ char	*apply_space(char *input, t_flags **flags)
 				input[0] = ' ';
 			}
 			else
-			{
-				input = ft_strjoin(extra, input);
-				ft_strdel(&extra);
-			}
+				input = strjoin_with_free(extra, input);
 		}
 	}
 	return (input);
@@ -145,7 +139,6 @@ char	*apply_width(char *input, t_flags **flags)
 	else
 		extra = NULL;
 	if (extra != NULL)
-		input = ft_strjoin(extra, input);
-	ft_strdel(&extra);
+		input = strjoin_with_free(extra, input);
 	return (input);
 }

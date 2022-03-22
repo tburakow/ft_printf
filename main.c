@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/22 11:07:32 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/22 12:39:16 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,15 +215,11 @@ int	main(void)
 	printf("\n\n");
 	bob = "%lo, %lo";
 	printf(bob, 0ul, 18446744073709551615); */
+
 	printf("\n\n");
-	ret = ft_printf("%x\n", 100);
-	printf("\n\n%u", ret);
-	printf("\n\n");
-	printf("%x\n\n", 100);
+	ft_printf("%x\n\n", 100);
+
 	
 	exit(0);
-	if (ret > 0)
-		return (1);
-	return (0);
 }
 // for integer # -flag doesn't work.

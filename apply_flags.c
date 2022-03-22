@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:45:03 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/22 11:47:24 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/22 12:38:09 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,28 @@
 */
 char	*apply_hash(char *input, t_flags **flags)
 {
+	char	*add;
+
+	add = NULL;
 	(*flags)->hash = 0;
 	if ((*flags)->type == 'o' && input[0] != '0')
 	{
-		return(ft_strjoin("0", input));
+		add = ft_strnew(1);
+		add = ft_strcpy(add, "0");
+		input = ft_strjoin(add, input);
 	}
 	if ((*flags)->type == 'x')
 	{
-		return(ft_strjoin("0x", input));
+		add = ft_strnew(2);
+		add = ft_strcpy(add, "0x");
+		input = ft_strjoin(add, input);
 	}
 	if ((*flags)->type == 'X')
 	{
-		return(ft_strjoin("0X", input));
+		add = ft_strnew(2);
+		add = ft_strcpy(add, "0X");
+		input = ft_strjoin(add, input);
 	}
-	(*flags)->hash = 0;
 	return (input);
 }
 
@@ -55,8 +63,7 @@ char	*apply_minus(char *input, t_flags **flags)
 	else
 		extra = NULL;
 	if (extra != NULL)
-		input = ft_strjoin(input, extra);
-	ft_strdel(&extra);
+		input = strjoin_with_free(input, extra);
 	return (input);
 }
 
@@ -80,8 +87,7 @@ char	*apply_zero(char *input, t_flags **flags)
 			extra = (char *)ft_memset(extra, '0', leftover);
 			if ((*flags)->hash != 0)
 				extra = apply_hash(extra, flags);
-			input = ft_strjoin(extra, input);
-			ft_strdel(&extra);
+			input = strjoin_with_free(extra, input);
 		}
 	}
 	return (input);
@@ -125,3 +131,4 @@ void	apply_flags(char *from_format, t_flags **flags)
 		post_format = apply_hash(post_format, flags);
 	print_out(post_format, flags);
 }
+
