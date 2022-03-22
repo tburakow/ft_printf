@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:45:03 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/19 19:17:33 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/22 10:17:57 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char	*apply_zero(char *input, t_flags **flags)
 /*
 ** checks which *flags to apply and applies them (PARANTELE!)
 */
-char	*apply_flags(char *post_format, t_flags **flags)
+void	apply_flags(char *post_format, t_flags **flags)
 {
 	if ((*flags)->empty_prec != 0 && check_for_char((*flags)->type, "c%") == 0)
 	{
@@ -116,5 +116,5 @@ char	*apply_flags(char *post_format, t_flags **flags)
 		post_format = apply_plus(post_format, flags);
 	if ((*flags)->hash != 0 && (*flags)->zero == 1)
 		post_format = apply_hash(post_format, flags);
-	return (post_format);
+	print_out(post_format, flags);
 }

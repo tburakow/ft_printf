@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:41:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/18 12:58:04 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/22 10:03:57 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		set_precision(char *str, int j, t_flags **flags);
 int		check_for_char(char c, char *str);
 void	reset_flags(t_flags **flags);
 int		apply_flags_numeric(int post_format, t_flags **flags);
-char 	*apply_flags(char *post_format, t_flags **flags);
+void	apply_flags(char *post_format, t_flags **flags);
 void	print_out_numeric(int output);
 void 	print_out(char *output, t_flags **flags);
 int		create_flags(t_flags **flags);

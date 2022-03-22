@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/19 19:21:27 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/22 10:17:13 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	float_dec_point(va_list *arg, t_flags **flags)
 {
-	char		*string;
 	long double	number;
 
 	if ((*flags)->bigl == 1)
@@ -28,11 +27,7 @@ void	float_dec_point(va_list *arg, t_flags **flags)
 		number = number * -1;
 		(*flags)->neg = 1;
 	}
-	number = bankers_round(number, flags);
-	string = to_ascii(number, flags);
-	string = apply_flags(string, flags);
-	print_out(string, flags);
-	//ft_strdel(&string);
+	apply_flags(to_ascii(bankers_round(number, flags), flags), flags);
 }
 
 void	character(va_list *arg, t_flags **flags)
@@ -51,9 +46,7 @@ void	character(va_list *arg, t_flags **flags)
 		result = ft_strnew(1);
 		result[0] = character;
 	}
-	result = apply_flags(result, flags);
-	print_out(result, flags);
-	//ft_strdel(&result);
+	apply_flags(result, flags);
 }
 
 void	string(va_list *arg, t_flags **flags)
@@ -62,10 +55,9 @@ void	string(va_list *arg, t_flags **flags)
 
 	string = va_arg(*arg, char *);
 	if (string == NULL)
-		string = "(null)";
-	string = apply_flags(string, flags);
-	print_out(string, flags);
-	//ft_strdel(&string);
+		apply_flags("(null)", flags);
+	else
+		apply_flags(string, flags);
 }
 
 void	pointer(va_list *arg, t_flags **flags)
@@ -81,9 +73,7 @@ void	pointer(va_list *arg, t_flags **flags)
 			print_out("0x", flags);
 		else
 		{
-			hex_ptr = apply_flags("0x0", flags);
-			print_out(hex_ptr, flags);
-			//ft_strdel(&hex_ptr);
+			apply_flags("0x0", flags);
 		}
 	}
 	else
@@ -93,17 +83,11 @@ void	pointer(va_list *arg, t_flags **flags)
 			hex_ptr = ft_strjoin("0x1", hex_ptr);
 		else
 			hex_ptr = ft_strjoin("0x", hex_ptr);
-		hex_ptr = apply_flags(hex_ptr, flags);
-		print_out(hex_ptr, flags);
-		//ft_strdel(&hex_ptr);
+		apply_flags(hex_ptr, flags);
 	}
 }
 
 void	percent(t_flags **flags)
 {
-	char	*character;
-
-	character = apply_flags("%", flags);
-	print_out(character, flags);
-	//ft_strdel(&character);
+	apply_flags("%", flags);
 }

@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/19 19:20:30 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/22 10:08:38 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	signed_int(va_list *arg, t_flags **flags)
 {
 	long long	nbr;
-	char		*string_form;
 
 	if ((*flags)->l == 2)
 		nbr = (long long int)va_arg(*arg, long long);
@@ -34,14 +33,12 @@ void	signed_int(va_list *arg, t_flags **flags)
 	}
 	if (nbr != 0)
 		(*flags)->empty_prec = 0;
-	string_form = apply_flags(ft_itoa(nbr), flags);
-	print_out(string_form, flags);
+	apply_flags(ft_itoa(nbr), flags);
 }
 
 void	unsigned_octal(va_list *arg, t_flags **flags)
 {
 	unsigned long long	nbr;
-	char				*string_form;
 
 	if ((*flags)->l == 2)
 		nbr = (unsigned long long)va_arg(*arg, unsigned long long);
@@ -58,18 +55,14 @@ void	unsigned_octal(va_list *arg, t_flags **flags)
 	if (nbr == 0)
 		(*flags)->hash = 0;
 	if (nbr == ULONG_MAX)
-		string_form = "1777777777777777777777";
+		apply_flags("1777777777777777777777", flags);
 	else
-		string_form = ft_itoa_unsigned(octal_conversion(nbr));
-	string_form = apply_flags(string_form, flags);
-	print_out(string_form, flags);
-	//ft_strdel(&string_form);
+		apply_flags(ft_itoa_unsigned(octal_conversion(nbr)), flags);
 }
 
 void	unsigned_dec(va_list *arg, t_flags **flags)
 {
 	unsigned long long	nbr;
-	char				*string_form;
 
 	nbr = 0;
 	if ((*flags)->l == 2)
@@ -87,15 +80,12 @@ void	unsigned_dec(va_list *arg, t_flags **flags)
 		(*flags)->neg = 1;
 		nbr = nbr * -1;
 	}
-	string_form = apply_flags(ft_itoa_unsigned(nbr), flags);
-	print_out(string_form, flags);
-	//ft_strdel(&string_form);
+	apply_flags(ft_itoa_unsigned(nbr), flags);
 }
 
 void	unsigned_hex(va_list *arg, t_flags **flags)
 {
 	long long	nbr;
-	char		*hexadec;
 
 	if ((*flags)->l == 2)
 		nbr = (unsigned long long int)va_arg(*arg, long long);
@@ -110,16 +100,12 @@ void	unsigned_hex(va_list *arg, t_flags **flags)
 	if (nbr == 0)
 		(*flags)->hash = 0;
 	(*flags)->hash *= 2;
-	hexadec = hex_conversion(nbr, flags);
-	hexadec = apply_flags(hexadec, flags);
-	print_out(hexadec, flags);
-	//ft_strdel(&hexadec);
+	apply_flags(hex_conversion(nbr, flags), flags);
 }
 
 void	unsigned_hex_cap(va_list *arg, t_flags **flags)
 {
 	long long	nbr;
-	char		*hexadec;
 
 	if ((*flags)->l == 2)
 		nbr = (unsigned long long int)va_arg(*arg, long long);
@@ -134,8 +120,5 @@ void	unsigned_hex_cap(va_list *arg, t_flags **flags)
 	if (nbr == 0)
 		(*flags)->hash = 0;
 	(*flags)->hash *= 2;
-	hexadec = hex_cap_conversion(nbr, flags);
-	hexadec = apply_flags(hexadec, flags);
-	print_out(hexadec, flags);
-	//ft_strdel(&hexadec);
+	apply_flags(hex_cap_conversion(nbr, flags), flags);
 }
