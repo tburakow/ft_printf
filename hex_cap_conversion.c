@@ -20,7 +20,7 @@ static char *hex_cap_base(char *hexadec, long long d, long long i, t_flags **fla
     }
     output[(*flags)->base_size] = '\0';
     if (i > 0)
-        output = ft_strsub(output, i, (*flags)->base_size - 1);
+        output = ft_strsub(output, i, ((*flags)->base_size - i));
     return (output);
 }
 
@@ -45,7 +45,7 @@ static char *hex_neg_cap_base(char *hexadec, unsigned long long neg, long long i
     }
     output[(*flags)->base_size] = '\0';
     if (i > 0)
-        output = ft_strsub(output, i, (*flags)->base_size - 1);
+        output = ft_strsub(output, i, ((*flags)->base_size - i));
     return (output);
 }
 

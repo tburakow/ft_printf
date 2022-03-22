@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:59:47 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/22 11:31:58 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/22 15:49:43 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_flags **flags)
     }
     output[(*flags)->base_size] = '\0';
     if (i > 0)
-        output = strsub_with_free(output, i, (*flags)->base_size - 1);
+        output = strsub_with_free(output, i, ((*flags)->base_size - i));
     return (output);
 }
 
@@ -58,7 +58,7 @@ static char *neg_hex_base(char *hexadec, unsigned long long neg, long long i,\
     }
     output[(*flags)->base_size] = '\0';
     if (i > 0)
-        output = strsub_with_free(output, i, (*flags)->base_size - 1);
+        output = strsub_with_free(output, i, ((*flags)->base_size - i));
     return (output);
 }
 
