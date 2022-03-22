@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_out.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/18 12:45:55 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/22 11:51:40 by tburakow         ###   ########.fr       */
+/*   Created: 2021/11/10 15:23:43 by tburakow          #+#    #+#             */
+/*   Updated: 2021/12/07 12:32:52 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void print_out(char *output, t_flags **flags)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int	i;
-	char c;
-	
+	unsigned char	*d1;
+	unsigned char	*d2;
+	size_t			i;
+
 	i = 0;
-	while (output[i] != '\0')
+	d1 = (unsigned char *)s1;
+	d2 = (unsigned char *)s2;
+	while (i < n)
 	{
-		special_putchar(output[i], flags);
-		i++;
+		if (d1[i] == d2[i])
+			i++;
+		else
+			return (d1[i] - d2[i]);
 	}
-	if ((*flags)->char_null == 1)
-	{
-		c = '\0';
-		(*flags)->output++;
-		write(1, &c, 1);
-	}
-	ft_strdel(&output);
+	return (0);
 }

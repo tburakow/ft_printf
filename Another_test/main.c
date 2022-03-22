@@ -1,43 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strjoin_with_free.c                                :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 16:42:24 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/22 11:55:42 by tburakow         ###   ########.fr       */
+/*   Created: 2022/03/22 11:12:17 by tburakow          #+#    #+#             */
+/*   Updated: 2022/03/22 11:26:03 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*strjoin_with_free(char *s1, char *s2)
+int main(void)
 {
-	char	*res;
-	size_t	i;
-	size_t	j;
+	int 	nbr;
+	char 	*str;
+	int		i;
+	t_flags	*flags;
 
-	i = 0;
-	j = 0;
-	if (!s1 || !s2)
-		return (NULL);
-	res = (char *)malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!res)
-		return (NULL);
-	while (i < ft_strlen(s1))
-	{
-		res[j] = s1[i];
-		i++;
-		j++;
-	}
-	i = 0;
-	while (i < ft_strlen(s2))
-	{
-		res[j++] = s2[i++];
-	}
-	res[j] = '\0';
-	ft_strdel(&s1);
-	ft_strdel(&s2);
-	return (res);
+	nbr = 100;
+	i = create_flags(&flags);
+	str = hex_conversion(nbr, &flags);
+	printf("\n%s\n", str);
+	free(flags);
+	free(str);
 }

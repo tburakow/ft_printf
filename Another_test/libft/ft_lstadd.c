@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_out.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/18 12:45:55 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/22 11:51:40 by tburakow         ###   ########.fr       */
+/*   Created: 2021/11/18 13:35:01 by tburakow          #+#    #+#             */
+/*   Updated: 2021/11/18 21:30:47 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void print_out(char *output, t_flags **flags)
+void	ft_lstadd(t_list **alst, t_list *new)
 {
-	int	i;
-	char c;
-	
-	i = 0;
-	while (output[i] != '\0')
-	{
-		special_putchar(output[i], flags);
-		i++;
-	}
-	if ((*flags)->char_null == 1)
-	{
-		c = '\0';
-		(*flags)->output++;
-		write(1, &c, 1);
-	}
-	ft_strdel(&output);
+	new->next = *alst;
+	*alst = new;
 }

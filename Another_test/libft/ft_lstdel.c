@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_out.c                                        :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/18 12:45:55 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/22 11:51:40 by tburakow         ###   ########.fr       */
+/*   Created: 2021/11/18 13:25:14 by tburakow          #+#    #+#             */
+/*   Updated: 2022/01/03 15:13:37 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void print_out(char *output, t_flags **flags)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	int	i;
-	char c;
-	
-	i = 0;
-	while (output[i] != '\0')
+	t_list	*temp;
+	t_list	*temp_2;
+
+	temp = *alst;
+	while (temp->next != NULL)
 	{
-		special_putchar(output[i], flags);
-		i++;
+		temp = *alst;
+		temp_2 = temp->next;
+		del(temp->content, ft_strlen(temp->content));
+		free(temp);
+		*alst = temp_2;
 	}
-	if ((*flags)->char_null == 1)
-	{
-		c = '\0';
-		(*flags)->output++;
-		write(1, &c, 1);
-	}
-	ft_strdel(&output);
+	*alst = NULL;
 }

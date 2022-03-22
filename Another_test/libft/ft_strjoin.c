@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strjoin_with_free.c                                :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 16:42:24 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/22 11:55:42 by tburakow         ###   ########.fr       */
+/*   Updated: 2021/11/30 13:01:11 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-char	*strjoin_with_free(char *s1, char *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*res;
 	size_t	i;
@@ -37,7 +37,5 @@ char	*strjoin_with_free(char *s1, char *s2)
 		res[j++] = s2[i++];
 	}
 	res[j] = '\0';
-	ft_strdel(&s1);
-	ft_strdel(&s2);
 	return (res);
 }

@@ -1,43 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strjoin_with_free.c                                :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 16:42:24 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/22 11:55:42 by tburakow         ###   ########.fr       */
+/*   Created: 2021/11/03 14:07:41 by tburakow          #+#    #+#             */
+/*   Updated: 2021/11/03 15:00:26 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-char	*strjoin_with_free(char *s1, char *s2)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	char	*res;
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
-	if (!s1 || !s2)
-		return (NULL);
-	res = (char *)malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!res)
-		return (NULL);
-	while (i < ft_strlen(s1))
+	while (s1[i] != '\0')
+		i++;
+	while (s2[j] != '\0')
 	{
-		res[j] = s1[i];
+		s1[i] = s2[j];
 		i++;
 		j++;
 	}
-	i = 0;
-	while (i < ft_strlen(s2))
-	{
-		res[j++] = s2[i++];
-	}
-	res[j] = '\0';
-	ft_strdel(&s1);
-	ft_strdel(&s2);
-	return (res);
+	s1[i] = '\0';
+	return (s1);
 }

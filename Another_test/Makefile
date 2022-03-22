@@ -6,7 +6,7 @@
 #    By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 12:15:46 by tburakow          #+#    #+#              #
-#    Updated: 2022/03/22 10:39:07 by tburakow         ###   ########.fr        #
+#    Updated: 2022/03/22 11:20:24 by tburakow         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,11 +57,8 @@ fclean: clean
 re: fclean all
 
 NAMETEST = a.out
-FUNCTIONSTEST = ft_printf create_flags ft_raise_flags formats_one \
-formats_two check_for_char reset_flags print_out apply_flags \
-octal_conversion hex_conversion to_ascii round main special_putchar \
-apply_flags_two hex_cap_conversion ptr_conversion strjoin_with_free \
-strsub_with_free
+FUNCTIONSTEST = create_flags\
+hex_conversion main strsub_with_free
 FILESTEST = $(patsubst %, %.c, $(FUNCTIONSTEST))
 OBJECTSTEST = $(patsubst %, %.o, $(FUNCTIONSTEST))
 

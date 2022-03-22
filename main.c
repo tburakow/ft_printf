@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/19 19:15:49 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/22 11:07:32 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,12 +216,12 @@ int	main(void)
 	bob = "%lo, %lo";
 	printf(bob, 0ul, 18446744073709551615); */
 	printf("\n\n");
-	ret = ft_printf("%d\n", 100);
+	ret = ft_printf("%x\n", 100);
 	printf("\n\n%u", ret);
 	printf("\n\n");
-	printf("%d\n\n", 100);
-	ft_printf("@moulitest: %.d %.0d", 0, 0);
+	printf("%x\n\n", 100);
 	
+	exit(0);
 	if (ret > 0)
 		return (1);
 	return (0);

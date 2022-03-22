@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:45:03 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/22 10:17:57 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/22 11:47:24 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,20 @@ char	*apply_zero(char *input, t_flags **flags)
 /*
 ** checks which *flags to apply and applies them (PARANTELE!)
 */
-void	apply_flags(char *post_format, t_flags **flags)
+void	apply_flags(char *from_format, t_flags **flags)
 {
+	char	*post_format;
+	
+	post_format = ft_strnew(ft_strlen(from_format));
+	post_format = ft_strcpy(post_format, from_format);
 	if ((*flags)->empty_prec != 0 && check_for_char((*flags)->type, "c%") == 0)
 	{
 		if ((*flags)->hash == 0 || ((*flags)->type == 'o' \
 		&& (*flags)->hash == 1))
-			post_format = "";
+		{
+			ft_strdel(&post_format);
+			post_format = ft_strnew(0);
+		}
 	}
 	if ((*flags)->precision != 0)
 		post_format = apply_precision(post_format, flags);

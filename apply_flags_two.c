@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 19:10:20 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/19 19:18:39 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/22 11:56:30 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*apply_precision(char *input, t_flags **flags)
 	}
 	else if (len < 0 && (*flags)->type == 's')
 	{
-		input = ft_strsub(input, 0, (*flags)->precision);
+		input = strsub_with_free(input, 0, (*flags)->precision);
 		return (input);
 	}
 	if (check_for_char((*flags)->type, "diouxX") == 1 && extra != NULL)

@@ -1,43 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strjoin_with_free.c                                :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 16:42:24 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/22 11:55:42 by tburakow         ###   ########.fr       */
+/*   Created: 2021/11/06 05:36:55 by tburakow          #+#    #+#             */
+/*   Updated: 2021/11/26 16:51:52 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-char	*strjoin_with_free(char *s1, char *s2)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char	*res;
-	size_t	i;
-	size_t	j;
+	size_t		i;
+	const char	*x;
+	char		*y;
 
 	i = 0;
-	j = 0;
-	if (!s1 || !s2)
+	x = (const char *)src;
+	y = (char *)dst;
+	if (dst == NULL && src == NULL)
 		return (NULL);
-	res = (char *)malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!res)
-		return (NULL);
-	while (i < ft_strlen(s1))
+	while (i < n)
 	{
-		res[j] = s1[i];
+		y[i] = x[i];
 		i++;
-		j++;
 	}
-	i = 0;
-	while (i < ft_strlen(s2))
-	{
-		res[j++] = s2[i++];
-	}
-	res[j] = '\0';
-	ft_strdel(&s1);
-	ft_strdel(&s2);
-	return (res);
+	return (dst);
 }

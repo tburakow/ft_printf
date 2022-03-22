@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_out.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/18 12:45:55 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/22 11:51:40 by tburakow         ###   ########.fr       */
+/*   Created: 2021/11/15 15:14:34 by tburakow          #+#    #+#             */
+/*   Updated: 2021/11/30 12:59:15 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void print_out(char *output, t_flags **flags)
+static void	put_fd(char c, int fd)
 {
-	int	i;
-	char c;
-	
-	i = 0;
-	while (output[i] != '\0')
+	write(fd, &c, 1);
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n == -2147483648)
 	{
-		special_putchar(output[i], flags);
-		i++;
+		put_fd('-', fd);
+		put_fd('2', fd);
+		ft_putnbr_fd(147483648, fd);
 	}
-	if ((*flags)->char_null == 1)
+	else if (n < 0)
 	{
-		c = '\0';
-		(*flags)->output++;
-		write(1, &c, 1);
+		put_fd('-', fd);
+		ft_putnbr_fd(-n, fd);
 	}
-	ft_strdel(&output);
+	else if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	else
+		put_fd(((char)n + '0'), fd);
 }

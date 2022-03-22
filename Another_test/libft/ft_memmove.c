@@ -1,43 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strjoin_with_free.c                                :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 16:42:24 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/22 11:55:42 by tburakow         ###   ########.fr       */
+/*   Created: 2021/11/10 14:37:09 by tburakow          #+#    #+#             */
+/*   Updated: 2022/03/03 14:18:54 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-char	*strjoin_with_free(char *s1, char *s2)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	*res;
-	size_t	i;
-	size_t	j;
+	size_t		i;
+	char		*d;
+	char		*s;
 
 	i = 0;
-	j = 0;
-	if (!s1 || !s2)
+	d = (char *)dst;
+	s = (char *)src;
+	if (dst == NULL && src == NULL)
 		return (NULL);
-	res = (char *)malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!res)
-		return (NULL);
-	while (i < ft_strlen(s1))
-	{
-		res[j] = s1[i];
-		i++;
-		j++;
-	}
-	i = 0;
-	while (i < ft_strlen(s2))
-	{
-		res[j++] = s2[i++];
-	}
-	res[j] = '\0';
-	ft_strdel(&s1);
-	ft_strdel(&s2);
-	return (res);
+	if (dst > src)
+		while (len--)
+			d[len] = s[len];
+	else
+		ft_memcpy(d, s, len);
+	return (dst);
 }
