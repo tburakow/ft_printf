@@ -25,4 +25,5 @@ int main(void)
 	printf("\n%s\n", str);
 	free(flags);
 	free(str);
+	while(1);
 }

@@ -216,10 +216,27 @@ int	main(void)
 	bob = "%lo, %lo";
 	printf(bob, 0ul, 18446744073709551615); */
 
+/* 	printf("\n\n");
+	ft_printf("%X\n\n", 100);
+	printf("\n\n");
 	printf("\n\n");
 	ft_printf("%x\n\n", 100);
-
+	printf("\n\n"); */
+	printf("\n\n");
+	ft_printf("%.p\n\n", &shit);
+/* 	printf("\n\n");
+	ret = ft_printf("|%-10c|\n\n", '\0');
+	printf("\n\n");
+	printf("ret : %u\n\n", ret);
+	printf("\n\n");
+	printf("|%-10c|\n\n", '\0');
+	printf("\n\n");
+	printf("ret : %u\n\n", ret);
+	printf("\n\n"); */
+	//printf("%p\n\n", &shit);
+	printf("\n\n");
 	
+	while (1);
 	exit(0);
 }
 // for integer # -flag doesn't work.

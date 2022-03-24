@@ -16,7 +16,7 @@ FUNCTIONS = ft_printf create_flags ft_raise_flags formats_one \
 formats_two check_for_char reset_flags print_out apply_flags \
 octal_conversion hex_conversion to_ascii round special_putchar \
 apply_flags_two hex_cap_conversion ptr_conversion strjoin_with_free \
-strsub_with_free
+strsub_with_free char_mod
 
 LIBFUNCS = libft/ft_atoi libft/ft_bzero libft/ft_free_array \
 libft/ft_isalnum libft/ft_isalpha libft/ft_isascii libft/ft_isdigit \
@@ -61,7 +61,7 @@ FUNCTIONSTEST = ft_printf create_flags ft_raise_flags formats_one \
 formats_two check_for_char reset_flags print_out apply_flags \
 octal_conversion hex_conversion to_ascii round main special_putchar \
 apply_flags_two hex_cap_conversion ptr_conversion strjoin_with_free \
-strsub_with_free
+strsub_with_free char_mod
 FILESTEST = $(patsubst %, %.c, $(FUNCTIONSTEST))
 OBJECTSTEST = $(patsubst %, %.o, $(FUNCTIONSTEST))
 

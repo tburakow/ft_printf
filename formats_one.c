@@ -12,20 +12,20 @@
 
 #include "ft_printf.h"
 
-void	signed_int(va_list *arg, t_flags **flags)
+void	signed_int(t_flags **flags)
 {
 	long long	nbr;
 
 	if ((*flags)->l == 2)
-		nbr = (long long int)va_arg(*arg, long long);
+		nbr = (long long int)va_arg((*flags)->arg, long long);
 	else if ((*flags)->l == 1)
-		nbr = (long int)va_arg(*arg, long);
+		nbr = (long int)va_arg((*flags)->arg, long);
 	else if ((*flags)->h == 2)
-		nbr = (signed char)va_arg(*arg, int);
+		nbr = (signed char)va_arg((*flags)->arg, int);
 	else if ((*flags)->h == 1)
-		nbr = (short int)va_arg(*arg, int);
+		nbr = (short int)va_arg((*flags)->arg, int);
 	else
-		nbr = va_arg(*arg, int);
+		nbr = va_arg((*flags)->arg, int);
 	if (nbr < 0 && nbr >= -9223372036854775807)
 	{
 		(*flags)->neg = 1;
@@ -36,20 +36,20 @@ void	signed_int(va_list *arg, t_flags **flags)
 	apply_flags(ft_itoa(nbr), flags);
 }
 
-void	unsigned_octal(va_list *arg, t_flags **flags)
+void	unsigned_octal(t_flags **flags)
 {
 	unsigned long long	nbr;
 
 	if ((*flags)->l == 2)
-		nbr = (unsigned long long)va_arg(*arg, unsigned long long);
+		nbr = (unsigned long long)va_arg((*flags)->arg, unsigned long long);
 	else if ((*flags)->l == 1)
-		nbr = (unsigned long)va_arg(*arg, unsigned long);
+		nbr = (unsigned long)va_arg((*flags)->arg, unsigned long);
 	else if ((*flags)->h == 2)
-		nbr = (unsigned char)va_arg(*arg, int);
+		nbr = (unsigned char)va_arg((*flags)->arg, int);
 	else if ((*flags)->h == 1)
-		nbr = (unsigned short int)va_arg(*arg, int);
+		nbr = (unsigned short int)va_arg((*flags)->arg, int);
 	else
-		nbr = (unsigned int)va_arg(*arg, int);
+		nbr = (unsigned int)va_arg((*flags)->arg, int);
 	if ((*flags)->hash == 1)
 		(*flags)->empty_prec = 0;
 	if (nbr == 0)
@@ -60,21 +60,21 @@ void	unsigned_octal(va_list *arg, t_flags **flags)
 		apply_flags(ft_itoa_unsigned(octal_conversion(nbr)), flags);
 }
 
-void	unsigned_dec(va_list *arg, t_flags **flags)
+void	unsigned_dec(t_flags **flags)
 {
 	unsigned long long	nbr;
 
 	nbr = 0;
 	if ((*flags)->l == 2)
-		nbr = va_arg(*arg, unsigned long long);
+		nbr = va_arg((*flags)->arg, unsigned long long);
 	else if ((*flags)->l == 1)
-		nbr = (unsigned long long)va_arg(*arg, unsigned long);
+		nbr = (unsigned long long)va_arg((*flags)->arg, unsigned long);
 	else if ((*flags)->h == 2)
-		nbr = (unsigned char)va_arg(*arg, unsigned int);
+		nbr = (unsigned char)va_arg((*flags)->arg, unsigned int);
 	else if ((*flags)->h == 1)
-		nbr = (unsigned short)va_arg(*arg, unsigned int);
+		nbr = (unsigned short)va_arg((*flags)->arg, unsigned int);
 	else
-		nbr = (unsigned long long)va_arg(*arg, unsigned int);
+		nbr = (unsigned long long)va_arg((*flags)->arg, unsigned int);
 	if (nbr < 0)
 	{
 		(*flags)->neg = 1;
@@ -83,40 +83,40 @@ void	unsigned_dec(va_list *arg, t_flags **flags)
 	apply_flags(ft_itoa_unsigned(nbr), flags);
 }
 
-void	unsigned_hex(va_list *arg, t_flags **flags)
+void	unsigned_hex(t_flags **flags)
 {
 	long long	nbr;
 
 	if ((*flags)->l == 2)
-		nbr = (unsigned long long int)va_arg(*arg, long long);
+		nbr = (unsigned long long int)va_arg((*flags)->arg, long long);
 	else if ((*flags)->l == 1)
-		nbr = (unsigned long int)va_arg(*arg, long);
+		nbr = (unsigned long int)va_arg((*flags)->arg, long);
 	else if ((*flags)->h == 2)
-		nbr = (unsigned char)va_arg(*arg, int);
+		nbr = (unsigned char)va_arg((*flags)->arg, int);
 	else if ((*flags)->h == 1)
-		nbr = (unsigned short int)va_arg(*arg, int);
+		nbr = (unsigned short int)va_arg((*flags)->arg, int);
 	else
-		nbr = va_arg(*arg, int);
+		nbr = va_arg((*flags)->arg, int);
 	if (nbr == 0)
 		(*flags)->hash = 0;
 	(*flags)->hash *= 2;
 	apply_flags(hex_conversion(nbr, flags), flags);
 }
 
-void	unsigned_hex_cap(va_list *arg, t_flags **flags)
+void	unsigned_hex_cap(t_flags **flags)
 {
 	long long	nbr;
 
 	if ((*flags)->l == 2)
-		nbr = (unsigned long long int)va_arg(*arg, long long);
+		nbr = (unsigned long long int)va_arg((*flags)->arg, long long);
 	else if ((*flags)->l == 1)
-		nbr = (unsigned long int)va_arg(*arg, long);
+		nbr = (unsigned long int)va_arg((*flags)->arg, long);
 	else if ((*flags)->h == 2)
-		nbr = (unsigned char)va_arg(*arg, int);
+		nbr = (unsigned char)va_arg((*flags)->arg, int);
 	else if ((*flags)->h == 1)
-		nbr = (unsigned short int)va_arg(*arg, int);
+		nbr = (unsigned short int)va_arg((*flags)->arg, int);
 	else
-		nbr = va_arg(*arg, int);
+		nbr = va_arg((*flags)->arg, int);
 	if (nbr == 0)
 		(*flags)->hash = 0;
 	(*flags)->hash *= 2;

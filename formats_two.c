@@ -12,14 +12,14 @@
 
 #include "ft_printf.h"
 
-void	float_dec_point(va_list *arg, t_flags **flags)
+void	float_dec_point(t_flags **flags)
 {
 	long double	number;
 
 	if ((*flags)->bigl == 1)
-		number = va_arg(*arg, long double);
+		number = va_arg((*flags)->arg, long double);
 	else
-		number = va_arg(*arg, double);
+		number = va_arg((*flags)->arg, double);
 	if ((*flags)->empty_prec == 0 && (*flags)->precision == 0)
 		(*flags)->precision = 6;
 	if (number < 0)
@@ -30,13 +30,13 @@ void	float_dec_point(va_list *arg, t_flags **flags)
 	apply_flags(to_ascii(bankers_round(number, flags), flags), flags);
 }
 
-void	character(va_list *arg, t_flags **flags)
+void	character(t_flags **flags)
 {
 	int		character;
-	char	*result;
+	//char	*result;
 
-	character = va_arg(*arg, int);
-	if (character == 0)
+	character = va_arg((*flags)->arg, int);
+/* 	if (character == 0)
 	{
 		result = "";
 		(*flags)->char_null = 1;
@@ -46,26 +46,28 @@ void	character(va_list *arg, t_flags **flags)
 		result = ft_strnew(1);
 		result[0] = character;
 	}
-	apply_flags(result, flags);
+	apply_flags(result, flags); */
+	character_mod(flags, character);
 }
 
-void	string(va_list *arg, t_flags **flags)
+void	string(t_flags **flags)
 {
 	char	*string;
 
-	string = va_arg(*arg, char *);
+	string = va_arg((*flags)->arg, char *);
 	if (string == NULL)
 		apply_flags("(null)", flags);
 	else
 		apply_flags(string, flags);
 }
 
-void	pointer(va_list *arg, t_flags **flags)
+void	pointer(t_flags **flags)
 {
 	unsigned long	pointer;
 	char			*hex_ptr;
+	char			*add;
 
-	pointer = va_arg(*arg, unsigned long);
+	pointer = va_arg((*flags)->arg, unsigned long);
 	(*flags)->base_size = 16;
 	if (pointer == 0)
 	{
@@ -80,9 +82,17 @@ void	pointer(va_list *arg, t_flags **flags)
 	{
 		hex_ptr = ptr_conversion(pointer, flags);
 		if (hex_ptr[0] == '0')
-			hex_ptr = ft_strjoin("0x1", hex_ptr);
+		{
+			add = ft_strnew(3);
+			add = ft_strcpy(add, "0x1");
+			hex_ptr = strjoin_with_free(add, hex_ptr);
+		}
 		else
-			hex_ptr = ft_strjoin("0x", hex_ptr);
+		{
+			add = ft_strnew(2);
+			add = ft_strcpy(add, "0x");
+			hex_ptr = strjoin_with_free(add, hex_ptr);
+		}
 		apply_flags(hex_ptr, flags);
 	}
 }

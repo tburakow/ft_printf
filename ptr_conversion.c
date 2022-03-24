@@ -21,7 +21,7 @@ t_flags **flags)
     }
     output[(*flags)->base_size] = '\0';
     if (i > 0)
-        output = ft_strsub(output, i, ((*flags)->base_size - i));
+        output = strsub_with_free(output, i, (*flags)->base_size - i);
     return (output);
 }
 
@@ -46,7 +46,7 @@ static char *neg_ptr_base(char *hexadec, unsigned long long neg, long long i,\
     }
     output[(*flags)->base_size] = '\0';
     if (i > 0)
-        output = ft_strsub(output, i, ((*flags)->base_size - i));
+        output = strsub_with_free(output, i, (*flags)->base_size - i);
     return (output);
 }
 

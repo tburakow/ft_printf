@@ -18,6 +18,7 @@
 
 typedef struct s_flags
 {
+	va_list			arg;
 	unsigned int	l;
 	unsigned int	h;
 	unsigned int	bigl;
@@ -36,15 +37,15 @@ typedef struct s_flags
 	int				char_null;
 }	t_flags;
 
-void	signed_int(va_list *arg, t_flags **flags);
-void 	unsigned_octal(va_list *arg, t_flags **flags);
-void 	unsigned_dec(va_list *arg, t_flags **flags);
-void 	unsigned_hex(va_list *arg, t_flags **flags);
-void 	unsigned_hex_cap(va_list *arg, t_flags **flags);
-void 	float_dec_point(va_list *arg, t_flags **flags);
-void	character(va_list *arg, t_flags **flags);
-void 	string(va_list *arg, t_flags **flags);
-void	pointer(va_list *arg, t_flags **flags);
+void	signed_int(t_flags **flags);
+void 	unsigned_octal(t_flags **flags);
+void 	unsigned_dec(t_flags **flags);
+void 	unsigned_hex(t_flags **flags);
+void 	unsigned_hex_cap(t_flags **flags);
+void 	float_dec_point(t_flags **flags);
+void	character(t_flags **flags);
+void 	string(t_flags **flags);
+void	pointer(t_flags **flags);
 void 	percent(t_flags **flags);
 int		ft_printf(const char *format, ...);
 int		ft_raise_flags(char *str, int j, t_flags **flags);
@@ -70,12 +71,13 @@ char	*apply_space(char *input, t_flags **flags);
 char	*apply_neg(char *input, t_flags **flags);
 char	*apply_plus(char *input, t_flags **flags);
 char	*apply_precision(char *input, t_flags **flags);
-typedef void t_formats(va_list *arg, t_flags **flags);
+typedef void t_formats(t_flags **flags);
 char    *to_ascii(long double number, t_flags **flags);
 char    *add_fractions(char *temp, long double mant, t_flags **flags);
 long double bankers_round(long double number, t_flags **flags);
 void	special_putchar(char c, t_flags **flags);
 char	*strsub_with_free(char *s, unsigned int start, size_t len);
 char	*strjoin_with_free(char *s1, char *s2);
+void 	character_mod(t_flags **flags, char c);
 
 #endif

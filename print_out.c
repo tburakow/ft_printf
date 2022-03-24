@@ -12,11 +12,14 @@
 
 #include "ft_printf.h"
 
-void print_out(char *output, t_flags **flags)
+void print_out(char *input, t_flags **flags)
 {
-	int	i;
-	char c;
+	int		i;
+	char	c;
+	char	*output;
 	
+	output = ft_strnew(ft_strlen(input));
+	output = ft_strcpy(output, input);
 	i = 0;
 	while (output[i] != '\0')
 	{

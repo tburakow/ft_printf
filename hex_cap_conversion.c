@@ -7,6 +7,7 @@ static char *hex_cap_base(char *hexadec, long long d, long long i, t_flags **fla
 
 	ft_strdel(&hexadec);
 	output = ft_strnew((*flags)->base_size);
+    output = ft_memset(output, ' ', (*flags)->base_size);
     while (d > 0)
     {
         rem = d % 16;
@@ -20,7 +21,7 @@ static char *hex_cap_base(char *hexadec, long long d, long long i, t_flags **fla
     }
     output[(*flags)->base_size] = '\0';
     if (i > 0)
-        output = ft_strsub(output, i, ((*flags)->base_size - i));
+        output = strsub_with_free(output, i, (*flags)->base_size - i);
     return (output);
 }
 
@@ -32,6 +33,7 @@ static char *hex_neg_cap_base(char *hexadec, unsigned long long neg, long long i
     
 	ft_strdel(&hexadec);
 	output = ft_strnew((*flags)->base_size);
+    output = ft_memset(output, ' ', (*flags)->base_size);
     while (neg > 0 && i >= 0)
     {
             rem = neg % 16;
@@ -45,7 +47,7 @@ static char *hex_neg_cap_base(char *hexadec, unsigned long long neg, long long i
     }
     output[(*flags)->base_size] = '\0';
     if (i > 0)
-        output = ft_strsub(output, i, ((*flags)->base_size - i));
+        output = strsub_with_free(output, i, (*flags)->base_size - i);
     return (output);
 }
 

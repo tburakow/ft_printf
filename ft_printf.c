@@ -29,7 +29,7 @@ int	error_output(char *mess)
 ** after which it calls the format function with the 
 ** index of the correct type and returns the result of formatting.
 */
-static void	determine_format(char c, va_list *arg, t_flags **flags)
+static void	determine_format(char c, t_flags **flags)
 {
 	char	*str;
 	size_t	i;
@@ -43,13 +43,13 @@ static void	determine_format(char c, va_list *arg, t_flags **flags)
 			if (c == '%')
 				percent(flags);
 			else
-				g_formats[i](arg, flags);
+				g_formats[i](flags);
 		}
 		i++;
 	}
 }
 
-static void	parse_format(char *format, va_list *arg, t_flags **flags)
+static void	parse_format(char *format, t_flags **flags)
 {
 	int jmax;
 	int j;
@@ -64,7 +64,7 @@ static void	parse_format(char *format, va_list *arg, t_flags **flags)
 		if (j <= jmax)
 		{
 			j = ft_raise_flags((char *)format, j, flags);
-			determine_format(format[j], arg, flags);
+			determine_format(format[j], flags);
 		}
 		j++;
 	}
@@ -75,18 +75,17 @@ static void	parse_format(char *format, va_list *arg, t_flags **flags)
 */
 int	ft_printf(const char *format, ...)
 {
-	va_list		arg;
 	t_flags		*flags;
 	int			ret;
 
 	ret = 0;
 	if (create_flags(&flags) == 0)
 		return (error_output("error: flags allocation failed."));
-	va_start(arg, format);
+	va_start(flags->arg, format);
 	if (format[0] == '%' && format[1] == '\0')
 		return (0);
-	parse_format((char *)format, &arg, &flags);
-	va_end(arg);
+	parse_format((char *)format, &flags);
+	va_end(flags->arg);
 	ret = flags->output;
 	free(flags);
 	return (ret);

@@ -102,7 +102,7 @@ void	apply_flags(char *from_format, t_flags **flags)
 	
 	post_format = ft_strnew(ft_strlen(from_format));
 	post_format = ft_strcpy(post_format, from_format);
-	if ((*flags)->empty_prec != 0 && check_for_char((*flags)->type, "c%") == 0)
+	if ((*flags)->empty_prec != 0 && check_for_char((*flags)->type, "pc%") == 0)
 	{
 		if ((*flags)->hash == 0 || ((*flags)->type == 'o' \
 		&& (*flags)->hash == 1))
@@ -130,5 +130,6 @@ void	apply_flags(char *from_format, t_flags **flags)
 	if ((*flags)->hash != 0 && (*flags)->zero == 1)
 		post_format = apply_hash(post_format, flags);
 	print_out(post_format, flags);
+	ft_strdel(&post_format);
 }
 

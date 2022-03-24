@@ -32,8 +32,8 @@ t_flags **flags)
         d = d / 16;
     }
     output[(*flags)->base_size] = '\0';
-/*     if (i > 0)
-        output = strsub_with_free(output, i, (*flags)->base_size - 1); */
+    if (i > 0)
+        output = strsub_with_free(output, i, (*flags)->base_size - i);
     return (output);
 }
 
@@ -57,8 +57,8 @@ static char *neg_hex_base(char *hexadec, unsigned long long neg, long long i,\
         neg = neg / 16;
     }
     output[(*flags)->base_size] = '\0';
-/*     if (i > 0)
-        output = strsub_with_free(output, i, (*flags)->base_size - 1); */
+    if (i > 0)
+        output = strsub_with_free(output, i, (*flags)->base_size - i);
     return (output);
 }
 
