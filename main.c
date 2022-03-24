@@ -222,20 +222,36 @@ int	main(void)
 	printf("\n\n");
 	ft_printf("%x\n\n", 100);
 	printf("\n\n"); */
+	ft_printf("%s\n\n", "apina");
+	printf("\n\n");
+	ft_printf("%c\n\n", 'A');
+	printf("\n\n");
+	ft_printf("%%\n\n");
 	printf("\n\n");
 	ft_printf("%.p\n\n", &shit);
-/* 	printf("\n\n");
-	ret = ft_printf("|%-10c|\n\n", '\0');
 	printf("\n\n");
-	printf("ret : %u\n\n", ret);
+	ft_printf("%d\n\n", 100);
 	printf("\n\n");
-	printf("|%-10c|\n\n", '\0');
+	ft_printf("%i\n\n", 100);
 	printf("\n\n");
-	printf("ret : %u\n\n", ret);
-	printf("\n\n"); */
-	//printf("%p\n\n", &shit);
+	ft_printf("%o\n\n", 100);
 	printf("\n\n");
-	
+	ft_printf("%u\n\n", 100);
+	printf("\n\n");
+	ft_printf("%x\n\n", 100);
+	printf("\n\n");
+	ft_printf("%X\n\n", 100);
+	printf("\n\n");
+	ft_printf("%f\n\n", 100.100);
+	printf("\n\n");
+	ft_printf("%%\n\n");
+	printf("\n\n");
+	z = "{%5p}";
+	ft_printf(z, 0);
+	printf("\n\n");
+	printf(z, 0);
+	ft_printf("%#X\\n", 1000);
+
 	while (1);
 	exit(0);
 }

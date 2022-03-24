@@ -88,5 +88,6 @@ int	ft_printf(const char *format, ...)
 	va_end(flags->arg);
 	ret = flags->output;
 	free(flags);
+	//while (1);
 	return (ret);
 }

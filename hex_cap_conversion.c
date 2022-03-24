@@ -1,5 +1,14 @@
 #include "ft_printf.h"
 
+static char *zero_return(void)
+{
+    char *hexadec;
+
+    hexadec = ft_strnew(1);
+    hexadec = ft_strcpy(hexadec, "0");
+    return (hexadec);
+}
+
 static char *hex_cap_base(char *hexadec, long long d, long long i, t_flags **flags)
 {
     long long	rem;
@@ -59,7 +68,7 @@ char    *hex_cap_conversion(long long d, t_flags **flags)
 
     neg = 0;
 	if (d == 0)
-		return ("0");
+		return (zero_return());
     hexadec = ft_strnew((*flags)->base_size);
     if (!hexadec)
         return (NULL);

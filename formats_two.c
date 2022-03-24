@@ -15,6 +15,7 @@
 void	float_dec_point(t_flags **flags)
 {
 	long double	number;
+	char		*str;
 
 	if ((*flags)->bigl == 1)
 		number = va_arg((*flags)->arg, long double);
@@ -27,7 +28,9 @@ void	float_dec_point(t_flags **flags)
 		number = number * -1;
 		(*flags)->neg = 1;
 	}
-	apply_flags(to_ascii(bankers_round(number, flags), flags), flags);
+	str = to_ascii(bankers_round(number, flags), flags);
+	apply_flags(str, flags);
+	ft_strdel(&str);
 }
 
 void	character(t_flags **flags)
@@ -72,11 +75,18 @@ void	pointer(t_flags **flags)
 	if (pointer == 0)
 	{
 		if ((*flags)->empty_prec == 1)
-			print_out("0x", flags);
+		{
+			add = ft_strnew(2);
+			add = ft_strcpy(add, "0x");
+			print_out(add, flags);
+		}
 		else
 		{
-			apply_flags("0x0", flags);
+			add = ft_strnew(3);
+			add = ft_strcpy(add, "0x0");
+			apply_flags(add, flags);
 		}
+		ft_strdel(&add);
 	}
 	else
 	{
@@ -94,6 +104,7 @@ void	pointer(t_flags **flags)
 			hex_ptr = strjoin_with_free(add, hex_ptr);
 		}
 		apply_flags(hex_ptr, flags);
+		ft_strdel(&hex_ptr);
 	}
 }
 

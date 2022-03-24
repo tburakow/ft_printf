@@ -25,19 +25,19 @@ char	*apply_hash(char *input, t_flags **flags)
 	{
 		add = ft_strnew(1);
 		add = ft_strcpy(add, "0");
-		input = ft_strjoin(add, input);
+		input = strjoin_with_free(add, input);
 	}
 	if ((*flags)->type == 'x')
 	{
 		add = ft_strnew(2);
 		add = ft_strcpy(add, "0x");
-		input = ft_strjoin(add, input);
+		input = strjoin_with_free(add, input);
 	}
 	if ((*flags)->type == 'X')
 	{
 		add = ft_strnew(2);
 		add = ft_strcpy(add, "0X");
-		input = ft_strjoin(add, input);
+		input = strjoin_with_free(add, input);
 	}
 	return (input);
 }

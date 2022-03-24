@@ -15,6 +15,7 @@
 void	signed_int(t_flags **flags)
 {
 	long long	nbr;
+	char		*str;
 
 	if ((*flags)->l == 2)
 		nbr = (long long int)va_arg((*flags)->arg, long long);
@@ -33,12 +34,15 @@ void	signed_int(t_flags **flags)
 	}
 	if (nbr != 0)
 		(*flags)->empty_prec = 0;
-	apply_flags(ft_itoa(nbr), flags);
+	str = ft_itoa(nbr);
+	apply_flags(str, flags);
+	ft_strdel(&str);
 }
 
 void	unsigned_octal(t_flags **flags)
 {
 	unsigned long long	nbr;
+	char				*str;
 
 	if ((*flags)->l == 2)
 		nbr = (unsigned long long)va_arg((*flags)->arg, unsigned long long);
@@ -54,15 +58,18 @@ void	unsigned_octal(t_flags **flags)
 		(*flags)->empty_prec = 0;
 	if (nbr == 0)
 		(*flags)->hash = 0;
+	str = ft_itoa_unsigned(octal_conversion(nbr));
 	if (nbr == ULONG_MAX)
 		apply_flags("1777777777777777777777", flags);
 	else
-		apply_flags(ft_itoa_unsigned(octal_conversion(nbr)), flags);
+		apply_flags(str, flags);
+	ft_strdel(&str);
 }
 
 void	unsigned_dec(t_flags **flags)
 {
 	unsigned long long	nbr;
+	char				*str;
 
 	nbr = 0;
 	if ((*flags)->l == 2)
@@ -80,12 +87,15 @@ void	unsigned_dec(t_flags **flags)
 		(*flags)->neg = 1;
 		nbr = nbr * -1;
 	}
-	apply_flags(ft_itoa_unsigned(nbr), flags);
+	str = ft_itoa_unsigned(nbr);
+	apply_flags(str, flags);
+	ft_strdel(&str);
 }
 
 void	unsigned_hex(t_flags **flags)
 {
 	long long	nbr;
+	char		*str;
 
 	if ((*flags)->l == 2)
 		nbr = (unsigned long long int)va_arg((*flags)->arg, long long);
@@ -100,12 +110,15 @@ void	unsigned_hex(t_flags **flags)
 	if (nbr == 0)
 		(*flags)->hash = 0;
 	(*flags)->hash *= 2;
-	apply_flags(hex_conversion(nbr, flags), flags);
+	str = hex_conversion(nbr, flags);
+	apply_flags(str, flags);
+	ft_strdel(&str);
 }
 
 void	unsigned_hex_cap(t_flags **flags)
 {
 	long long	nbr;
+	char		*str;
 
 	if ((*flags)->l == 2)
 		nbr = (unsigned long long int)va_arg((*flags)->arg, long long);
@@ -120,5 +133,7 @@ void	unsigned_hex_cap(t_flags **flags)
 	if (nbr == 0)
 		(*flags)->hash = 0;
 	(*flags)->hash *= 2;
-	apply_flags(hex_cap_conversion(nbr, flags), flags);
+	str = hex_cap_conversion(nbr, flags);
+	apply_flags(str, flags);
+	ft_strdel(&str);
 }
