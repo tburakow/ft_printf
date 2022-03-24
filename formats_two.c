@@ -16,6 +16,10 @@ void	float_dec_point(t_flags **flags)
 {
 	long double	number;
 	char		*str;
+	//Lisää NaN, jos myfloat != myfloat niin se on NaN.
+	//NaN = 0.0 / 0.0
+	//Posinf = 1.0 / 0.0
+	//Neginf = -1.0 / 0.0
 
 	if ((*flags)->bigl == 1)
 		number = va_arg((*flags)->arg, long double);
@@ -23,6 +27,11 @@ void	float_dec_point(t_flags **flags)
 		number = va_arg((*flags)->arg, double);
 	if ((*flags)->empty_prec == 0 && (*flags)->precision == 0)
 		(*flags)->precision = 6;
+	if ((*flags)->empty_prec == 1)
+	{
+		(*flags)->precision = 0;
+		(*flags)->empty_prec = 0;
+	}
 	if (number < 0)
 	{
 		number = number * -1;

@@ -20,6 +20,7 @@ int	main(void)
 	int	x;
 	int	y;
 	int	ret;
+	int i;
 	unsigned short shit;
 	unsigned char torspo;
 	long double tantor;
@@ -38,6 +39,7 @@ int	main(void)
 	x = 6;
 	y = 9;
 	ret = 0;
+	i = 10;
 /* 	//ret = ft_printf("elvis\n%i\n%x\n%X\n%%\n%p\n\n", 67, 120456, 120456, NULL);
 	//printf("\n");
 	//printf("elvis\n%i\n%x\n%X\n%%\n%p\n", 67, 120456, 120456, NULL);
@@ -222,6 +224,7 @@ int	main(void)
 	printf("\n\n");
 	ft_printf("%x\n\n", 100);
 	printf("\n\n"); */
+	unsigned int unsigned_int[3] = { 0, 392082, UINT_MAX };
 	ft_printf("%s\n\n", "apina");
 	printf("\n\n");
 	ft_printf("%c\n\n", 'A');
@@ -251,8 +254,109 @@ int	main(void)
 	printf("\n\n");
 	printf(z, 0);
 	ft_printf("%#X\\n", 1000);
+	printf("\n\n");
+	ft_printf("%.f\n", 3.141593);
+	printf("\n\n");
+	printf("%.f\n", 3.141593);
+	i = 1;
+	ft_printf("21 '%%#-1.0' '%#-1.0o' '%-1.0u' '%#-1.0x' '%#-1.0X'\n", unsigned_int[i], unsigned_int[i], unsigned_int[i], unsigned_int[i]);
+	printf("\n\n");
+	i = 2;
+	ft_printf("21 '%%#-1.0' '%#-1.0o' '%-1.0u' '%#-1.0x' '%#-1.0X'\n", unsigned_int[i], unsigned_int[i], unsigned_int[i], unsigned_int[i]);
+	printf("\n\n");
+	i = 3;
+	ft_printf("21 '%%#-1.0' '%#-1.0o' '%-1.0u' '%#-1.0x' '%#-1.0X'\n", unsigned_int[i], unsigned_int[i], unsigned_int[i], unsigned_int[i]);
+	printf("\n\n");
+	ft_printf("%10x", UINT_MAX);
+	printf("\n\n");
+	ft_printf("%10u", UINT_MAX);
+	printf("\n\n");
+	ft_printf("%10X", UINT_MAX);
+	//exit(0);
+	i = 0;
+	while (i < 3)
+	{
+		ret = ft_printf("7 '%%' '%o' '%u' '%x' '%X'\n", unsigned_int[i], unsigned_int[i], unsigned_int[i], unsigned_int[i]);
+		ft_printf("ret is %d\n", ret);
 
-	while (1);
+		ret = ft_printf("8 '%%10' '%10o' '%10u' '%10x' '%10X'\n", unsigned_int[i], unsigned_int[i], unsigned_int[i], unsigned_int[i]);
+		ft_printf("ret is %d\n", ret);
+
+		ret = ft_printf("9 '%%.10' '%.10o' '%.10u' '%.10x' '%.10X'\n", unsigned_int[i], unsigned_int[i], unsigned_int[i], unsigned_int[i]);
+		ft_printf("ret is %d\n", ret);
+
+		ret = ft_printf("10 '%%5.1' '%5.1o' '%5.1u' '%5.1x' '%5.1X'\n", unsigned_int[i], unsigned_int[i], unsigned_int[i], unsigned_int[i]);
+		ft_printf("ret is %d\n", ret);
+
+		ret = ft_printf("11 '%%5.0' '%5.0o' '%5.0u' '%5.0x' '%5.0X'\n", unsigned_int[i], unsigned_int[i], unsigned_int[i], unsigned_int[i]);
+		ft_printf("ret is %d\n", ret);
+
+		ret = ft_printf("12 '%%010' '%010o' '%010u' '%010x' '%010X'\n", unsigned_int[i], unsigned_int[i], unsigned_int[i], unsigned_int[i]);
+		ft_printf("ret is %d\n", ret);
+
+		ret = ft_printf("13 '%%05.0' '%05.0o' '%05.0u' '%05.0x' '%05.0X'\n", unsigned_int[i], unsigned_int[i], unsigned_int[i], unsigned_int[i]);
+		ft_printf("ret is %d\n", ret);
+
+		ret = ft_printf("14 '%%01.5' '%01.5o' '%01.5u' '%01.5x' '%01.5X'\n", unsigned_int[i], unsigned_int[i], unsigned_int[i], unsigned_int[i]);
+		ft_printf("ret is %d\n", ret);
+
+		ret = ft_printf("15 '%%1.5' '%1.5o' '%1.5u' '%1.5x' '%1.5X'\n", unsigned_int[i], unsigned_int[i], unsigned_int[i], unsigned_int[i]);
+		ft_printf("ret is %d\n", ret);
+
+		ret = ft_printf("16 '%%#1.5' '%#1.5o' '%1.5u' '%#1.5x' '%#1.5X'\n", unsigned_int[i], unsigned_int[i], unsigned_int[i], unsigned_int[i]);
+		ft_printf("ret is %d\n", ret);
+
+		ret = ft_printf("17 '%%-#1.5' '%-#1.5o' '%-1.5u' '%-#1.5x' '%-#1.5X'\n", unsigned_int[i], unsigned_int[i], unsigned_int[i], unsigned_int[i]);
+		ft_printf("ret is %d\n", ret);
+
+		ret = ft_printf("18 '%%-#1.5' '%-#1.5o' '%-1.5u' '%-#1.5x' '%-#1.5X'\n", unsigned_int[i], unsigned_int[i], unsigned_int[i], unsigned_int[i]);
+		ft_printf("ret is %d\n", ret);
+
+		ret = ft_printf("19 '%%-1.5' '%#-1.5o' '%-1.5u' '%#-1.5x' '%#-1.5X'\n", unsigned_int[i], unsigned_int[i], unsigned_int[i], unsigned_int[i]);
+		ft_printf("ret is %d\n", ret);
+
+		ret = ft_printf("20 '%%#-1.5' '%#-1.5o' '%-1.5u' '%#-1.5x' '%#-1.5X'\n", unsigned_int[i], unsigned_int[i], unsigned_int[i], unsigned_int[i]);
+		ft_printf("ret is %d\n", ret);
+		
+		ret = ft_printf("21 '%%#-1.0' '%#-1.0o' '%-1.0u' '%#-1.0x' '%#-1.0X'\n", unsigned_int[i], unsigned_int[i], unsigned_int[i], unsigned_int[i]);
+		ft_printf("ret is %d\n", ret);
+
+		ret = ft_printf("22 '%%#-10.10' '%#-10.10o' '%-10.10u' '%#-10.10x' '%#-10.10X'\n", unsigned_int[i], unsigned_int[i], unsigned_int[i], unsigned_int[i]);
+		ft_printf("ret is %d\n", ret);
+
+		ret = ft_printf("23 '%%#-10' '%#-10o' '%-10u' '%#-10x' '%#-10X'\n", unsigned_int[i], unsigned_int[i], unsigned_int[i], unsigned_int[i]);
+		ft_printf("ret is %d\n", ret);
+
+		ret = ft_printf("24 '%%.' '%.o' '%.u' '%.x' '%.X'\n", unsigned_int[i], unsigned_int[i], unsigned_int[i], unsigned_int[i]);
+		ft_printf("ret is %d\n", ret);
+
+		printf("\n Balboa: %i\n", i);
+
+		i++;
+	}
+	ret = ft_printf("testing %o\n", 42);
+	ft_printf("ret is %d\n", ret);
+
+	ret = ft_printf("print zero '%#o'\n", 0);
+	ft_printf("ret is %d\n", ret);
+
+	ret = ft_printf("octal alt form '%#10.5o'\n",123423);
+	ft_printf("ret is %d\n", ret);
+
+	ret = ft_printf("octal alt form zero '%#10.8o'\n",123423);
+	ft_printf("ret is %d\n", ret);
+
+	ret = ft_printf("octal alt form zero '%#.o'\n",123423);
+	ft_printf("ret is %d\n", ret);
+
+	ret = ft_printf("octal alt form zero '%#o'\n",123423);
+	ft_printf("ret is %d\n", ret);
+
+	ret = ft_printf("print zero '%#x' '%#X'\n", 0, 0);
+	ft_printf("ret is %d\n", ret);
+
+	ret = ft_printf("print zero '%#-5.x' '%#-5.X'\n", 0, 0);
+	ft_printf("ret is %d\n", ret);
 	exit(0);
 }
 // for integer # -flag doesn't work.

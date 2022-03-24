@@ -37,6 +37,8 @@ t_flags **flags)
             rem += 48;
         else
             rem += 87;
+        if ((*flags)->type == 'X')
+            rem = ft_toupper(rem);
         output[i - 1] = rem;
         i--;
         d = d / 16;
@@ -63,6 +65,8 @@ static char *neg_hex_base(char *hexadec, unsigned long long neg, long long i,\
             rem += 48;
         else
             rem += 87;
+        if ((*flags)->type == 'X')
+            rem = ft_toupper(rem);
         output[i - 1] = rem;
         i--;
         neg = neg / 16;

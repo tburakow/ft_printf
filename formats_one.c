@@ -115,7 +115,7 @@ void	unsigned_hex(t_flags **flags)
 	ft_strdel(&str);
 }
 
-void	unsigned_hex_cap(t_flags **flags)
+/* void	unsigned_hex_cap(t_flags **flags)
 {
 	long long	nbr;
 	char		*str;
@@ -136,4 +136,4 @@ void	unsigned_hex_cap(t_flags **flags)
 	str = hex_cap_conversion(nbr, flags);
 	apply_flags(str, flags);
 	ft_strdel(&str);
-}
+} */

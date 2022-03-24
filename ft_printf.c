@@ -14,7 +14,7 @@
 #include "ft_printf.h"
 
 t_formats	*g_formats[10] = {signed_int, signed_int, unsigned_octal, \
-unsigned_dec, unsigned_hex, unsigned_hex_cap, float_dec_point, \
+unsigned_dec, unsigned_hex, unsigned_hex, float_dec_point, \
 character, string, pointer};
 
 int	error_output(char *mess)

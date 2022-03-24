@@ -77,7 +77,7 @@ char	*apply_zero(char *input, t_flags **flags)
 
 	extra = NULL;
 	leftover = (*flags)->width - ft_strlen(input) - (*flags)->hash;
-	if ((*flags)->precision != 0)
+	if ((*flags)->precision != 0 && (*flags)->type != 'f')
 		return (apply_width(input, flags));
 	else if ((*flags)->minus == 0)
 	{
@@ -111,7 +111,7 @@ void	apply_flags(char *from_format, t_flags **flags)
 			post_format = ft_strnew(0);
 		}
 	}
-	if ((*flags)->precision != 0)
+	if ((*flags)->precision != 0 && (*flags)->empty_prec == 0)
 		post_format = apply_precision(post_format, flags);
 	if ((*flags)->hash != 0 && (*flags)->zero == 0)
 		post_format = apply_hash(post_format, flags);
