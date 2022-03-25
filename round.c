@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:48:47 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/09 13:56:54 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/25 13:34:36 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ long double bankers_round(long double number, t_flags **flags)
     }
     if (((intmax_t)number + 1) < number + rounder)
         return (number + rounder);
-    if (((intmax_t) number + 1) % 2 != 0 && (*flags)->precision == 0)
+    if (((intmax_t)number + 1) % 2 != 0 && (*flags)->precision == 0)
         return (number);
     return (number + rounder);
 }

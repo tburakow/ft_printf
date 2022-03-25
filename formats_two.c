@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/22 10:17:13 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/25 13:45:08 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	float_dec_point(t_flags **flags)
 		(*flags)->neg = 1;
 	}
 	str = to_ascii(bankers_round(number, flags), flags);
-	apply_flags(str, flags);
+	float_mod(str, flags);
 	ft_strdel(&str);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:41:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/22 10:41:03 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/25 13:45:22 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,6 @@ void	special_putchar(char c, t_flags **flags);
 char	*strsub_with_free(char *s, unsigned int start, size_t len);
 char	*strjoin_with_free(char *s1, char *s2);
 void 	character_mod(t_flags **flags, char c);
+void	float_mod(char *input, t_flags **flags);
 
 #endif
