@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/28 15:06:45 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/28 15:30:50 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	float_dec_point(t_flags **flags)
 		number = va_arg((*flags)->arg, long double);
 	else
 		number = va_arg((*flags)->arg, double);
+	(*flags)->checksum = number;
 	if ((*flags)->empty_prec == 0 && (*flags)->precision == 0)
 		(*flags)->precision = 6;
 	if ((*flags)->empty_prec == 1)

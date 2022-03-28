@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/22 10:08:38 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/28 16:24:31 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,16 @@ void	signed_int(t_flags **flags)
 	}
 	if (nbr != 0)
 		(*flags)->empty_prec = 0;
-	str = ft_itoa(nbr);
+	if (nbr == 0 && (*flags)->f_check == 1)
+		(*flags)->zero = 0;
+	if (nbr == 0)
+	{
+		str = ft_strnew(1);
+		str = ft_memset(str, '0', 1);
+		//printf("HEllo!\n");
+	}
+	else
+		str = ft_itoa(nbr);
 	apply_flags(str, flags);
 	ft_strdel(&str);
 }

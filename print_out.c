@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 12:45:55 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/28 15:06:04 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/28 17:09:47 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ void print_out(char *input, t_flags **flags)
 		(*flags)->output++;
 		write(1, &c, 1);
 	}
-	//printf("\nYO!\n");
+	c = ' ';
+	if (((int)ft_strlen(output) < (*flags)->min_chars && (*flags)->type == 'd') || \
+	((int)ft_strlen(output) < (*flags)->min_chars && (*flags)->type == 'i'))
+		(*flags)->output += write(1, &c, 1);
 	ft_strdel(&output);
 }

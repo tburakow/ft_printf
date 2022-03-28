@@ -6,10 +6,10 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:40:40 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/21 12:38:23 by tburakow         ###   ########.fr       */
-/*   Updated: 2022/03/19 19:22:26 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/28 17:04:01 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "ft_printf.h"
 
@@ -29,6 +29,19 @@ int	error_output(char *mess)
 ** after which it calls the format function with the 
 ** index of the correct type and returns the result of formatting.
 */
+
+static void min_chars(t_flags **flags)
+{
+	int	count;
+	
+	count = (*flags)->width;
+	if ((*flags)->neg == 1 && (*flags)->plus == 0)
+		count++;
+	else if ((*flags)->plus == 1 || (*flags)->neg == 1)
+		count++;
+	(*flags)->min_chars = count;
+}
+
 static void	determine_format(char c, t_flags **flags)
 {
 	char	*str;
@@ -40,6 +53,7 @@ static void	determine_format(char c, t_flags **flags)
 	{
 		if (str[i] == c)
 		{
+			min_chars(flags);
 			if (c == '%')
 				percent(flags);
 			else

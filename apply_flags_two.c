@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 19:10:20 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/22 12:02:22 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/28 16:41:24 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,11 @@ char	*apply_space(char *input, t_flags **flags)
 	{
 		if ((*flags)->neg == 0)
 		{
-			if (input[0] == '0' || input[0] == ' ')
+/* 			if (input[0] == '0' || input[0] == ' ')
 			{
 				input[0] = ' ';
 			}
-			else
+			else */
 				input = strjoin_with_free(extra, input);
 		}
 	}

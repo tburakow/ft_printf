@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/28 14:33:36 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/28 16:25:53 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -366,7 +366,7 @@ ft_printf("%05.0i", 0);
 printf("\n\n");
 printf("%05.0i", 0); */
 number = -0;
-ft_printf("Me%f\n", (float)number);
+/* ft_printf("Me%f\n", (float)number);
 printf("\n\n");
 printf("It%f\n", (float)number);
 printf("\n\n");
@@ -377,7 +377,13 @@ printf("\n\n");
 printf("It: %10.f\n", (-1.0 / 0.0));
 printf("\n\n");
 ft_printf("Me: %10.f\n", (-1.0 / 0.0));
-exit(0);	
+printf("\n\n");
+printf("It: %#.1f\n", 0.250000);
+printf("\n\n");
+ft_printf("Me: %#.1f\n", 0.250000); */
+ft_printf("% -10d", 0);
+exit(0);
 }
+
 
 // for integer # -flag doesn't work.
