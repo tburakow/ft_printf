@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/22 12:39:16 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/25 17:00:06 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(void)
 	unsigned short shit;
 	unsigned char torspo;
 	long double tantor;
+	int number;
 /* 	char *bob;
 	char *bab; */
 /* 	int		i;
@@ -224,7 +225,7 @@ int	main(void)
 	printf("\n\n");
 	ft_printf("%x\n\n", 100);
 	printf("\n\n"); */
-	unsigned int unsigned_int[3] = { 0, 392082, UINT_MAX };
+/* 	unsigned int unsigned_int[3] = { 0, 392082, UINT_MAX };
 	ft_printf("%s\n\n", "apina");
 	printf("\n\n");
 	ft_printf("%c\n\n", 'A');
@@ -357,6 +358,17 @@ int	main(void)
 
 	ret = ft_printf("print zero '%#-5.x' '%#-5.X'\n", 0, 0);
 	ft_printf("ret is %d\n", ret);
-	exit(0);
+	//exit(0)
+ret = ft_printf("%%f '%f' %%lf '%lf'\n", 245.45678, 3487.345);
+ft_printf("ret is %d\n", ret);
+printf("\n\n");
+ft_printf("%05.0i", 0);
+printf("\n\n");
+printf("%05.0i", 0); */
+number = -0;
+ft_printf("%f\n", (float)number);
+printf("%f\n", (float)number);
+exit(0);	
 }
+
 // for integer # -flag doesn't work.

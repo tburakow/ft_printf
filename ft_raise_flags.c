@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 15:44:55 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/19 19:26:02 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/25 15:03:36 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 int	set_precision(char *str, int j, t_flags **flags)
 {	
 	(*flags)->precision = ft_atoi(&str[j]);
+	(*flags)->f_check = 1;
 	if ((*flags)->precision != 0)
 		(*flags)->empty_prec = 0;
 	return (5);
