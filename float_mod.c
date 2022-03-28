@@ -6,18 +6,37 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 13:11:46 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/25 17:04:28 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/28 15:16:46 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int    ft_isinf(long double x)
+int	infinity(long double x, t_flags **flags)
 {
+	
     if (x == -1.0 / 0.0)
+	{
+		(*flags)->zero = 0;
+		//(*flags)->plus = 0;
+		//(*flags)->space = 0;
+		(*flags)->neg = 1;
         return (-1);
+	}
     if (x == 1.0 / 0.0)
-        return (1);
+	{
+		//(*flags)->plus = 0;
+		//(*flags)->space = 0;
+		(*flags)->zero = 0;
+    	return (1);
+	}
+	if (x != x)
+	{
+		(*flags)->plus = 0;
+		(*flags)->space = 0;
+		(*flags)->zero = 0;
+		return (2);
+	}
     return (0);
 }
 

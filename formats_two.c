@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/25 17:04:03 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/28 15:06:45 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@ void	float_dec_point(t_flags **flags)
 {
 	long double	number;
 	char		*str;
-	//Lisää NaN, jos myfloat != myfloat niin se on NaN.
-	//NaN = 0.0 / 0.0
-	//Posinf = 1.0 / 0.0
-	//Neginf = -1.0 / 0.0
+	int			x;
 
 	if ((*flags)->bigl == 1)
 		number = va_arg((*flags)->arg, long double);
@@ -32,16 +29,28 @@ void	float_dec_point(t_flags **flags)
 		(*flags)->precision = 0;
 		(*flags)->empty_prec = 0;
 	}
-	if (number < 0)
+	x = infinity(number, flags);
+	if (x != 0)
 	{
-		number = number * -1;
-		(*flags)->neg = 1;
+		if (x == 2)
+			float_mod("nan", flags);
+		else
+			float_mod("inf", flags);
 	}
-	if (number == -0.0)
-		(*flags)->neg = 1;
-	str = to_ascii(bankers_round(number, flags), flags);
-	float_mod(str, flags);
-	ft_strdel(&str);
+	else
+	{
+		if (number < 0)
+		{
+			number = number * -1;
+			(*flags)->neg = 1;
+		}
+		if (1 / number < 0)
+			(*flags)->neg = 1;
+	
+		str = to_ascii(bankers_round(number, flags), flags);
+		float_mod(str, flags);
+		ft_strdel(&str);
+	}
 }
 
 void	character(t_flags **flags)
