@@ -34,7 +34,7 @@ void	signed_int(t_flags **flags)
 	}
 	if (nbr != 0)
 		(*flags)->empty_prec = 0;
-	if (nbr == 0 && (*flags)->f_check == 1)
+	if (/* nbr == 0 &&  */(*flags)->f_check == 1)
 		(*flags)->zero = 0;
 	if (nbr == 0)
 	{

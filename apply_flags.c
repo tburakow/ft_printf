@@ -66,6 +66,7 @@ char	*apply_minus(char *input, t_flags **flags)
 		extra = NULL;
 	if (extra != NULL)
 		input = strjoin_with_free(input, extra);
+	(*flags)->zero = 0;
 	return (input);
 }
 
@@ -92,6 +93,7 @@ char	*apply_zero(char *input, t_flags **flags)
 			input = strjoin_with_free(extra, input);
 		}
 	}
+	(*flags)->width = 0;
 	return (input);
 }
 
@@ -119,7 +121,7 @@ void	apply_flags(char *from_format, t_flags **flags)
 		post_format = apply_hash(post_format, flags);
 	if ((*flags)->minus != 0)
 		post_format = apply_minus(post_format, flags);
-	if ((*flags)->zero != 0)
+	if ((*flags)->zero != 0 && (*flags)->f_check == 0)
 		post_format = apply_zero(post_format, flags);
 	if ((*flags)->zero == 0 && (*flags)->width != 0 && (*flags)->minus == 0)
 		post_format = apply_width(post_format, flags);

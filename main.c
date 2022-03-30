@@ -381,7 +381,28 @@ printf("\n\n");
 printf("It: %#.1f\n", 0.250000);
 printf("\n\n");
 ft_printf("Me: %#.1f\n", 0.250000); */
-ft_printf("% -10d", 0);
+/* ft_printf("%.3Lf", (long double)-14.231500);
+printf("\n\n");
+printf("%.3Lf", (long double)-14.231500);
+printf("\n\n"); */
+tantor = 0.010000;
+unsigned int elvis = 0;
+ft_printf("oMä : %.o|", elvis);
+printf("\n\n");
+printf("oSe : %.o|", elvis);
+printf("\n\n");
+ft_printf("uMä : %.u|", elvis);
+printf("\n\n");
+printf("uSe : %.u|", elvis);
+printf("\n\n");
+ft_printf("xMä : %.x|", elvis);
+printf("\n\n");
+printf("xSe : %.x|", elvis);
+printf("\n\n");
+ft_printf("XMä : %.X|", elvis);
+printf("\n\n");
+printf("XSe : %.X|", elvis);
+printf("\n\n");
 exit(0);
 }
 

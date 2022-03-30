@@ -40,9 +40,7 @@ void print_out(char *input, t_flags **flags)
 	int		i;
 	char	c;
 	char	*output;
-	
-/* 	if ((*flags)->f_check == 100)
-		input = inf_float_special(input, flags); */
+
 	output = ft_strnew(ft_strlen(input));
 	output = ft_strcpy(output, input);
 	i = 0;
@@ -58,8 +56,8 @@ void print_out(char *input, t_flags **flags)
 		write(1, &c, 1);
 	}
 	c = ' ';
-	if (((int)ft_strlen(output) < (*flags)->min_chars && (*flags)->type == 'd') || \
-	((int)ft_strlen(output) < (*flags)->min_chars && (*flags)->type == 'i'))
-		(*flags)->output += write(1, &c, 1);
+	if ((int)ft_strlen(output) < (*flags)->min_chars && check_for_char((*flags)->type, "diouxX") == 1)
+		while (i++ < (*flags)->min_chars) 
+			(*flags)->output += write(1, &c, 1);
 	ft_strdel(&output);
 }
