@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:39:29 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/28 16:25:53 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/31 14:47:43 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -385,23 +385,59 @@ ft_printf("Me: %#.1f\n", 0.250000); */
 printf("\n\n");
 printf("%.3Lf", (long double)-14.231500);
 printf("\n\n"); */
-tantor = 0.010000;
-unsigned int elvis = 0;
-ft_printf("oMä : %.o|", elvis);
+/* tantor = 0.010000;
+unsigned char unsigned_char[4] = { 0, 42, '~', UCHAR_MAX };
+ret = ft_printf("oMä : %5.0hho|", unsigned_char[0]);
 printf("\n\n");
-printf("oSe : %.o|", elvis);
+printf("ret is %d\n", ret);
+ret = printf("oSe : %5.0hho|", unsigned_char[0]);
 printf("\n\n");
-ft_printf("uMä : %.u|", elvis);
+printf("ret is %d\n", ret);
 printf("\n\n");
-printf("uSe : %.u|", elvis);
+ret = ft_printf("uMä : %05.0hhu|", unsigned_char[1]);
 printf("\n\n");
-ft_printf("xMä : %.x|", elvis);
+printf("ret is %d\n", ret);
 printf("\n\n");
-printf("xSe : %.x|", elvis);
+ret = printf("uSe : %05.0hhu|", unsigned_char[1]);
 printf("\n\n");
-ft_printf("XMä : %.X|", elvis);
+printf("ret is %d\n", ret);
 printf("\n\n");
-printf("XSe : %.X|", elvis);
+ret = ft_printf("oMä : %5.0hhx|", unsigned_char[2]);
+printf("\n\n");
+printf("ret is %d\n", ret);
+printf("\n\n");
+ret = printf("oSe : %5.0hhx|", unsigned_char[2]);
+printf("\n\n");
+printf("ret is %d\n", ret);
+printf("\n\n");
+ret = ft_printf("oMä : %5.0hhX|", unsigned_char[3]);
+printf("\n\n");
+printf("ret is %d\n", ret);
+printf("\n\n");
+ret = printf("oSe : %5.0hhX|", unsigned_char[3]);
+printf("\n\n");
+printf("ret is %d\n", ret);
+printf("\n\n"); */
+/* z = "%.3Lf";
+ft_printf(z, -14.2315l);
+printf("\n\n");
+printf(z, -14.2315l);
+printf("\n\n");
+ft_printf(z, -14.2315l);
+printf("\n\n");
+printf(z, -14.2315l); */
+/* z = "\n%Lf\n%Lf\n%Lf\n%Lf\n";
+printf("\n\n");
+ft_printf(z, -1.0/0l, 1.0/0l, 0.0/0l, -0.0/0l);
+printf("\n\n");
+printf(z, -1.0/0l, 1.0/0l, 0.0/0l, -0.0/0l); */
+ret = ft_printf("% 03d", 0);
+printf("\n\n");
+printf("ret is %d\n", ret);
+printf("\n\n");
+ret = printf("% 03d", 0);
+printf("\n\n");
+printf("ret is %d\n", ret);
 printf("\n\n");
 exit(0);
 }

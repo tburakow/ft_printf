@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:40:40 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/28 17:04:01 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/31 14:41:34 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ static void min_chars(t_flags **flags)
 	int	count;
 	
 	count = (*flags)->width;
-	if ((*flags)->neg == 1 && (*flags)->plus == 0)
+/* 	if ((*flags)->neg == 1 && (*flags)->plus == 0)
 		count++;
 	else if ((*flags)->plus == 1 || (*flags)->neg == 1)
-		count++;
+		count++; */
 	(*flags)->min_chars = count;
 }
 
@@ -57,7 +57,11 @@ static void	determine_format(char c, t_flags **flags)
 			if (c == '%')
 				percent(flags);
 			else
+			{
+				if (check_for_char((*flags)->type, "diouxX") == 1 && (*flags)->f_check == 1)
+					(*flags)->zero = 0;
 				g_formats[i](flags);
+			}
 		}
 		i++;
 	}

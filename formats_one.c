@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:44:05 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/28 16:24:31 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/31 14:01:30 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	unsigned_octal(t_flags **flags)
 		(*flags)->empty_prec = 0;
 	if (nbr == 0)
 		(*flags)->hash = 0;
+	if (nbr != 0 && (*flags)->empty_prec != 0)
+		(*flags)->empty_prec = 0;
 	str = ft_itoa_unsigned(octal_conversion(nbr));
 	if (nbr == ULONG_MAX)
 		apply_flags("1777777777777777777777", flags);
@@ -96,6 +98,8 @@ void	unsigned_dec(t_flags **flags)
 		(*flags)->neg = 1;
 		nbr = nbr * -1;
 	}
+	if (nbr != 0 && (*flags)->empty_prec != 0)
+		(*flags)->empty_prec = 0;
 	str = ft_itoa_unsigned(nbr);
 	apply_flags(str, flags);
 	ft_strdel(&str);
@@ -119,6 +123,8 @@ void	unsigned_hex(t_flags **flags)
 	if (nbr == 0)
 		(*flags)->hash = 0;
 	(*flags)->hash *= 2;
+	if (nbr != 0 && (*flags)->empty_prec != 0)
+		(*flags)->empty_prec = 0;
 	str = hex_conversion(nbr, flags);
 	apply_flags(str, flags);
 	ft_strdel(&str);

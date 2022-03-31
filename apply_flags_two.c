@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 19:10:20 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/28 16:41:24 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/31 14:59:13 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,19 @@ char	*apply_plus(char *input, t_flags **flags)
 	if (input[0] == '0' && (*flags)->precision == 0 && input[1] != '\0')
 	{
 		input[0] = '+';
+		(*flags)->min_chars--;
 	}
 	else if (input[0] == ' ')
 	{
 		while (input[i] == ' ')
 			i++;
 		input[i - 1] = '+';
+		(*flags)->min_chars--;
 	}
 	else
 	{
 		input = strjoin_with_free(extra, input);
+		(*flags)->min_chars--;
 	}
 	return (input);
 }
@@ -106,7 +109,7 @@ char	*apply_space(char *input, t_flags **flags)
 	extra = (char *)ft_memset(extra, ' ', 1);
 	if ((*flags)->plus == 0)
 	{
-		if ((*flags)->neg == 0)
+		if ((*flags)->neg == 0 && input[0] != ' ')
 		{
 /* 			if (input[0] == '0' || input[0] == ' ')
 			{
@@ -116,6 +119,7 @@ char	*apply_space(char *input, t_flags **flags)
 				input = strjoin_with_free(extra, input);
 		}
 	}
+	(*flags)->width--;
 	return (input);
 }
 

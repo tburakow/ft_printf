@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:48:47 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/28 15:51:20 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/03/31 12:57:18 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int round_or_not(t_flags **flags)
 		//printf("\nCheck 1\n");
 		return (1);
 	}
-	else if (new_num - (long long)new_num == 0.5 || new_num - (long long)new_num == -0.5)
+	else if ((new_num - (long long)new_num == 0.5 || new_num - (long long)new_num == -0.5))
 	{
 		if (((long long)new_num + 1) % 2 != 0)
 		{
