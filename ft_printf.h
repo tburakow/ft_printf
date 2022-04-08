@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:41:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/04/08 15:16:56 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/04/08 15:18:10 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_PRINTF_H
 # include <stdarg.h>
 # include "libft/libft.h"
-# include <stdio.h> //Muista POISTAA TÄÄ!
 
 typedef struct s_flags
 {
