@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:45:03 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/31 14:59:09 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/04/08 14:03:46 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,11 @@ char	*apply_zero(char *input, t_flags **flags)
 		{	
 			extra = ft_strnew(leftover);
 			extra = (char *)ft_memset(extra, '0', leftover);
+			if ((*flags)->space == 1)
+			{
+				extra[0] = ' ';
+				(*flags)->space = 0;
+			}
 			if ((*flags)->hash != 0)
 				extra = apply_hash(extra, flags);
 			input = strjoin_with_free(extra, input);
@@ -98,12 +103,43 @@ char	*apply_zero(char *input, t_flags **flags)
 }
 
 /*
+** Applies the "plus" -flag.
+*/
+char	*apply_plus(char *input, t_flags **flags)
+{
+	char	*extra;
+	int		i;
+
+	i = 0;
+	extra = ft_strnew(1);
+	extra = (char *)ft_memset(extra, '+', 1);
+	if (input[0] == '0' && (*flags)->precision == 0 && input[1] != '\0')
+	{
+		input[0] = '+';
+		(*flags)->min_chars--;
+	}
+	else if (input[0] == ' ')
+	{
+		while (input[i] == ' ')
+			i++;
+		input[i - 1] = '+';
+		(*flags)->min_chars--;
+	}
+	else
+	{
+		input = strjoin_with_free(extra, input);
+		(*flags)->min_chars--;
+	}
+	return (input);
+}
+
+/*
 ** checks which *flags to apply and applies them (PARANTELE!)
 */
 void	apply_flags(char *from_format, t_flags **flags)
 {
 	char	*post_format;
-	
+
 	post_format = ft_strnew(ft_strlen(from_format));
 	post_format = ft_strcpy(post_format, from_format);
 	if ((*flags)->empty_prec != 0 && check_for_char((*flags)->type, "pc%") == 0)
@@ -123,17 +159,5 @@ void	apply_flags(char *from_format, t_flags **flags)
 		post_format = apply_minus(post_format, flags);
 	if ((*flags)->zero != 0 && (*flags)->f_check == 0)
 		post_format = apply_zero(post_format, flags);
-	if ((*flags)->zero == 0 && (*flags)->width != 0 && (*flags)->minus == 0)
-		post_format = apply_width(post_format, flags);
-	if ((*flags)->space != 0 && check_for_char((*flags)->type, "dif") == 1)
-		post_format = apply_space(post_format, flags);
-	if ((*flags)->neg != 0)
-		post_format = apply_neg(post_format, flags);
-	if ((*flags)->plus != 0 && (*flags)->neg == 0 && (*flags)->type != 'u')
-		post_format = apply_plus(post_format, flags);
-	if ((*flags)->hash != 0 && (*flags)->zero == 1)
-		post_format = apply_hash(post_format, flags);
-	print_out(post_format, flags);
-	ft_strdel(&post_format);
+	apply_flags_two(post_format, flags);
 }
-
