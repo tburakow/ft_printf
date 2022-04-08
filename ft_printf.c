@@ -6,10 +6,9 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:40:40 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/31 14:41:34 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/04/08 14:45:48 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "ft_printf.h"
 
@@ -29,16 +28,11 @@ int	error_output(char *mess)
 ** after which it calls the format function with the 
 ** index of the correct type and returns the result of formatting.
 */
-
-static void min_chars(t_flags **flags)
+static void	min_chars(t_flags **flags)
 {
 	int	count;
-	
+
 	count = (*flags)->width;
-/* 	if ((*flags)->neg == 1 && (*flags)->plus == 0)
-		count++;
-	else if ((*flags)->plus == 1 || (*flags)->neg == 1)
-		count++; */
 	(*flags)->min_chars = count;
 }
 
@@ -58,7 +52,8 @@ static void	determine_format(char c, t_flags **flags)
 				percent(flags);
 			else
 			{
-				if (check_for_char((*flags)->type, "diouxX") == 1 && (*flags)->f_check == 1)
+				if (check_for_char((*flags)->type, "diouxX") == 1 \
+				&& (*flags)->f_check == 1)
 					(*flags)->zero = 0;
 				g_formats[i](flags);
 			}
@@ -69,8 +64,8 @@ static void	determine_format(char c, t_flags **flags)
 
 static void	parse_format(char *format, t_flags **flags)
 {
-	int jmax;
-	int j;
+	int	jmax;
+	int	j;
 
 	j = 0;
 	jmax = ft_strlen(format);
@@ -106,6 +101,5 @@ int	ft_printf(const char *format, ...)
 	va_end(flags->arg);
 	ret = flags->output;
 	free(flags);
-	//while (1);
 	return (ret);
 }

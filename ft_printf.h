@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:41:25 by tburakow          #+#    #+#             */
-/*   Updated: 2022/04/08 14:00:59 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/04/08 14:42:50 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,9 @@ void	float_mod(char *input, t_flags **flags);
 int		infinity(long double x, t_flags **flags);
 char	*apply_inf_width(char *input, t_flags **flags);
 void	apply_flags_two(char *from_format, t_flags **flags);
+long double	float_input_type(t_flags **flags);
+void	float_dec_point_two(long double nbr, t_flags **flags);
+void	zero_pointer(t_flags **flags);
+void	non_zero_pointer(unsigned long pointer, t_flags **flags);
 
 #endif

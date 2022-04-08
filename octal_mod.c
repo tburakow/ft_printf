@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 12:30:51 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/31 13:09:48 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/04/08 14:56:33 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	print_spec(t_flags **flags)
 {
-	char c;
+	char	c;
 
 	c = ' ';
 	if ((*flags)->neg == 0 && (*flags)->plus != 0)
@@ -31,11 +31,11 @@ static void	print_spec(t_flags **flags)
 	(*flags)->neg = 0;
 }
 
-static void print_filler(int len, t_flags **flags)
+static void	print_filler(int len, t_flags **flags)
 {
 	char	c;
 	int		i;
-	
+
 	c = ' ';
 	i = 0;
 	if ((*flags)->zero != 0)
@@ -51,7 +51,7 @@ static void print_filler(int len, t_flags **flags)
 	}
 	else
 	{
-		if ((*flags)->plus != 0|| (*flags)->neg != 0)
+		if ((*flags)->plus != 0 || (*flags)->neg != 0)
 			len--;
 		while (i++ < len)
 			(*flags)->output += write(1, &c, 1);
@@ -62,20 +62,17 @@ static void print_filler(int len, t_flags **flags)
 
 static void	flag_exclusions(t_flags **flags)
 {
-	if ((*flags)->minus != 0 || ((*flags)->empty_prec == 0 && (*flags)->f_check != 0))
+	if ((*flags)->minus != 0 || ((*flags)->empty_prec == 0 \
+	&& (*flags)->f_check != 0))
 		(*flags)->zero = 0;
 }
 
-void octal_mod(char *input, t_flags **flags)
+void	octal_mod(char *input, t_flags **flags)
 {
-	// hash forces the first number to be zero.
-	// zero works. minus overrides this.
-	// minus flag works.
-	// plus sign works.
 	char	c;
 	int		len;
 	int		i;
-	
+
 	c = ' ';
 	i = 0;
 	len = (*flags)->width - ft_strlen(input);

@@ -6,7 +6,7 @@
 #    By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 12:15:46 by tburakow          #+#    #+#              #
-#    Updated: 2022/03/31 13:13:18 by tburakow         ###   ########.fr        #
+#    Updated: 2022/04/08 14:34:23 by tburakow         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ FUNCTIONS = ft_printf create_flags ft_raise_flags formats_one \
 formats_two check_for_char reset_flags print_out apply_flags \
 octal_conversion hex_conversion to_ascii round special_putchar \
 apply_flags_two ptr_conversion strjoin_with_free \
-strsub_with_free char_mod float_mod
+strsub_with_free char_mod float_mod floats_two pointer_two
 
 LIBFUNCS = libft/ft_atoi libft/ft_bzero libft/ft_free_array \
 libft/ft_isalnum libft/ft_isalpha libft/ft_isascii libft/ft_isdigit \
@@ -61,7 +61,7 @@ FUNCTIONSTEST = ft_printf create_flags ft_raise_flags formats_one \
 formats_two check_for_char reset_flags print_out apply_flags \
 octal_conversion hex_conversion to_ascii round main special_putchar \
 apply_flags_two ptr_conversion strjoin_with_free \
-strsub_with_free char_mod float_mod
+strsub_with_free char_mod float_mod floats_two pointer_two
 FILESTEST = $(patsubst %, %.c, $(FUNCTIONSTEST))
 OBJECTSTEST = $(patsubst %, %.o, $(FUNCTIONSTEST))
 

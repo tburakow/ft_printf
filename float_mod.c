@@ -6,7 +6,7 @@
 /*   By: tburakow <tburakow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 13:11:46 by tburakow          #+#    #+#             */
-/*   Updated: 2022/03/28 16:10:00 by tburakow         ###   ########.fr       */
+/*   Updated: 2022/04/08 14:13:38 by tburakow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,16 @@
 
 int	infinity(long double x, t_flags **flags)
 {
-	
-    if (x == -1.0 / 0.0)
+	if (x == -1.0 / 0.0)
 	{
 		(*flags)->zero = 0;
-		//(*flags)->plus = 0;
-		//(*flags)->space = 0;
 		(*flags)->neg = 1;
-        return (-1);
+		return (-1);
 	}
-    if (x == 1.0 / 0.0)
+	if (x == 1.0 / 0.0)
 	{
-		//(*flags)->plus = 0;
-		//(*flags)->space = 0;
 		(*flags)->zero = 0;
-    	return (1);
+		return (1);
 	}
 	if (x != x)
 	{
@@ -37,12 +32,12 @@ int	infinity(long double x, t_flags **flags)
 		(*flags)->zero = 0;
 		return (2);
 	}
-    return (0);
+	return (0);
 }
 
 static void	print_spec(t_flags **flags)
 {
-	char c;
+	char	c;
 
 	c = ' ';
 	if ((*flags)->neg == 0 && (*flags)->plus != 0)
@@ -59,11 +54,11 @@ static void	print_spec(t_flags **flags)
 	(*flags)->neg = 0;
 }
 
-static void print_filler(int len, t_flags **flags)
+static void	print_filler(int len, t_flags **flags)
 {
 	char	c;
 	int		i;
-	
+
 	c = ' ';
 	i = 0;
 	if ((*flags)->zero != 0)
@@ -79,7 +74,7 @@ static void print_filler(int len, t_flags **flags)
 	}
 	else
 	{
-		if ((*flags)->plus != 0|| (*flags)->neg != 0)
+		if ((*flags)->plus != 0 || (*flags)->neg != 0)
 			len--;
 		while (i++ < len)
 			(*flags)->output += write(1, &c, 1);
@@ -90,10 +85,6 @@ static void print_filler(int len, t_flags **flags)
 
 void	float_mod(char *input, t_flags **flags)
 {
-	//#hash will always give decimal point.
-	//zero is on even with precision.
-	//space works.
-	//plus overrides space.
 	int		i;
 	int		len;
 	char	c;
